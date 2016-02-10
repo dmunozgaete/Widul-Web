@@ -1,0 +1,45 @@
+{
+  "name": "angular-gale",
+  "homepage": "https://github.com/dmunozgaete/angular-gale",
+  "authors": [
+    "David Gaete <dmunozgaete@gmail.com> (https://github.com/dmunozgaete)"
+  ],
+  "description": "Angular Implementation for the Javascript Client GALE",
+  "main": [
+    "dist/angular-gale.js"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "Gale",
+    "AngularJS",
+    "Valentys",
+    "Angular",
+    "DmunozGaete"
+  ],
+  "license": "Apache 2.0 License",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "grunt",
+    "src",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "angular-ui-router": "0.2.13",
+    "lodash": "~3.10.1"
+  },
+  "_release": "62c1328b33",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "62c1328b3349e101160fdbf4f1dffc2f147efd2e"
+  },
+  "_source": "git://github.com/dmunozgaete/angular-gale.git",
+  "_target": "master",
+  "_originalSource": "angular-gale"
+}

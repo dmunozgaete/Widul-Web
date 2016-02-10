@@ -1,0 +1,38 @@
+{
+  "name": "angular-gale-material",
+  "version": "1.0.0-rc.7",
+  "homepage": "https://github.com/dmunozgaete/angular-gale-material",
+  "authors": [
+    "David Gaete <dmunozgaete@gmail.com> (https://github.com/dmunozgaete)"
+  ],
+  "description": "Angular Material Components for Angular Gale",
+  "main": [
+    "dist/angular-gale-material.js",
+    "dist/angular-gale-material.css"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "Gale",
+    "AngularJS",
+    "Valentys",
+    "Angular",
+    "DmunozGaete"
+  ],
+  "license": "Apache 2.0 License",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "grunt",
+    "src",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "angular-gale": "~1.0.0-rc.7",
+    "angular-material": "1.0.4"
+  }
+}
