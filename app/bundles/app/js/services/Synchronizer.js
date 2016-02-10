@@ -18,20 +18,20 @@
         angular.forEach(services, function(ngClass)
         {
             var type = ngClass[1];
-            var arguments = ngClass[2];
+            var args = ngClass[2];
 
             // Load only if the type is "service" 
             // and first args is the service name
             if (
-                type == "service" &&
+                type === "service" &&
                 (
-                    arguments &&
-                    arguments.length > 0 &&
-                    typeof arguments[0] == "string"
+                    args &&
+                    args.length > 0 &&
+                    typeof args[0] === "string"
                 )
             )
             {
-                var reflectedTypeName = arguments[0];
+                var reflectedTypeName = args[0];
                 var reflectedType = $injector.get(reflectedTypeName);
 
                 //Check if has the key method "synchronize";
@@ -74,7 +74,7 @@
                 if (_frequency > 0)
                 {
                     _frequency = frequency;
-                };
+                }
                 return $ref;
             };
 
@@ -145,7 +145,7 @@
                     //STEP 1: CONFIGURE ALL SYNCHRONIZERS!
                     angular.forEach(_synchronizers, function(item)
                     {
-                        if (item.state == StateType.INITIALIZED)
+                        if (item.state === StateType.INITIALIZED)
                         {
                             var promise = configure(item);
                             configures.push(promise);
@@ -159,7 +159,7 @@
                         //STEP 2: CALL SYNC AT START!
                         angular.forEach(_synchronizers, function(item)
                         {
-                            if (item.state == StateType.INITIALIZED)
+                            if (item.state === StateType.INITIALIZED)
                             {
                                 synchronize(item);
                             }

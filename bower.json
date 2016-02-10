@@ -6,7 +6,6 @@
   "private": true,
   "dependencies": {
     "angular-moment": "~0.10.1",
-    "angular-ui-utils": "~3.0.0",
     "angular-material": "1.0.4",
     "ng-file-upload": "~3.2.4",
     "angular-gale": "master",

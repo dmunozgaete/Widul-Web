@@ -69,7 +69,7 @@ angular.module('app.components')
                         Facebook.login(function(response)
                         {
                             //All right??
-                            if (response.status == "connected")
+                            if (response.status === "connected")
                             {
                                 var accessToken = response.authResponse.accessToken;
 
@@ -108,7 +108,7 @@ angular.module('app.components')
                         break;
                     case "google":
                         break;
-                };
+                }
 
             };
             changeState('normal');

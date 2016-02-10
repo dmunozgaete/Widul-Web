@@ -48,7 +48,7 @@
             if (miliseconds > 0)
             {
                 delay_response = miliseconds;
-            };
+            }
             return $ref;
         };
         //---------------------------------------------------
@@ -99,7 +99,7 @@
                     return when('DELETE', url, callback);
                 }
             };
-        }
+        };
     })
 
     //DELAY WHEN API CALL 

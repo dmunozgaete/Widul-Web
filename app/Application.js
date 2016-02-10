@@ -1,17 +1,25 @@
-﻿angular.module('App', [
-        'gale-material' //ANGULAR-GALE & ANGULAR-GALE-MATERIALLIBRARY
-        , 'app' //CUSTOM PROJECT LIBRARY
-        , 'material-icons' //CUSTOM PROJECT LIBRARY
+﻿/*
 
-        , 'ui.utils' //UI UTILITIES LIKE MASK
+    gale-material:          ANGULAR-GALE & ANGULAR-GALE-MATERIALLIBRARY
+    app:                    CUSTOM PROJECT LIBRARY
+    material-icons:         CUSTOM PROJECT BUNDLES (ADD SVG ICON'S)
+    nvd3ChartDirectives:    N3 CHART DIRECTIVES
+    facebook:               FACEBOOK SDK
+    angularMoment:          ANGULAR MOMENT
+    angularFileUpload:      ANGULAR FILE UPLOAD
+    mocks:                  Mocks Only for Testing
 
-        , 'nvd3ChartDirectives' //N3 CHART DIRECTIVES
+*/
 
-        , 'facebook' //FACEBOOK SDK
-        , 'angularMoment' //ANGULAR MOMENT
-        , 'angularFileUpload' //ANGULAR FILE UPLOAD
-
-        , 'mocks' //Mocks Only for Testing
+angular.module('App', [
+        'gale-material',
+        'app',
+        'material-icons',
+        'nvd3ChartDirectives',
+        'facebook',
+        'angularMoment',
+        'angularFileUpload',
+        'mocks'
     ])
     .run(function($location)
     {

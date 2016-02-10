@@ -1,9 +1,7 @@
+/*
 angular.module('mocks.api')
-
 .run(function(Mocks, $log)
 {
-    return; //CONNECTED TO REAL API =)!
-
     //-------------------------------------------------------------
     Mocks.whenGET("Places", function(method, url, data)
     {
@@ -69,3 +67,4 @@ angular.module('mocks.api')
     });
     //-------------------------------------------------------------
 });
+*/

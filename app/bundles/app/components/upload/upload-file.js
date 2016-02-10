@@ -17,7 +17,7 @@ angular.module('app.components')
         templateUrl: 'bundles/app/components/upload/upload-file.tpl.html',
         controller: function($scope, $element, $upload, $Identity, $uploadFile)
         {
-            $scope.ngDisabled = $scope.ngDisabled||(false);
+            $scope.ngDisabled = $scope.ngDisabled || (false);
 
 
             var getFileUrl = function(token)
@@ -26,7 +26,7 @@ angular.module('app.components')
                 var url = $uploadFile.getFileEndpoint() + token;
                 if ($Identity.isAuthenticated())
                 {
-                    url = url + "?access_token=" + $Identity.getAccessToken()
+                    url = url + "?access_token=" + $Identity.getAccessToken();
                 }
 
                 return url;
@@ -45,22 +45,22 @@ angular.module('app.components')
                 if (files && files.length)
                 {
                     $scope.uploadData = {
-                        <!-- -->
+
                         options:
                         {
                             thickness: 5,
                             mode: "gauge",
                             total: 100
                         },
-                        <!-- -->
+
                         progress: [
-                            {
-                                label: 'Subiendo...',
-                                value: 0,
-                                color: "#FF5722",
-                                suffix: "%"
-                            }]
-                            <!-- -->
+                        {
+                            label: 'Subiendo...',
+                            value: 0,
+                            color: "#FF5722",
+                            suffix: "%"
+                        }]
+
                     };
 
 
@@ -86,6 +86,51 @@ angular.module('app.components')
 
                     }, 300);
 
+                    //FUNCTIONS
+                    var _progress = function(evt)
+                    {
+
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        throttled(progressPercentage);
+
+                    };
+
+                    var _success = function(data, status, headers, config)
+                    {
+                        //Set View File endpoint
+                        var token = _.first(data).token;
+                        var url = getFileUrl(token);
+
+                        //Raise Complete Event
+                        if ($scope.onComplete())
+                        {
+                            var custom_url = $scope.onComplete()(data, status, headers, config);
+                            if (custom_url)
+                            {
+                                url = custom_url;
+                            }
+                        }
+
+                        //Bind ng-Model
+                        $scope.ngModel = token;
+                        $scope.fileUrl = url;
+
+                        $scope.uploadData = null;
+
+                    };
+
+                    var _error = function(data, status, headers, config)
+                    {
+
+                        //Raise Error Event
+                        if ($scope.onError())
+                        {
+                            $scope.onError()(data, status, headers, config);
+                        }
+
+                        $scope.uploadData = null;
+
+                    };
 
                     for (var i = 0; i < files.length; i++)
                     {
@@ -95,7 +140,7 @@ angular.module('app.components')
 
                         if ($Identity.isAuthenticated())
                         {
-                            headers['Authorization'] = "{0} {1}".format([
+                            headers.Authorization = ("{0} {1}").format([
                                 $Identity.getTokenType(),
                                 $Identity.getAccessToken()
                             ]);
@@ -114,53 +159,14 @@ angular.module('app.components')
                         };
 
                         $upload.upload(config)
-                            .progress(function(evt)
-                            {
-
-                                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                                throttled(progressPercentage);
-
-                            })
-                            .success(function(data, status, headers, config)
-                            {
-                                //Set View File endpoint
-                                var token = _.first(data).token;
-                                var url = getFileUrl(token);
-
-                                //Raise Complete Event
-                                if ($scope.onComplete())
-                                {
-                                    var custom_url = $scope.onComplete()(data, status, headers, config);
-                                    if (custom_url)
-                                    {
-                                        url = custom_url;
-                                    }
-                                }
-
-                                //Bind ng-Model
-                                $scope.ngModel = token;
-                                $scope.fileUrl = url;
-
-                                $scope.uploadData = null;
-
-                            })
-                            .error(function(data, status, headers, config)
-                            {
-
-                                //Raise Error Event
-                                if ($scope.onError())
-                                {
-                                    $scope.onError()(data, status, headers, config);
-                                }
-
-                                $scope.uploadData = null;
-
-                            });
+                            .progress(_progress)
+                            .success(_success)
+                            .error(_error);
                     }
 
                 }
                 //-----------------------------------------
-            }
+            };
 
             //Garbage Collector Destroy
             $scope.$on('$destroy', function() {

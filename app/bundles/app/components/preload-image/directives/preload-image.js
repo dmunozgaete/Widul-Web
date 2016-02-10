@@ -86,13 +86,13 @@ angular.module('app.components')
                     $scope.onStart(image);
                 }
                 //------------------------------------------
-            }
+            };
 
             //Not Throw Error , but .... do nothing??
             if ($scope.ngSrc)
             {
                 $scope._load($scope.ngSrc);
-            };
+            }
         },
 
         link: function($scope, $element, attr, ctrl)

@@ -15,10 +15,10 @@ angular.module('app.services')
             };
         }
 
-        if (typeof prefix == "undefined")
+        if (typeof prefix === "undefined")
         {
             prefix = identifier;
-        };
+        }
 
         //Clone for disconnect , some $watch for ng-model
         var cloneData = angular.copy(data,
@@ -56,32 +56,32 @@ angular.module('app.services')
                 var fullname = fieldName;
                 if (configuration.prefix.length > 0)
                 {
-                    var fullname = "{0}_{1}".format([configuration.prefix, fieldName]);
+                    fullname = "{0}_{1}".format([configuration.prefix, fieldName]);
                 }
                 
                 var value = configuration.fields[fieldName];
-                var resolverValue = undefined;
+                var resolverValue;
 
                 if (resolver)
                 {
                     resolverValue = resolver(value, fieldName, fullname);
                 }
 
-                if (typeof resolverValue != "undefined")
+                if (typeof resolverValue !== "undefined")
                 {
                     value = resolverValue;
                 }
                 else
                 {
 
-                    if (typeof value == "object" && value.token)
+                    if (typeof value === "object" && value.token)
                     {
-                        value = value.token
+                        value = value.token;
                     }
 
                 }
 
-                if (typeof value == "undefined" || value == null)
+                if (typeof value === "undefined" || value === null)
                 {
                     throw {
                         message: 'can\'t resolve value for ' + fullname

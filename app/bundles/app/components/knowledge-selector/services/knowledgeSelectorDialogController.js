@@ -34,11 +34,11 @@ angular.module('app.components')
 
                     );
 
-                })
+                });
 
                 $scope.graph = {
                     mostRequested: graphData
-                }
+                };
             });
 
 
@@ -50,7 +50,7 @@ angular.module('app.components')
                 var label = $scope.graph.mostRequested[ordinal].key + (" (" + d + ")");
                 ordinal++;
                 return label;
-            }
+            };
         };
 
         //-------------------------------------------
@@ -109,7 +109,6 @@ angular.module('app.components')
         // Action's
         $scope.save = function(model)
         {
-            $log.debug(model)
             $mdDialog.hide(model);
         };
 

@@ -13,6 +13,6 @@
          var setting = (config ||
          {});
          $scope.title = (setting.title || "Procesando Información");
-         $scope.legend = (setting.legend || "Espera mientras se ejecuta la solicitud")
+         $scope.legend = (setting.legend || "Espera mientras se ejecuta la solicitud");
 
      });

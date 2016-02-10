@@ -1,5 +1,4 @@
 angular.module('mocks.api')
-
 .run(function(Mocks, $log)
 {
     //-------------------------------------------------------------

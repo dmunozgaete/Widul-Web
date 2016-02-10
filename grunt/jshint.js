@@ -20,7 +20,8 @@ module.exports = function(grunt, options) {
 
         bundles: {
             src: [
-                'app/bundles/**/*.js'
+                'app/bundles/**/*.js',
+                '!app/bundles/mocks/js/angular-mocks.js'
             ]
         },
 

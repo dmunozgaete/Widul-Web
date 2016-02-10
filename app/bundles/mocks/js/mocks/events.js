@@ -1,8 +1,7 @@
+/*
 angular.module('mocks.api')
-
 .run(function(Mocks, $log)
 {
-    return ;
     //-------------------------------------------------------------
     Mocks.whenGET("Events/Details", function(method, url, data)
     {
@@ -277,3 +276,4 @@ angular.module('mocks.api')
     });
     //-------------------------------------------------------------
 });
+*/

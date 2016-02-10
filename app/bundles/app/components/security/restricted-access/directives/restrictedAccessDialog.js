@@ -37,7 +37,7 @@ angular.module('app.components')
                     $timeout.cancel(delay);
                 }, 400);
 
-            };
+            }
 
             //Set State accord to user
             $scope._onUpdateState = function(new_state)

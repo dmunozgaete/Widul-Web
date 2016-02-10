@@ -25,7 +25,7 @@ angular.module('app.components')
                 deferred.resolve();
 
                 delete $window.initGoogleMaps;
-            }
+            };
 
             if (typeof google !== "undefined" && google.maps)
             {
