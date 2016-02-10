@@ -1,0 +1,44 @@
+/* 
+    SASS Mixins
+*/
+flex-loading {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: left; }
+  flex-loading .image img {
+    height: 7em;
+    width: 7em;
+    margin-right: 1em; }
+  flex-loading .message {
+    font-size: 1.2em;
+    opacity: 0.5;
+    text-align: left; }
+  flex-loading .legend {
+    opacity: 0.4;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    line-height: 1em;
+    text-align: left; }
+
+/*# sourceMappingURL=flex-loading.css.map */

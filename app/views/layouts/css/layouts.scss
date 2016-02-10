@@ -1,0 +1,35 @@
+@import "../../../bundles/app/css/_variables";
+@import "../../../bundles/app/css/_flexbox";
+//-----------------------------
+// $mdDialog Service , add the class fullscreen when 
+// is setted in the configuration options,
+// for us, the fullscreen is % =)!
+//-----------------------------
+md-dialog {
+    &.md-dialog-fullscreen {
+        height: 94%;
+        width: 94%;
+        max-height: 94%;
+        max-width: 94%;
+        position: absolute;
+        top: 3%;
+        left: 3%;
+        border-radius: 0;
+        > md-dialog-actions {
+            position: fixed;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+        }
+    }
+    > md-dialog-content {
+        > div > flex-loading,
+        > flex-loading {
+            margin-top: 20%;
+        }
+    }
+}
+
+md-backdrop.md-opaque {
+    opacity: .85;
+}
