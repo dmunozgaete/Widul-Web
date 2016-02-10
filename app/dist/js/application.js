@@ -6861,7 +6861,7 @@ angular.module('App', [
     application:
     {
         version: "1.0.0-rc.1",
-        environment: "dev",
+        environment: "qas",
         language: "es",
         name: "Widul",
         //home: "security/identity/social",

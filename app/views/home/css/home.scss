@@ -10,7 +10,7 @@ gale-page.home {
         }
     }
     div.landscape {
-        height: 45%;
+        height: 35%;
         background-color: #F3F3F3;
         preload-image {
             > figure {
@@ -31,7 +31,7 @@ gale-page.home {
         }
         > div.search-container {
             position: absolute;
-            height: 45%;
+            height: 35%;
             width: 100%;
             z-index: 1;
             @include flexbox();
