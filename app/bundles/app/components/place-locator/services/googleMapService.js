@@ -24,6 +24,8 @@ angular.module('app.components')
             {
                 deferred.resolve();
 
+
+                //REMOVE INIT REFERENCE
                 delete $window.initGoogleMaps;
             };
 

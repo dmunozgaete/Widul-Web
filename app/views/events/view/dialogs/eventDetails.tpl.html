@@ -1,7 +1,32 @@
 <md-dialog aria-label="dd" class="events details view index">
-    <md-progress-linear md-mode="indeterminate" class="md-accent" ng-if="!model.data">
+    <md-progress-linear md-mode="indeterminate" class="md-accent" ng-if="!model.event">
     </md-progress-linear>
 
+    <!-- LEFT SIDENAV (COMMENTS) -->
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="eventDetailsLeft">
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Mapa</h1>
+        </md-toolbar>
+        <md-content>
+
+            <google-map ng-if="panel == 'map'" coordinates="model.event.place" title="model.event.place.name">
+            </google-map>
+
+            {{model.event.place | json}}
+        </md-content>
+    </md-sidenav>
+
+    <!-- RIGHT SIDENAV (MAP)-->
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="eventDetailsRight">
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Comentarios</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+            COMENTARIOS!!!
+        </md-content>
+    </md-sidenav>
+
+    <!-- DIALOG CONTENT -->
     <md-dialog-content>
 
         <!-- AVATAR -->
@@ -9,37 +34,49 @@
             <div class="marker">
                 <div class="halo">
                     <div>
-                        <img ng-src="{{model.event.user.photo}}" />
+                        <img ng-src="{{model.event.creator.photo | file}}" />
                     </div>
                 </div>
             </div>
             <div class="name">
-                {{model.event.user.fullName}}
+                {{model.event.creator.name}}
             </div>
 
             <!-- FOLLOW BUTTON -->
-            <md-button class="md-accent text follow" ng-click="follow()">
-                <md-icon md-svg-icon="social:person_add"></md-icon>
-                Seguir
+            <md-button ng-disabled="model.event.creator.following === null" class="md-accent text follow" ng-click="follow(model.event)">
+
+                <span ng-show="model.event.creator.following === false">
+                    <md-icon md-svg-icon="social:person_add"></md-icon>
+                    Seguir
+                </span>
+                <span ng-show="model.event.creator.following === true">
+                    <md-icon md-svg-icon="navigation:check"></md-icon>
+                    Siguiendo
+                </span>
+
+                <center ng-show="model.event.creator.following === null">
+                    <md-progress-circular class="md-accent " md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
+                </center>
+
             </md-button>
 
             <!-- DATE PICKER -->
-            <div class="md-primary background date" layout="column" ng-if="model.data">
+            <div class="md-primary background date" layout="column" ng-if="model.event">
 
                 <div class="day" flex="initial">
-                    {{model.data.date | amDateFormat: 'YYYY'}}
+                    {{model.event.date | amDateFormat: 'YYYY'}}
 
                 </div>
 
                 <div flex layout="column" layout-align="center center" layout-fill>
                     <div class="month">
-                        {{model.data.date | amDateFormat: 'dddd'}}
+                        {{model.event.date | amDateFormat: 'dddd'}}
                     </div>
                     <div class="day">
-                        {{model.data.date | amDateFormat: 'D'}}
+                        {{model.event.date | amDateFormat: 'D'}}
                     </div>
                     <div class="year">
-                        {{model.data.date | amDateFormat: 'MMMM'}}
+                        {{model.event.date | amDateFormat: 'MMMM'}}
                     </div>
                 </div>
 
@@ -48,10 +85,10 @@
 
         <!-- WHITE BOX -->
         <dialog-content>
-            <flex-loading ng-if="!model.data">
+            <flex-loading ng-if="!model.event">
             </flex-loading>
 
-            <div ng-if="model.data">
+            <div ng-if="model.event">
 
                 <event-header layout="row">
                     <div flex>
@@ -63,19 +100,19 @@
                                 </md-tooltip>
 
                                 <md-icon class="md-primary text" md-svg-icon="action:done"></md-icon>
-                                {{model.data.knowledge.recommendations}}
+                                {{model.event.knowledge.recommendations}}
                             </span>
                         </h1>
                         <h2>
                             Conocimiento:
-                            <strong>{{model.data.knowledge.name}}</strong>
+                            <strong>{{model.event.knowledge.name}}</strong>
                             <span>
                                 <md-tooltip md-direction="right">
                                     Participantes actuales
                                 </md-tooltip>
 
                                 <md-icon md-svg-icon="social:group"></md-icon>
-                                {{model.data.participants}}
+                                {{model.event.participants}}
                             </span>
                         </h2>
                     </div>
@@ -90,40 +127,46 @@
                     <event-description flex>
                         <!-- DESCRIPTION -->
                         <p>
-                            {{model.data.description}}
+                            {{model.event.description}}
                         </p>
 
                         <!-- TAGS -->
                         <event-tags>
-                            <tag ng-repeat="tag in model.data.tags">#{{tag}}</tag>
+                            <tag ng-repeat="tag in model.event.tags">#{{tag.name}}</tag>
                         </event-tags>
 
                     </event-description>
 
                     <event-location flex="40">
-                        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+                        <google-map ng-click="showMap()" coordinates="model.event.place" title="model.event.place.name">
+                        </google-map>
                     </event-location>
                 </div>
                 <event-comments>
-                    <comment ng-repeat="comment in model.data.comments">
-                        <avatar>
+                    <comment ng-repeat="comment in model.event.lastComments" ng-if="$index < 2">
+                        <div>
+                            <avatar>
 
-                            <div class="halo">
-                                <div>
-                                    <img ng-src="{{comment.user.photo}}" />
+                                <div class="halo">
+                                    <div>
+                                        <md-tooltip md-direction="bottom">
+                                            {{comment.creator.name}}
+                                        </md-tooltip>
+                                        <img ng-src="{{comment.creator.photo | file}}" />
+                                    </div>
                                 </div>
-                            </div>
 
-                        </avatar>
+                            </avatar>
+                        </div>
                         <description>
                             {{comment.comment}}
                         </description>
                         <created-at>
-                            hace un minuto
+                            <span am-time-ago="comment.createdAt"></span>
                         </created-at>
                     </comment>
                 </event-comments>
-                <load-comments class="md-accent text">
+                <load-comments class="md-primary text" ng-click="showAllComments()" ng-if="model.event.lastComments.length > 1">
                     Quiero ver todos los comentarios!
                 </load-comments>
                 <form name="form">
@@ -131,12 +174,17 @@
                         <div>
                             <md-input-container class="md-block">
                                 <label>Si tienes alguna duda... comentanos!</label>
-                                <textarea maxlength="150" ng-model="model.newcomment.comment" columns="1" md-maxlength="150" rows="3"></textarea>
+                                <textarea maxlength="200" ng-model="model.newcomment.comment" columns="1" md-maxlength="200" rows="2"></textarea>
                             </md-input-container>
                         </div>
                         <div>
-                            <md-button ng-disabled="!model.newcomment.comment || model.newcomment.comment.length==0" class="md-raised md-primary">
-                                Comentar
+                            <md-button ng-click="comment(model.event,model.newcomment);" ng-disabled="!model.newcomment.comment || model.newcomment.isCreating || model.newcomment.comment.length==0" class="md-raised md-primary">
+                                <span ng-show="!model.newcomment.isCreating">
+                                    Comentar
+                                </span>
+                                <center ng-show="model.newcomment.isCreating">
+                                    <md-progress-circular class="md-accent " md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
+                                </center>
                             </md-button>
                         </div>
                     </new-comment>

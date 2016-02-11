@@ -114,7 +114,7 @@ angular.route('public.home/index', function(
                 fullscreen: true,
                 locals:
                 {
-                    event: item
+                    token: item.token
                 }
             })
             .then(function(data)

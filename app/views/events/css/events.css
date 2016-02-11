@@ -26,6 +26,15 @@ ROUTE:  /app/events/*
       border-radius: 0;
       background: transparent;
       box-shadow: none; }
+      .events.view.details > md-sidenav {
+        /*--------------------------
+        MAPS SIDENAV
+        --------------------------*/ }
+        .events.view.details > md-sidenav.md-sidenav-left {
+          max-width: 550px;
+          width: 550px; }
+          .events.view.details > md-sidenav.md-sidenav-left > md-content > google-map {
+            height: 300px; }
       .events.view.details dialog-content {
         position: absolute;
         top: 3%;
@@ -33,7 +42,7 @@ ROUTE:  /app/events/*
         box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 13px 19px 2px rgba(0, 0, 0, 0.14), 0px 5px 24px 4px rgba(0, 0, 0, 0.12);
         left: 23%;
         right: 3%;
-        height: 85%;
+        min-height: 55%;
         border-radius: 4px;
         display: block; }
         .events.view.details dialog-content > flex-loading {
@@ -78,8 +87,10 @@ ROUTE:  /app/events/*
         .events.view.details dialog-content event-location {
           display: block;
           padding: 16px 16px 16px 0px; }
-          .events.view.details dialog-content event-location .angular-google-map-container {
-            min-height: 12em; }
+          .events.view.details dialog-content event-location > google-map {
+            margin-bottom: 0px; }
+            .events.view.details dialog-content event-location > google-map > map {
+              border-radius: 4px; }
         .events.view.details dialog-content event-tags {
           display: block;
           padding-top: 16px; }
@@ -93,43 +104,48 @@ ROUTE:  /app/events/*
         .events.view.details dialog-content event-comments {
           display: block; }
           .events.view.details dialog-content event-comments > comment {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            align-items: center;
             border-top: 1px solid #EAEAEA;
-            display: block;
             height: 70px;
             width: 100%; }
-            .events.view.details dialog-content event-comments > comment:first-child {
-              padding-top: 8px; }
             .events.view.details dialog-content event-comments > comment:last-child {
-              padding-bottom: 8px; }
-            .events.view.details dialog-content event-comments > comment > avatar {
-              position: absolute;
+              padding-bottom: 5px; }
+            .events.view.details dialog-content event-comments > comment > div > avatar {
               display: block;
               width: 50px;
               height: 50px;
-              margin-top: 8px;
-              margin-left: 16px; }
-              .events.view.details dialog-content event-comments > comment > avatar > div.halo {
+              margin: 0px 16px; }
+              .events.view.details dialog-content event-comments > comment > div > avatar > div.halo {
                 background-color: #FFF;
                 border-radius: 50%;
                 border: 1px solid #FFF;
                 width: 100%;
                 height: 100%;
                 padding: 3%; }
-                .events.view.details dialog-content event-comments > comment > avatar > div.halo > div {
+                .events.view.details dialog-content event-comments > comment > div > avatar > div.halo > div {
                   border-radius: 50%;
                   overflow: hidden;
                   height: 100%;
                   width: 100%;
                   background: #3F51B5; }
-                  .events.view.details dialog-content event-comments > comment > avatar > div.halo > div > img {
+                  .events.view.details dialog-content event-comments > comment > div > avatar > div.halo > div > img {
                     width: 100%; }
             .events.view.details dialog-content event-comments > comment > description {
-              position: absolute;
+              margin-left: 20px;
+              flex-basis: 100%;
               display: block;
-              margin-left: 86px;
+              margin-left: 0px;
               text-align: justify;
               margin-right: 16px;
-              margin-top: 16px;
               font-size: 0.85em;
               max-height: 2.4em;
               overflow: hidden; }
@@ -139,9 +155,9 @@ ROUTE:  /app/events/*
                 position: absolute;
                 bottom: 0;
                 right: 0;
-                width: 15%;
+                width: 10%;
                 height: 1.2em;
-                background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%); }
+                background: linear-gradient(to right, rgba(255, 255, 255, 0), white 100%); }
             .events.view.details dialog-content event-comments > comment > created-at {
               display: block;
               position: absolute;
@@ -154,7 +170,7 @@ ROUTE:  /app/events/*
           text-align: left;
           font-size: 0.75em;
           cursor: pointer;
-          padding: 8px 16px;
+          padding: 8px 20px;
           opacity: 0.5; }
           .events.view.details dialog-content load-comments:hover {
             opacity: 1; }
@@ -251,7 +267,9 @@ ROUTE:  /app/events/*
           border-radius: 50px;
           background: none;
           border: 2px solid #fff;
-          background-color: #FFF; }
+          background-color: #FFF;
+          width: 75%;
+          height: 3em; }
         .events.view.details dialog-avatar div.name {
           text-align: center;
           color: #fff;
@@ -263,7 +281,7 @@ ROUTE:  /app/events/*
           width: 100%; }
         .events.view.details dialog-avatar div.date {
           width: 85%;
-          margin-top: 24px;
+          margin-top: 37px;
           -webkit-touch-callout: none;
           -webkit-user-select: none;
           -khtml-user-select: none;

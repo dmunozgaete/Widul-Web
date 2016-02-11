@@ -17,7 +17,8 @@ angular.module('app.components')
         restrict: 'E',
         scope:
         {
-            coordinates: '='
+            coordinates: '=',
+            title: '='
         },
         templateUrl: 'bundles/app/components/place-locator/google-map.tpl.html',
         controller: function($scope, $element, googleMapService, $q)
@@ -26,11 +27,27 @@ angular.module('app.components')
 
             var setMarker = function(coords)
             {
-                if (google.maps)
+                if (typeof google != "undefined" && google.maps)
                 {
                     var latLng = {
                         lat: coords.lat,
                         lng: coords.lng
+                    };
+
+                    // FIX GOOGLE MAPS REPAINT PROBLEM (GOOGLE MAPS DOWNLOAD THIS FONT, AND
+                    // MAKE THAT WEBSITE REPAINT THE SOME, FLICKERING WEBSITE :/
+                    // BUG EXPLAIN: http://stackoverflow.com/questions/25523806/google-maps-v3-prevent-api-from-loading-roboto-font#25902239
+                    var head = document.getElementsByTagName('head')[0];
+                    var insertBeforeOriginal = head.insertBefore;
+                    head.insertBefore = function(newElement, referenceElement)
+                    {
+                        //OVERRIDE TEMPORARY 
+                        if (newElement.href && newElement.href.indexOf('http://fonts.googleapis.com/css?family=Roboto') === 0)
+                        {
+                            return;
+                        }
+
+                        insertBeforeOriginal.call(head, newElement, referenceElement);
                     };
 
                     var map = new google.maps.Map($element.find("map")[0],
@@ -43,9 +60,27 @@ angular.module('app.components')
                     var marker = new google.maps.Marker(
                     {
                         position: latLng,
-                        map: map,
-                        title: 'Hello World!'
+                        map: map
                     });
+
+                    if ($scope.title)
+                    {
+                        var infowindow = new google.maps.InfoWindow(
+                        {
+                            content: $scope.title
+                        });
+                        infowindow.open(map, marker);
+                    }
+
+                    /*
+                    //extend the bounds to include each marker's position
+                    var bounds = new google.maps.LatLngBounds();
+                    bounds.extend(marker.position);
+
+                    //Automatic Zoom and center
+                    map.fitBounds(bounds);
+                    */
+
 
                     $scope.showLoading = false;
                 }

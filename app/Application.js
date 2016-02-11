@@ -89,7 +89,10 @@ angular.module('App', [
     {
         $mdThemingProvider.theme('default')
             .primaryPalette('indigo')
-            .accentPalette('pink')
+            .accentPalette('pink',
+            {
+                'hue-1': '50', // use shade 100 for the <code>md-hue-1</code> class
+            })
             .warnPalette('red');
     })
     .config(function($stateProvider, $urlRouterProvider)
