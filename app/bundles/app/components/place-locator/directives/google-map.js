@@ -18,7 +18,8 @@ angular.module('app.components')
         scope:
         {
             coordinates: '=',
-            title: '='
+            title: '=',
+            readonly: '='
         },
         templateUrl: 'bundles/app/components/place-locator/google-map.tpl.html',
         controller: function($scope, $element, googleMapService, $q)

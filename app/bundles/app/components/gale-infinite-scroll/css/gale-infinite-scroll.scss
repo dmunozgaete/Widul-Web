@@ -1,0 +1,11 @@
+@import "../../../css/variables";
+@import "../../../css/flexbox";
+gale-infinite-scroll {
+    display: block;
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    > list-content {
+        display: block;
+    }
+}

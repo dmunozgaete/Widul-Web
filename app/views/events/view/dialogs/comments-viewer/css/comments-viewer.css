@@ -1,0 +1,61 @@
+/* 
+    SASS Mixins
+*/
+comments-viewer {
+  display: block; }
+  comments-viewer > md-content gale-infinite-scroll {
+    height: 100%; }
+    comments-viewer > md-content gale-infinite-scroll > list-content > comment {
+      position: relative;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      align-items: center;
+      border-top: 1px solid #EAEAEA;
+      height: 95px;
+      width: 100%; }
+      comments-viewer > md-content gale-infinite-scroll > list-content > comment:last-child {
+        padding-bottom: 5px; }
+      comments-viewer > md-content gale-infinite-scroll > list-content > comment > div > avatar {
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin: 0px 16px; }
+        comments-viewer > md-content gale-infinite-scroll > list-content > comment > div > avatar > div.halo {
+          background-color: #FFF;
+          border-radius: 50%;
+          border: 1px solid #FFF;
+          width: 100%;
+          height: 100%;
+          padding: 3%; }
+          comments-viewer > md-content gale-infinite-scroll > list-content > comment > div > avatar > div.halo > div {
+            border-radius: 50%;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            background: #3F51B5; }
+            comments-viewer > md-content gale-infinite-scroll > list-content > comment > div > avatar > div.halo > div > img {
+              width: 100%; }
+      comments-viewer > md-content gale-infinite-scroll > list-content > comment > description {
+        margin-left: 20px;
+        flex-basis: 100%;
+        display: block;
+        margin-left: 0px;
+        text-align: justify;
+        margin-right: 16px;
+        font-size: 0.85em; }
+      comments-viewer > md-content gale-infinite-scroll > list-content > comment > created-at {
+        display: block;
+        position: absolute;
+        right: 16px;
+        margin-top: 75px;
+        opacity: 0.5;
+        font-size: 0.8em; }
+
+/*# sourceMappingURL=comments-viewer.css.map */

@@ -4,26 +4,39 @@
 
     <!-- LEFT SIDENAV (COMMENTS) -->
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="eventDetailsLeft">
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Mapa</h1>
+        <md-toolbar class="md-primary">
+            <h1 class="md-toolbar-tools">{{panel.place.name}}</h1>
         </md-toolbar>
         <md-content>
 
-            <google-map ng-if="panel == 'map'" coordinates="model.event.place" title="model.event.place.name">
+            <google-map coordinates="panel.place">
             </google-map>
 
-            {{model.event.place | json}}
+            <div layout="column" layout-padding>
+                <md-input-container class="md-block" flex>
+                    <label>Dirección</label>
+                    <input readonly="readonly" ng-model="panel.place.address">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>Tip</label>
+                    <textarea readonly="readonly" ng-model="panel.place.tip"></textarea>
+                </md-input-container>
+            </div>
+
+            <a class="directions md-accent text" href="https://www.google.com/maps/dir/Current+Location/{{panel.place.lat}},{{panel.place.lng}}" target="_blank">
+                Indicaciones de como llegar
+                <md-icon class="md-accent text" md-svg-icon="maps:my_location"></md-icon>
+            </a>
+
         </md-content>
     </md-sidenav>
 
     <!-- RIGHT SIDENAV (MAP)-->
     <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="eventDetailsRight">
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Comentarios</h1>
-        </md-toolbar>
-        <md-content layout-padding>
-            COMENTARIOS!!!
-        </md-content>
+        
+            <comments-viewer ng-if="model.panel.comments" event="model.event.token">
+            </comments-viewer>
+        
     </md-sidenav>
 
     <!-- DIALOG CONTENT -->
@@ -132,13 +145,19 @@
 
                         <!-- TAGS -->
                         <event-tags>
-                            <tag ng-repeat="tag in model.event.tags">#{{tag.name}}</tag>
+                            <md-chips readonly="true" flex ng-model="model.event.tags">
+                                <md-chip-template>
+                                    <span>
+                                        <strong>#{{$chip.name}}</strong>
+                                    </span>
+                                </md-chip-template>
+                            </md-chips>
                         </event-tags>
 
                     </event-description>
 
                     <event-location flex="40">
-                        <google-map ng-click="showMap()" coordinates="model.event.place" title="model.event.place.name">
+                        <google-map readonly="true" ng-click="showMap(model.event.place)" coordinates="model.event.place" title="model.event.place.name">
                         </google-map>
                     </event-location>
                 </div>

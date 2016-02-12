@@ -32,12 +32,33 @@ ROUTE:  /app/events/*
                 MAPS SIDENAV
                 --------------------------*/
                 &.md-sidenav-left {
-                    max-width: 550px;
-                    width: 550px;
+                    max-width: 50%;
+                    width: 50%;
                     > md-content {
                         > google-map {
                             height: 300px;
                         }
+                        md-input-container {
+                            .md-errors-spacer {
+                                display: none;
+                            }
+                        }
+                        a.directions {
+                            text-decoration: none;
+                            font-size: 0.9em;
+                            float: right;
+                            margin-right: 16px;
+                        }
+                    }
+                }
+                /*--------------------------
+                COMMENTS SIDENAV
+                --------------------------*/
+                &.md-sidenav-right {
+                    max-width: 50%;
+                    width: 50%;
+                    > md-content {
+                     
                     }
                 }
             }
@@ -114,13 +135,12 @@ ROUTE:  /app/events/*
                 event-tags {
                     display: block;
                     padding-top: 16px;
-                    > tag {
-                        text-decoration: underline;
-                        padding-left: 4px;
-                        padding-right: 4px;
-                        cursor: pointer;
-                        display: inline-block;
-                        color: #3F51B5;
+                    .md-chips {
+                        box-shadow: none;
+                        md-chip {
+                            background-color: $primary_color;
+                            color: #fff;
+                        }
                     }
                 }
                 event-comments {

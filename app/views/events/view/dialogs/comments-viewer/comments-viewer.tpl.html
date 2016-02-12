@@ -1,0 +1,34 @@
+<md-toolbar class="md-theme-indigo">
+    <h1 class="md-toolbar-tools">Comentarios ({{pagination.total()}})</h1>
+</md-toolbar>
+<md-content>
+
+    <flex-loading ng-if="model.items.length == 0">
+    </flex-loading>
+
+    <gale-infinite-scroll can-load-more="hasNext()" on-infinite="nextPage()" distance="1%">
+        <!-- ITEMS -->
+        <comment ng-repeat="comment in model.items">
+            <div>
+                <avatar>
+
+                    <div class="halo">
+                        <div>
+                            <md-tooltip md-direction="bottom">
+                                {{comment.creator.name}}
+                            </md-tooltip>
+                            <img ng-src="{{comment.creator.photo | file}}" />
+                        </div>
+                    </div>
+
+                </avatar>
+            </div>
+            <description>
+                {{comment.comment}}
+            </description>
+            <created-at>
+                <span am-time-ago="comment.createdAt"></span>
+            </created-at>
+        </comment>
+    </gale-infinite-scroll>
+</md-content>

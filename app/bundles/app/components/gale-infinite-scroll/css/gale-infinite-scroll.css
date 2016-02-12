@@ -1,0 +1,12 @@
+/* 
+    SASS Mixins
+*/
+gale-infinite-scroll {
+  display: block;
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden; }
+  gale-infinite-scroll > list-content {
+    display: block; }
+
+/*# sourceMappingURL=gale-infinite-scroll.css.map */

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;;AAEA,oBAAqB;EACjB,OAAO,EAAE,KAAK;EACd,MAAM,EAAE,IAAI;EACZ,QAAQ,EAAE,MAAM;EAChB,UAAU,EAAE,MAAM;EAClB,mCAAe;IACX,OAAO,EAAE,KAAK",
+"sources": ["gale-infinite-scroll.scss"],
+"names": [],
+"file": "gale-infinite-scroll.css"
+}

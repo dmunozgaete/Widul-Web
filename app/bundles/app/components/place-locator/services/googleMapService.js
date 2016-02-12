@@ -2,6 +2,7 @@ angular.module('app.components')
 
 .service('googleMapService', function($window, $q)
 {
+    var deferreds = []; //When various google maps are present in one page!
 
     // Load Google map API script
     function loadScript()
@@ -19,23 +20,41 @@ angular.module('app.components')
         {
             var deferred = $q.defer();
 
-            // Script loaded callback, send resolve
-            $window.initGoogleMaps = function()
-            {
-                deferred.resolve();
-
-
-                //REMOVE INIT REFERENCE
-                delete $window.initGoogleMaps;
-            };
-
             if (typeof google !== "undefined" && google.maps)
             {
                 deferred.resolve();
             }
             else
             {
-                loadScript();
+                //MULTIPLE STACKING'S!!
+                if (deferreds.length > 0)
+                {
+                    //Is loading from other place!
+                    deferreds.push(deferred);
+
+                    return deferred.promise;
+                }
+                else
+                {
+                    // Script loaded callback, send resolve
+                    $window.initGoogleMaps = function()
+                    {
+                        //RESOLVE ALL STACKED PROMISES
+                        angular.forEach(deferreds, function(deferred)
+                        {
+                            deferred.resolve();
+                        });
+
+                        //REMOVE INIT REFERENCE
+                        deferreds = [];
+                        delete $window.initGoogleMaps;
+                    };
+
+                    //Stack the first request always =)!
+                    deferreds.push(deferred);
+
+                    loadScript();
+                }
             }
 
             return deferred.promise;

@@ -59,6 +59,7 @@ google-map {
     display: block;
     overflow: hidden;
     margin-bottom: 8px;
+    position: relative;
     > map-loading {
         display: block;
         @include flexbox();
@@ -72,5 +73,15 @@ google-map {
     }
     > map {
         display: block;
+    }
+    > map-blocking {
+        display: block;
+        background-color: #fff;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        opacity: 0;
     }
 }

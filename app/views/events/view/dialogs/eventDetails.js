@@ -16,6 +16,7 @@ angular.module('app.controllers')
         //---------------------------------------------------
         // Model
         $scope.model = {
+            panel: {},
             newcomment:
             {}
         };
@@ -132,14 +133,22 @@ angular.module('app.controllers')
         // Action's
         $scope.showAllComments = function()
         {
+            $scope.model.panel.comments = true;
+          
             $mdSidenav("eventDetailsRight").toggle();
         };
 
-        $scope.showMap = function()
+        $scope.showMap = function(place)
         {
-            $timeout(function()
+            var delay = $timeout(function()
             {
-                $scope.panel = "map";
+
+                $scope.panel = {
+                    name: "map",
+                    place: place
+                };
+
+                $timeout.cancel(delay);
             }, 300);
 
             $mdSidenav("eventDetailsLeft").toggle();

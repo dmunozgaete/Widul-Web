@@ -48,7 +48,8 @@ google-map {
   background-color: #F3F3F3;
   display: block;
   overflow: hidden;
-  margin-bottom: 8px; }
+  margin-bottom: 8px;
+  position: relative; }
   google-map > map-loading {
     display: block;
     display: -webkit-box;
@@ -72,5 +73,14 @@ google-map {
       opacity: 0.3; }
   google-map > map {
     display: block; }
+  google-map > map-blocking {
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    opacity: 0; }
 
 /*# sourceMappingURL=place-locator.css.map */

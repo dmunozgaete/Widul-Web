@@ -29,12 +29,25 @@ ROUTE:  /app/events/*
       .events.view.details > md-sidenav {
         /*--------------------------
         MAPS SIDENAV
+        --------------------------*/
+        /*--------------------------
+        COMMENTS SIDENAV
         --------------------------*/ }
         .events.view.details > md-sidenav.md-sidenav-left {
-          max-width: 550px;
-          width: 550px; }
+          max-width: 50%;
+          width: 50%; }
           .events.view.details > md-sidenav.md-sidenav-left > md-content > google-map {
             height: 300px; }
+          .events.view.details > md-sidenav.md-sidenav-left > md-content md-input-container .md-errors-spacer {
+            display: none; }
+          .events.view.details > md-sidenav.md-sidenav-left > md-content a.directions {
+            text-decoration: none;
+            font-size: 0.9em;
+            float: right;
+            margin-right: 16px; }
+        .events.view.details > md-sidenav.md-sidenav-right {
+          max-width: 50%;
+          width: 50%; }
       .events.view.details dialog-content {
         position: absolute;
         top: 3%;
@@ -94,13 +107,11 @@ ROUTE:  /app/events/*
         .events.view.details dialog-content event-tags {
           display: block;
           padding-top: 16px; }
-          .events.view.details dialog-content event-tags > tag {
-            text-decoration: underline;
-            padding-left: 4px;
-            padding-right: 4px;
-            cursor: pointer;
-            display: inline-block;
-            color: #3F51B5; }
+          .events.view.details dialog-content event-tags .md-chips {
+            box-shadow: none; }
+            .events.view.details dialog-content event-tags .md-chips md-chip {
+              background-color: #3F51B5;
+              color: #fff; }
         .events.view.details dialog-content event-comments {
           display: block; }
           .events.view.details dialog-content event-comments > comment {

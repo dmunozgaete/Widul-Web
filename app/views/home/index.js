@@ -110,7 +110,7 @@ angular.route('public.home/index', function(
                 templateUrl: 'views/events/view/dialogs/eventDetails.tpl.html',
                 clickOutsideToClose: false,
                 escapeToClose: true,
-                focusOnOpen: true,
+                focusOnOpen: false,
                 fullscreen: true,
                 locals:
                 {
