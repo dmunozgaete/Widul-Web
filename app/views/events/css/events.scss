@@ -57,9 +57,7 @@ ROUTE:  /app/events/*
                 &.md-sidenav-right {
                     max-width: 50%;
                     width: 50%;
-                    > md-content {
-                     
-                    }
+                    > md-content {}
                 }
             }
             dialog-content {
@@ -76,6 +74,7 @@ ROUTE:  /app/events/*
                     min-height: 300px
                 }
                 event-header {
+                    position: relative;
                     border-bottom: 1px solid #EAEAEA;
                     h1 {
                         margin: 16px 0px 0px 16px;
@@ -110,6 +109,9 @@ ROUTE:  /app/events/*
                     button {
                         border-radius: 50px;
                         padding: 0px 24px;
+                        position: absolute;
+                        right: 8px;
+                        top: 23px;
                     }
                 }
                 event-description {

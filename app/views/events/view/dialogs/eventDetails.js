@@ -82,15 +82,49 @@ angular.module('app.controllers')
             });
         };
 
-        $scope.join = function()
+        $scope.join = function(event)
         {
             $restrictedAccess.validate().then(function()
             {
-                var delay = $timeout(function()
+                //--------------------------------------------
+                // Join Button
+                if (event.joined == "NONE")
                 {
-                    alert("JOIN");
-                    $timeout.cancel(delay);
-                }, smoothDelay);
+                    var delay = $timeout(function()
+                    {
+                        //Unfollow
+                        $Api.create("Events/{event}/Join",
+                        {
+                            event: event.token
+                        }).success(function(data)
+                        {
+                            //Set Joining State
+                            event.joined = data.state;
+                        });
+
+                        $timeout.cancel(delay);
+                    }, smoothDelay);
+                }
+                else
+                {
+                    var delay = $timeout(function()
+                    {
+                        //Follow
+                        $Api.delete("Events/{event}/Join",
+                        {
+                            event: event.token
+                        }).success(function()
+                        {
+                            event.joined = "NONE";
+                        });
+
+                        $timeout.cancel(delay);
+                    }, smoothDelay);
+                }
+
+                //Set "meanwhile" value
+                event.joined = null;
+                //--------------------------------------------
 
             });
         };

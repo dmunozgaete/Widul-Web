@@ -33,10 +33,10 @@
 
     <!-- RIGHT SIDENAV (MAP)-->
     <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="eventDetailsRight">
-        
-            <comments-viewer ng-if="model.panel.comments" event="model.event.token">
-            </comments-viewer>
-        
+
+        <comments-viewer ng-if="model.panel.comments" event="model.event.token">
+        </comments-viewer>
+
     </md-sidenav>
 
     <!-- DIALOG CONTENT -->
@@ -129,10 +129,26 @@
                             </span>
                         </h2>
                     </div>
-                    <div flex="25" layout="row" layout-align="center center">
-                        <md-button class="md-accent md-raised" ng-click="join()">
-                            <md-icon md-svg-icon="social:group"></md-icon>
-                            Participar
+                    <div flex="20" layout="row" layout-align="center center">
+                        <md-button class="md-accent md-raised" ng-disabled="model.event.joined === null" ng-click="join(model.event)">
+
+                            <span ng-show="model.event.joined === 'NONE'">
+                                <md-icon md-svg-icon="navigation:check"></md-icon>
+                                Únirme
+                            </span>
+                            <span ng-show="model.event.joined === 'PENDING'">
+                                <md-icon md-svg-icon="toggle:radio_button_unchecked"></md-icon>
+                                Pendiente De Aprobación
+                            </span>
+
+                            <span ng-show="model.event.joined === 'JOINED'">
+                                <md-icon md-svg-icon="content:block"></md-icon>
+                                Declinar Unión
+                            </span>
+
+                            <center ng-show="model.event.joined === null">
+                                <md-progress-circular class="md-accent " md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
+                            </center>
                         </md-button>
                     </div>
                 </event-header>
