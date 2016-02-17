@@ -9,7 +9,7 @@
  Build Date:        2016-01-22 3:20:29
 ------------------------------------------------------*/
 
-angular.module('app.components')
+angular.module('widul.components')
 
 .directive('googleMap', function($interpolate)
 {
@@ -21,7 +21,7 @@ angular.module('app.components')
             title: '=',
             readonly: '='
         },
-        templateUrl: 'bundles/app/components/place-locator/google-map.tpl.html',
+        templateUrl: 'bundles/widul/components/place-locator/google-map.tpl.html',
         controller: function($scope, $element, googleMapService, $q)
         {
             var coordinates = null;
@@ -51,11 +51,19 @@ angular.module('app.components')
                         insertBeforeOriginal.call(head, newElement, referenceElement);
                     };
 
-                    var map = new google.maps.Map($element.find("map")[0],
-                    {
+
+                    var config = {
                         zoom: 14,
                         center: latLng
-                    });
+                    };
+
+                    //Disable Map Control's
+                    if ($scope.readonly)
+                    {
+                        config.disableDefaultUI = true;
+                    };
+
+                    var map = new google.maps.Map($element.find("map")[0], config);
 
 
                     var marker = new google.maps.Marker(

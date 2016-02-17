@@ -1,0 +1,100 @@
+<md-dialog aria-label="dd" class="friends-selector-dialog">
+    <form name="form">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Enviar Invitaciones</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-icon="content:clear" aria-label="Cancelar"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-content>
+                <flex-loading ng-if="!model.friends">
+                </flex-loading>
+                <div layout="row" ng-if="model.friends">
+                    <div flex="60">
+                        <!-- FORM DATA -->
+                        <md-autocomplete id="buggyAutocomplete" md-selected-item-change="friends.onSelect(friendsSelected)" md-search-text-change="friends.onClear(searchText)" md-input-minlength="2" md-input-maxlength="50" md-selected-item="friendsSelected" md-search-text="searchText" md-items="item in friends.find(searchText)" md-item-text="item.fullname" md-floating-label="Buscar Personas">
+                            <md-item-template>
+                                <friend class="autocomplete">
+                                    <div>
+                                        <avatar>
+                                            <div class="halo">
+                                                <div>
+                                                    <img ng-src="{{item.photo | file}}" />
+                                                </div>
+                                            </div>
+                                        </avatar>
+                                    </div>
+                                    <description>
+                                        <span md-highlight-text="searchText">{{item.fullname}}</span>
+                                    </description>
+                                </friend>
+                            </md-item-template>
+                        </md-autocomplete>
+                        <!-- FRIENDS -->
+                        <span class="md-primary text title">
+                            Listado de Amigos ({{pagination.total()}}):
+                        </span>
+                        <friends>
+                            <gale-infinite-scroll can-load-more="hasNext()" on-infinite="nextPage()" distance="3%">
+                                <friend ng-repeat="friend in model.friends">
+                                    <div ng-click="toggleFriend(friend)">
+                                        <avatar>
+                                            <div class="halo">
+                                                <div>
+                                                    <img ng-src="{{friend.photo | file}}" />
+                                                </div>
+                                            </div>
+                                        </avatar>
+                                    </div>
+                                    <description ng-click="toggleFriend(friend)">
+                                        {{friend.fullname}}
+                                    </description>
+                                    <div>
+                                        <md-switch ng-model="friend.selected" ng-change="toggleFriend(friend, true)" aria-label="fs">
+                                        </md-switch>
+                                    </div>
+                                </friend>
+                                <gale-infinite-scroll can-load-more="hasNext()" on-infinite="nextPage()" distance="1%">
+                        </friends>
+                    </div>
+                    <div flex>
+                        <span class="md-primary text">
+                            Seleccionados: 
+                        </span>
+                        <friends class="selected">
+                            <friend ng-repeat="friend in model.invites">
+                                <div>
+                                    <avatar>
+                                        <div class="halo">
+                                            <div>
+                                                <img ng-src="{{friend.photo | file}}" />
+                                            </div>
+                                        </div>
+                                    </avatar>
+                                </div>
+                                <description>
+                                    {{friend.fullname}}
+                                </description>
+                                <div ng-click="removeSelectedFriend(friend)">
+                                    <md-icon class="md-accent text" md-svg-icon="content:clear" aria-label="Cancelar"></md-icon>
+                                </div>
+                            </friend>
+                        </friends>
+                    </div>
+                </div>
+            </md-content>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="cancel()">
+                Cancelar
+            </md-button>
+            <md-button class="md-raised md-primary" ng-click="save(model)" ng-disabled="model.invites.length == 0">
+                Invitar <span ng-if="model.invites.length>0">({{model.invites.length}})</span>
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,16 @@
+/* 
+    SASS Mixins
+*/
+place-viewer {
+  display: block; }
+  place-viewer > div > google-map {
+    height: 300px; }
+  place-viewer > div md-input-container .md-errors-spacer {
+    display: none; }
+  place-viewer > div a.directions {
+    text-decoration: none;
+    font-size: 0.9em;
+    float: right;
+    margin-right: 16px; }
+
+/*# sourceMappingURL=place-viewer.css.map */

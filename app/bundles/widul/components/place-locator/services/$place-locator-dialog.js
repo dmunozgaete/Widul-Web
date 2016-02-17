@@ -1,5 +1,5 @@
 // SERVICE
-angular.module('app.components')
+angular.module('widul.components')
     .provider('$placeLocatorDialog', function()
     {
         var $ref = this;
@@ -15,7 +15,7 @@ angular.module('app.components')
                 $mdDialog.show(
                     {
                         controller: 'PlaceLocatorDialogController',
-                        templateUrl: 'bundles/app/components/place-locator/place-locator-dialog.tpl.html',
+                        templateUrl: 'bundles/widul/components/place-locator/place-locator-dialog.tpl.html',
                         targetEvent: ev,
                         clickOutsideToClose: false,
                         escapeToClose: false,

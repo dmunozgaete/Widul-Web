@@ -9,9 +9,9 @@
  Build Date:        2016-01-22 3:20:29
 ------------------------------------------------------*/
 
-angular.module('app.components')
+angular.module('widul.components')
 
-.directive('placeLocator', function($interpolate)
+.directive('knowledgeSelector', function($interpolate)
 {
     return {
         restrict: 'E',
@@ -21,7 +21,7 @@ angular.module('app.components')
             ngModel: '=' // Ng-Model
         },
         transclude: true,
-        templateUrl: 'bundles/app/components/place-locator/place-locator.tpl.html',
+        templateUrl: 'bundles/widul/components/knowledge-selector/knowledge-selector.tpl.html',
         compile: function()
         {
             return {             
@@ -41,7 +41,7 @@ angular.module('app.components')
                 }         
             };
         },
-        controller: function($scope, $element, $placeLocatorDialog, $q)
+        controller: function($scope, $element, $knowledgeSelectorDialog, $q)
         {
             $scope.data = {
                 placeholder: $scope.placeholder,
@@ -60,7 +60,7 @@ angular.module('app.components')
 
               
                 //DEFER
-                $placeLocatorDialog.show(ev,
+                $knowledgeSelectorDialog.show(ev,
                 {
                     selected: $scope.ngModel,
                     itemText: $scope.itemText,
@@ -94,16 +94,6 @@ angular.module('app.components')
             {
                 $scope.placeholder = $element.attr("placeholder");
             }
-
-
-            //Wath For Model Change
-            $scope.$watch("ngModel", function(value)
-            {
-                if (value)
-                {
-                }
-            });
-
 
 
         }

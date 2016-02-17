@@ -8,8 +8,8 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
         language: "es",
         name: "Widul",
         //home: "security/identity/social",
-        //home: "private/events/create/step-1"
-        home: "public/home"
+        home: "private/events/view/resume/index/E7E67395-2291-4824-B643-8D14F704A39D"
+        //home: "public/home"
     },
 
     on_build_new_version: function(newVersion, oldVersion)

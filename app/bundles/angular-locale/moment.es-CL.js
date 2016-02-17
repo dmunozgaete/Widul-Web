@@ -55,7 +55,7 @@
             },
             nextDay: function()
             {
-                return '[maÃ±ana a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
+                return '[mañana a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
             nextWeek: function()
             {
