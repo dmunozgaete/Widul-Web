@@ -1,0 +1,187 @@
+/* 
+    SASS Mixins
+*/
+friend.autocomplete {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  width: 100%; }
+  friend.autocomplete > div {
+    outline: none; }
+    friend.autocomplete > div > avatar {
+      cursor: pointer;
+      outline: none;
+      display: block;
+      width: 35px;
+      height: 35px;
+      margin: 0px 16px 0px 0px; }
+      friend.autocomplete > div > avatar > div.halo {
+        outline: none;
+        background-color: transparent;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        padding: 3%; }
+        friend.autocomplete > div > avatar > div.halo > div {
+          outline: none;
+          border-radius: 50%;
+          overflow: hidden;
+          height: 100%;
+          width: 100%;
+          background: #3F51B5; }
+          friend.autocomplete > div > avatar > div.halo > div > img {
+            outline: none;
+            width: 100%; }
+  friend.autocomplete > description {
+    cursor: pointer;
+    outline: none;
+    margin-left: 20px;
+    flex-basis: 100%;
+    display: block;
+    margin-left: 0px;
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    font-size: 0.85em; }
+
+md-dialog.friends-selector-dialog md-dialog-content {
+  min-width: 700px;
+  max-width: 700px;
+  height: 430px; }
+  md-dialog.friends-selector-dialog md-dialog-content > md-content {
+    padding: 0px;
+    height: 100%; }
+    md-dialog.friends-selector-dialog md-dialog-content > md-content > div {
+      padding: 0px;
+      height: 100%; }
+      md-dialog.friends-selector-dialog md-dialog-content > md-content > div > div:first-child {
+        padding: 0px 16px;
+        border-bottom: 1px solid #DEDEDE; }
+      md-dialog.friends-selector-dialog md-dialog-content > md-content > div > div:last-child {
+        border-left: 1px solid #DEDEDE;
+        border-bottom: 1px solid #DEDEDE;
+        background-color: #F1F1F1;
+        padding: 16px;
+        overflow: scroll; }
+        md-dialog.friends-selector-dialog md-dialog-content > md-content > div > div:last-child > span {
+          font-size: 0.8em; }
+    md-dialog.friends-selector-dialog md-dialog-content > md-content span.title {
+      font-size: 0.8em;
+      position: absolute;
+      margin-top: -23px;
+      padding-left: 5px; }
+    md-dialog.friends-selector-dialog md-dialog-content > md-content friends {
+      display: block;
+      outline: none;
+      border-radius: 5px;
+      height: 330px;
+      overflow: scroll;
+      margin-top: 3px; }
+      md-dialog.friends-selector-dialog md-dialog-content > md-content friends.selected {
+        height: auto;
+        margin-top: 0px; }
+        md-dialog.friends-selector-dialog md-dialog-content > md-content friends.selected > friend > div {
+          cursor: default;
+          outline: none; }
+          md-dialog.friends-selector-dialog md-dialog-content > md-content friends.selected > friend > div > avatar {
+            cursor: default;
+            width: 35px;
+            height: 35px;
+            margin: 0px 8px 0px 0px; }
+          md-dialog.friends-selector-dialog md-dialog-content > md-content friends.selected > friend > div md-icon {
+            height: 16px;
+            width: 16px;
+            cursor: pointer; }
+        md-dialog.friends-selector-dialog md-dialog-content > md-content friends.selected > friend > description {
+          cursor: default;
+          font-size: 0.8em; }
+      md-dialog.friends-selector-dialog md-dialog-content > md-content friends friend {
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center;
+        height: 55px;
+        width: 100%; }
+        md-dialog.friends-selector-dialog md-dialog-content > md-content friends friend:hover {
+          background-color: #F3F3F3;
+          outline: none; }
+        md-dialog.friends-selector-dialog md-dialog-content > md-content friends friend > div {
+          outline: none; }
+          md-dialog.friends-selector-dialog md-dialog-content > md-content friends friend > div > avatar {
+            cursor: pointer;
+            outline: none;
+            display: block;
+            width: 45px;
+            height: 45px;
+            margin: 0px 16px 0px 0px; }
+            md-dialog.friends-selector-dialog md-dialog-content > md-content friends friend > div > avatar > div.halo {
+              outline: none;
+              background-color: transparent;
+              border-radius: 50%;
+              width: 100%;
+              height: 100%;
+              padding: 3%; }
+              md-dialog.friends-selector-dialog md-dialog-content > md-content friends friend > div > avatar > div.halo > div {
+                outline: none;
+                border-radius: 50%;
+                overflow: hidden;
+                height: 100%;
+                width: 100%;
+                background: #3F51B5; }
+                md-dialog.friends-selector-dialog md-dialog-content > md-content friends friend > div > avatar > div.halo > div > img {
+                  outline: none;
+                  width: 100%; }
+        md-dialog.friends-selector-dialog md-dialog-content > md-content friends friend > description {
+          cursor: pointer;
+          outline: none;
+          margin-left: 20px;
+          flex-basis: 100%;
+          display: block;
+          margin-left: 0px;
+          height: 100%;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          -moz-align-items: center;
+          align-items: center;
+          font-size: 0.85em; }
+  md-dialog.friends-selector-dialog md-dialog-content .md-errors-spacer {
+    display: none; }
+  md-dialog.friends-selector-dialog md-dialog-content h2 {
+    margin: 8px 0px;
+    font-size: 0.9em;
+    font-weight: normal; }
+md-dialog.friends-selector-dialog md-dialog-actions {
+  padding: 8px 16px; }
+  md-dialog.friends-selector-dialog md-dialog-actions button {
+    padding: 0px 16px; }
+
+/*# sourceMappingURL=friends-selector.css.map */

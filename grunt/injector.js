@@ -6,18 +6,24 @@
 // 
 // URL: https://www.npmjs.com/package/grunt-html-build
 //------------------------------------------------------
-module.exports = function(grunt, options) {
+module.exports = function(grunt, options)
+{
     return {
-        development: {
-            options: {
+        development:
+        {
+            options:
+            {
                 ignorePath: '',
                 relative: true,
                 addRootSlash: false
+               
             },
-            files: {
+            files:
+            {
                 'app/index.html': [
                     'bower.json',
                     'app/bundles/bundles.js',
+                    'app/bundles/widul/widul.js',
                     'app/bundles/**/*.js',
                     'app/views/**/*.js',
                     'app/views/**/*.css',
@@ -27,13 +33,16 @@ module.exports = function(grunt, options) {
                 ]
             }
         },
-        production: {
-            options: {
+        production:
+        {
+            options:
+            {
                 ignorePath: '',
                 relative: true,
                 addRootSlash: false
             },
-            files: {
+            files:
+            {
                 'app/index.html': [
                     'app/dist/css/bower.css',
                     'app/dist/css/application.css',

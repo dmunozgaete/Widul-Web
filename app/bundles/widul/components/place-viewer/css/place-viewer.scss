@@ -1,0 +1,21 @@
+@import "../../../../../bundles/app/css/_variables";
+@import "../../../../../bundles/app/css/_flexbox";
+place-viewer {
+    display: block;
+    >div {
+        > google-map {
+            height: 300px;
+        }
+        md-input-container {
+            .md-errors-spacer {
+                display: none;
+            }
+        }
+        a.directions {
+            text-decoration: none;
+            font-size: 0.9em;
+            float: right;
+            margin-right: 16px;
+        }
+    }
+}

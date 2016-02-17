@@ -146,6 +146,13 @@ angular.route('private.events/create/step-1', function(
                         tags: _.pluck(newEvent.tags, 'name')
 
                     })
+                    .success(function(data)
+                    {
+                        $state.go("private.events/view/resume/index/",
+                        {
+                            token: data.token
+                        });
+                    })
                     .finally(function()
                     {
                         $loadingDialog.hide();

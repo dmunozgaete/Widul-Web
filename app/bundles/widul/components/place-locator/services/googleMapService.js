@@ -1,4 +1,4 @@
-angular.module('app.components')
+angular.module('widul.components')
 
 .service('googleMapService', function($window, $q)
 {

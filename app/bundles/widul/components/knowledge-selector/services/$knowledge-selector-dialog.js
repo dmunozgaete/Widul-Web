@@ -1,5 +1,5 @@
 // SERVICE
-angular.module('app.components')
+angular.module('widul.components')
     .provider('$knowledgeSelectorDialog', function()
     {
         var $ref = this;
@@ -15,7 +15,7 @@ angular.module('app.components')
                 $mdDialog.show(
                     {
                         controller: 'KnowledgeSelectorDialogController',
-                        templateUrl: 'bundles/app/components/knowledge-selector/knowledge-selector-dialog.tpl.html',
+                        templateUrl: 'bundles/widul/components/knowledge-selector/knowledge-selector-dialog.tpl.html',
                         targetEvent: ev,
                         clickOutsideToClose: false,
                         escapeToClose: false,

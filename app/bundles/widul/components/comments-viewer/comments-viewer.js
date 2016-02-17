@@ -9,7 +9,7 @@
  Build Date:        2016-01-22 3:20:29
 ------------------------------------------------------*/
 
-angular.module('app.components')
+angular.module('widul.components')
 
 .directive('commentsViewer', function($window)
 {
@@ -19,7 +19,7 @@ angular.module('app.components')
         {
             event: '='
         },
-        templateUrl: 'views/events/view/dialogs/comments-viewer/comments-viewer.tpl.html',
+        templateUrl: 'bundles/widul/components/comments-viewer/comments-viewer.tpl.html',
         controller: function($scope, $element, $q, $Api, $log, $timeout)
         {
             $scope.model = {

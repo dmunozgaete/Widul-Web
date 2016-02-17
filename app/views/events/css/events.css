@@ -12,8 +12,12 @@ ROUTE:  /app/events/*
   -------------------------*/ }
   .events.view {
     /*------------------------- 
-    VIEW:   Index Page
-    ROUTE:  /app/events/view/index
+    VIEW:   Via Dialog
+    ROUTE:  $mdDialog Controller (EventDetailsController)
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Event Resume Page
+    ROUTE:  /app/events/view/resume
     -------------------------*/ }
     .events.view.details {
       height: 100%;
@@ -36,15 +40,6 @@ ROUTE:  /app/events/*
         .events.view.details > md-sidenav.md-sidenav-left {
           max-width: 50%;
           width: 50%; }
-          .events.view.details > md-sidenav.md-sidenav-left > md-content > google-map {
-            height: 300px; }
-          .events.view.details > md-sidenav.md-sidenav-left > md-content md-input-container .md-errors-spacer {
-            display: none; }
-          .events.view.details > md-sidenav.md-sidenav-left > md-content a.directions {
-            text-decoration: none;
-            font-size: 0.9em;
-            float: right;
-            margin-right: 16px; }
         .events.view.details > md-sidenav.md-sidenav-right {
           max-width: 50%;
           width: 50%; }
@@ -357,14 +352,347 @@ ROUTE:  /app/events/*
                 font-size: 1.3em; }
               .events.view.details dialog-avatar div.date > div > div.day {
                 font-size: 5em; }
+    .events.view.resume {
+      height: 100%;
+      width: 100%;
+      max-height: 100%;
+      max-width: 100%;
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      border-radius: 0;
+      box-shadow: none; }
+      .events.view.resume > md-sidenav {
+        /*--------------------------
+        MAPS SIDENAV && COMMENTS SIDENAV
+        --------------------------*/ }
+        .events.view.resume > md-sidenav.md-sidenav-right, .events.view.resume > md-sidenav.md-sidenav-left {
+          max-width: 50%;
+          width: 50%; }
+      .events.view.resume div.column {
+        position: absolute;
+        top: 64px;
+        z-index: 2;
+        left: 23%;
+        right: 3%;
+        display: block; }
+        .events.view.resume div.column > event-content {
+          background-color: #FFF;
+          border-radius: 4px;
+          display: block; }
+          .events.view.resume div.column > event-content > flex-loading {
+            min-height: 300px; }
+          .events.view.resume div.column > event-content > event-location {
+            display: block;
+            height: 207px; }
+            .events.view.resume div.column > event-content > event-location > google-map {
+              height: 100%;
+              border-top-left-radius: 4px;
+              border-top-right-radius: 4px; }
+              .events.view.resume div.column > event-content > event-location > google-map > map {
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px; }
+          .events.view.resume div.column > event-content > event-header {
+            display: block; }
+            .events.view.resume div.column > event-content > event-header > div {
+              height: 60px;
+              border-bottom: 1px solid #F5F5F5;
+              /* EVENT TITLE */
+              /* EVENT DATE */
+              /* EVENT LOCATION */ }
+              .events.view.resume div.column > event-content > event-header > div:nth-child(1) > h1 {
+                padding: 13px 0px 15px 16px;
+                margin: 0px;
+                font-size: 1.8em;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap; }
+                .events.view.resume div.column > event-content > event-header > div:nth-child(1) > h1 > span {
+                  font-weight: normal;
+                  font-size: 0.8em; }
+                  .events.view.resume div.column > event-content > event-header > div:nth-child(1) > h1 > span > md-icon {
+                    margin-top: -2px;
+                    padding-left: 8px;
+                    margin-right: -6px; }
+              .events.view.resume div.column > event-content > event-header > div:nth-child(2), .events.view.resume div.column > event-content > event-header > div:nth-child(3) {
+                padding: 0px 16px;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                align-items: center; }
+                .events.view.resume div.column > event-content > event-header > div:nth-child(2) > span, .events.view.resume div.column > event-content > event-header > div:nth-child(3) > span {
+                  padding-left: 8px;
+                  opacity: 0.55;
+                  font-size: 1.1em;
+                  -webkit-flex-basis: 100%;
+                  -moz-flex-basis: 100%;
+                  -ms-flex-preferred-size: 100%;
+                  flex-basis: 100%; }
+                  .events.view.resume div.column > event-content > event-header > div:nth-child(2) > span > span:last-child, .events.view.resume div.column > event-content > event-header > div:nth-child(3) > span > span:last-child {
+                    font-size: 0.8em;
+                    font-weight: 300; }
+                .events.view.resume div.column > event-content > event-header > div:nth-child(2) button, .events.view.resume div.column > event-content > event-header > div:nth-child(3) button {
+                  padding: 0px 8px; }
+                  .events.view.resume div.column > event-content > event-header > div:nth-child(2) button > span, .events.view.resume div.column > event-content > event-header > div:nth-child(3) button > span {
+                    font-size: 0.9em; }
+                  .events.view.resume div.column > event-content > event-header > div:nth-child(2) button > md-icon, .events.view.resume div.column > event-content > event-header > div:nth-child(3) button > md-icon {
+                    height: 20px;
+                    width: 20px; }
+          .events.view.resume div.column > event-content > event-body {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 8px 16px; }
+            .events.view.resume div.column > event-content > event-body > div {
+              /* TAGS && DESCRIPTION */
+              /* PARTICPANTS */ }
+              .events.view.resume div.column > event-content > event-body > div:first-child {
+                -webkit-flex-basis: 70%;
+                -moz-flex-basis: 70%;
+                -ms-flex-preferred-size: 70%;
+                flex-basis: 70%; }
+                .events.view.resume div.column > event-content > event-body > div:first-child > event-description > p {
+                  font-weight: 300;
+                  font-size: 1em;
+                  text-align: justify;
+                  margin: 3px; }
+                .events.view.resume div.column > event-content > event-body > div:first-child > event-tags {
+                  display: block;
+                  padding-top: 16px; }
+                  .events.view.resume div.column > event-content > event-body > div:first-child > event-tags .md-chips {
+                    box-shadow: none; }
+                    .events.view.resume div.column > event-content > event-body > div:first-child > event-tags .md-chips md-chip {
+                      background-color: #3F51B5;
+                      color: #fff; }
+              .events.view.resume div.column > event-content > event-body > div:last-child {
+                -webkit-flex-basis: 30%;
+                -moz-flex-basis: 30%;
+                -ms-flex-preferred-size: 30%;
+                flex-basis: 30%;
+                padding-top: 4px; }
+                .events.view.resume div.column > event-content > event-body > div:last-child > .kpis {
+                  display: -webkit-box;
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flexbox;
+                  display: flex;
+                  -webkit-box-direction: normal;
+                  -webkit-box-orient: horizontal;
+                  -webkit-flex-direction: row;
+                  -moz-flex-direction: row;
+                  -ms-flex-direction: row;
+                  flex-direction: row;
+                  -webkit-box-align: center;
+                  -ms-flex-align: center;
+                  -webkit-align-items: center;
+                  -moz-align-items: center;
+                  align-items: center;
+                  -webkit-box-pack: center;
+                  -ms-flex-pack: center;
+                  -webkit-justify-content: center;
+                  -moz-justify-content: center;
+                  justify-content: center;
+                  padding-left: 8px; }
+                  .events.view.resume div.column > event-content > event-body > div:last-child > .kpis > div {
+                    -webkit-flex-basis: 50%;
+                    -moz-flex-basis: 50%;
+                    -ms-flex-preferred-size: 50%;
+                    flex-basis: 50%;
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: -moz-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-direction: normal;
+                    -webkit-box-orient: vertical;
+                    -webkit-flex-direction: column;
+                    -moz-flex-direction: column;
+                    -ms-flex-direction: column;
+                    flex-direction: column;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    -webkit-align-items: center;
+                    -moz-align-items: center;
+                    align-items: center;
+                    margin-bottom: 8px;
+                    border-bottom: 1px solid #F5F5F5;
+                    padding-bottom: 8px; }
+                    .events.view.resume div.column > event-content > event-body > div:last-child > .kpis > div:first-child {
+                      border-right: 1px solid #F5F5F5; }
+                    .events.view.resume div.column > event-content > event-body > div:last-child > .kpis > div > p {
+                      margin: 0px;
+                      font-size: 2em;
+                      margin-bottom: 3px; }
+                    .events.view.resume div.column > event-content > event-body > div:last-child > .kpis > div > span {
+                      font-weight: 300; }
+                .events.view.resume div.column > event-content > event-body > div:last-child > .friends {
+                  display: -webkit-box;
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flexbox;
+                  display: flex;
+                  -webkit-box-direction: normal;
+                  -webkit-box-orient: horizontal;
+                  -webkit-flex-direction: row;
+                  -moz-flex-direction: row;
+                  -ms-flex-direction: row;
+                  flex-direction: row;
+                  -webkit-box-align: center;
+                  -ms-flex-align: center;
+                  -webkit-align-items: center;
+                  -moz-align-items: center;
+                  align-items: center;
+                  -webkit-box-pack: center;
+                  -ms-flex-pack: center;
+                  -webkit-justify-content: center;
+                  -moz-justify-content: center;
+                  justify-content: center; }
+                  .events.view.resume div.column > event-content > event-body > div:last-child > .friends > div.marker {
+                    width: 2.2em;
+                    height: 2.2em;
+                    margin-left: 4px; }
+                    .events.view.resume div.column > event-content > event-body > div:last-child > .friends > div.marker:first-child {
+                      margin-left: 8px; }
+                    .events.view.resume div.column > event-content > event-body > div:last-child > .friends > div.marker > div.halo {
+                      border-radius: 4px;
+                      width: 100%;
+                      height: 100%; }
+                      .events.view.resume div.column > event-content > event-body > div:last-child > .friends > div.marker > div.halo > div {
+                        overflow: hidden;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 4px;
+                        background: #3F51B5; }
+                        .events.view.resume div.column > event-content > event-body > div:last-child > .friends > div.marker > div.halo > div > img {
+                          width: 100%; }
+      .events.view.resume event-avatar {
+        display: block;
+        position: absolute;
+        z-index: 2;
+        top: 84px;
+        left: 1%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center;
+        width: 21%;
+        -webkit-flex-basis: 40%;
+        -moz-flex-basis: 40%;
+        -ms-flex-preferred-size: 40%;
+        flex-basis: 40%; }
+        .events.view.resume event-avatar div.marker {
+          width: 7em;
+          height: 7em; }
+          .events.view.resume event-avatar div.marker > div.halo {
+            box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.14), 0 2px 2px -2px rgba(0, 0, 0, 0.12);
+            background-color: #FFF;
+            border-radius: 50%;
+            border: 1px solid #FFF;
+            width: 100%;
+            height: 100%;
+            padding: 3%; }
+            .events.view.resume event-avatar div.marker > div.halo > div {
+              border-radius: 50%;
+              overflow: hidden;
+              height: 100%;
+              width: 100%;
+              background: #3F51B5; }
+              .events.view.resume event-avatar div.marker > div.halo > div > img {
+                width: 100%; }
+        .events.view.resume event-avatar div.date {
+          width: 85%;
+          margin-top: 40px;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          border-radius: 4px;
+          outline: none; }
+          .events.view.resume event-avatar div.date > div {
+            padding: 16px 0px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            justify-content: center;
+            outline: none; }
+            .events.view.resume event-avatar div.date > div.day {
+              height: 35px;
+              color: #fff;
+              font-size: 1.3em;
+              background-color: rgba(0, 0, 0, 0.2);
+              text-transform: capitalize; }
+            .events.view.resume event-avatar div.date > div > div {
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: -moz-flex;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              -webkit-align-items: center;
+              -moz-align-items: center;
+              align-items: center;
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              -webkit-justify-content: center;
+              -moz-justify-content: center;
+              justify-content: center;
+              -webkit-box-direction: normal;
+              -webkit-box-orient: vertical;
+              -webkit-flex-direction: column;
+              -moz-flex-direction: column;
+              -ms-flex-direction: column;
+              flex-direction: column;
+              color: #FFF;
+              text-transform: uppercase; }
+              .events.view.resume event-avatar div.date > div > div.month {
+                font-size: 1.3em; }
+              .events.view.resume event-avatar div.date > div > div.year {
+                font-size: 1.3em; }
+              .events.view.resume event-avatar div.date > div > div.day {
+                font-size: 5em; }
   .events.create {
     /*------------------------- 
     VIEW:   Create Event Page
     ROUTE:  /app/events/create/step-1
-    -------------------------*/
-    /*------------------------- 
-    VIEW:   Resume Event Page
-    ROUTE:  /app/events/create/step-2
     -------------------------*/ }
     .events.create.step-1 {
       height: 100%;

@@ -1,0 +1,20 @@
+<flex-loading ng-if="!model.place">
+</flex-loading>
+<div ng-if="model.place">
+    <google-map coordinates="model.place">
+    </google-map>
+    <div layout="column" layout-padding>
+        <md-input-container class="md-block" flex>
+            <label>Dirección</label>
+            <input readonly="readonly" ng-model="model.place.address">
+        </md-input-container>
+        <md-input-container class="md-block" flex>
+            <label>Tip</label>
+            <textarea readonly="readonly" ng-model="model.place.tip"></textarea>
+        </md-input-container>
+    </div>
+    <a class="directions md-accent text" href="https://www.google.com/maps/dir/Current+Location/{{model.place.lat}},{{model.place.lng}}" target="_blank">
+    Indicaciones de como llegar
+    <md-icon class="md-accent text" md-svg-icon="maps:my_location"></md-icon>
+</a>
+</div>

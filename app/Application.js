@@ -2,6 +2,7 @@
 
     gale-material:          ANGULAR-GALE & ANGULAR-GALE-MATERIALLIBRARY
     app:                    CUSTOM PROJECT LIBRARY
+    widul:                  WIDUL PROJECT LIBRARY (COMPONENTS)
     material-icons:         CUSTOM PROJECT BUNDLES (ADD SVG ICON'S)
     nvd3ChartDirectives:    N3 CHART DIRECTIVES
     facebook:               FACEBOOK SDK
@@ -14,6 +15,7 @@
 angular.module('App', [
         'gale-material',
         'app',
+        'widul',
         'material-icons',
         'nvd3ChartDirectives',
         'facebook',

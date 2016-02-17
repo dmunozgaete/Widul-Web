@@ -1,5 +1,5 @@
  //MODAL CONTROLLER
- angular.module('app.components')
+ angular.module('widul.components')
      .controller('PlaceLocatorDialogController', function(
          $scope,
          $log,
