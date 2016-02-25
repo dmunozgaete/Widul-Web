@@ -9,7 +9,8 @@ angular.route('private.events/view/resume/index/:token', function(
     $Identity,
     $timeout,
     $mdSidenav,
-    $friendsSelectorDialog
+    $friendsSelectorDialog,
+    $loadingDialog
 )
 {
     //---------------------------------------------------
@@ -32,8 +33,29 @@ angular.route('private.events/view/resume/index/:token', function(
 
     //---------------------------------------------------
     // Action's
-    $scope.invite = function(ev){
-        $friendsSelectorDialog.show(ev);
+    $scope.invite = function(ev)
+    {
+        $friendsSelectorDialog.show(ev)
+            .then(function(guests)
+            {
+                $loadingDialog.show(ev);
+
+                console.log(guests)
+
+                var invitations = _.pluck(guests, 'token');
+
+                $Api.create("Events/{event}/Invitations",
+                    {
+                        event: $scope.model.event.token,
+                        data: invitations
+                    })
+                    .success(function(data)
+                    {
+
+                        $loadingDialog.hide();
+                    })
+                    .error($loadingDialog.hide);
+            })
     };
 
     $scope.showMap = function(place)

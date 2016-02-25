@@ -24,16 +24,11 @@ angular.module('widul.components')
 
             var paginate = function()
             {
-                return $Api.query("Accounts/Me/Friends",
+                return $Api.read("Accounts/Me/Friends/",
                 {
 
                     limit: limit,
-                    offset: offset,
-                    orderBy:
-                    {
-                        property: "fullname",
-                        order: "asc"
-                    }
+                    offset: offset
 
                 }).success(function(data)
                 {
@@ -101,16 +96,11 @@ angular.module('widul.components')
             {
                 var deferred = $q.defer();
 
-                $Api.kql("Accounts/Me/Friends",
+                $Api.kql("Accounts",
                 {
                     filters: [
                     {
                         property: "fullname",
-                        operator: "contains",
-                        value: query
-                    },
-                    {
-                        property: "email",
                         operator: "contains",
                         value: query
                     }],
@@ -182,7 +172,7 @@ angular.module('widul.components')
 
         $scope.save = function(model)
         {
-            $mdDialog.hide(model);
+            $mdDialog.hide(model.invites);
         };
 
         $scope.cancel = function()
