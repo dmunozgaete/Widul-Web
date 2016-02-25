@@ -44,6 +44,8 @@ angular.route('private.events/view/resume/index/:token', function(
 
                 var invitations = _.pluck(guests, 'token');
 
+
+                console.log(invitations)
                 $Api.create("Events/{event}/Invitations",
                     {
                         event: $scope.model.event.token,
