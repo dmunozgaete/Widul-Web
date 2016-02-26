@@ -1,4 +1,4 @@
-<flex-loading ng-if="model.items.length == 0">
+<flex-loading ng-if="!model.items">
 </flex-loading>
 <gale-infinite-scroll can-load-more="hasNext()" on-infinite="nextPage()" distance="1%">
     <!-- ITEMS -->
@@ -23,3 +23,23 @@
         </created-at>
     </comment>
 </gale-infinite-scroll>
+<form name="form">
+    <new-comment>
+        <div>
+            <md-input-container class="md-block">
+                <label>Si tienes alguna duda... comentanos!</label>
+                <textarea maxlength="200" md-autofocus ng-model="model.newcomment.comment" columns="1" md-maxlength="200" rows="2"></textarea>
+            </md-input-container>
+        </div>
+        <div>
+            <md-button ng-click="comment(event,model.newcomment);" ng-disabled="!model.newcomment.comment || model.newcomment.isCreating || model.newcomment.comment.length==0" class="md-raised md-primary">
+                <span ng-show="!model.newcomment.isCreating">
+                                    Comentar
+                                </span>
+                <center ng-show="model.newcomment.isCreating">
+                    <md-progress-circular class="md-accent " md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
+                </center>
+            </md-button>
+        </div>
+    </new-comment>
+</form>

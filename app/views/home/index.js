@@ -104,6 +104,12 @@ angular.route('public.home/index', function(
 
     $scope.showDetails = function(ev, item)
     {
+
+        $state.go("public.events/view/resume/index",
+        {
+            token: item.token
+        });
+        /*
         $mdDialog.show(
             {
                 controller: 'EventDetailsDialogController',
@@ -121,16 +127,18 @@ angular.route('public.home/index', function(
             {
                 //Update Data
             });
+            */
     };
 
     $scope.createEvent = function(ev, item)
     {
-        $restrictedAccess.validate().then(function() {
+        $restrictedAccess.validate().then(function()
+        {
 
             $state.go("private.events/create/step-1");
 
         });
-        
+
     };
 
 

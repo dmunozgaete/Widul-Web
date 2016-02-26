@@ -85,7 +85,6 @@ angular.module('widul.components')
                 {
                     var elm = angular.element(document.getElementById("buggyAutocomplete"));
                     elm.find("input").val("");
-                    console.log(elm)
                 }, 0);
 
             },
