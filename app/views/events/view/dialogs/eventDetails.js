@@ -88,7 +88,7 @@ angular.module('app.controllers')
             {
                 //--------------------------------------------
                 // Join Button
-                if (event.joined == "NONE")
+                if (event.joined === "NONE")
                 {
                     var delay = $timeout(function()
                     {

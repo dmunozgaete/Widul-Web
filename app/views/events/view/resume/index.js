@@ -101,7 +101,7 @@ angular.route('public.events/view/resume/index/:token', function(
     // And add another request to get personal information
     if ($Identity.isAuthenticated())
     {
-        deferreds.push(getPersonalnformation()) //It's a Promise
+        deferreds.push(getPersonalnformation()); //It's a Promise
         $scope.model.user = $Identity.getCurrent();
     }
 
@@ -198,7 +198,7 @@ angular.route('public.events/view/resume/index/:token', function(
         {
             //--------------------------------------------
             // Join Button
-            if (participation.state == "NONE" || participation.state == "INVITED")
+            if (participation.state === "NONE" || participation.state === "INVITED")
             {
                 smooth(function()
                 {
