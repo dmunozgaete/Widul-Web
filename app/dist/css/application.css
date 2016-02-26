@@ -59,66 +59,6 @@ gale-infinite-scroll {
 /* 
     SASS Mixins
 */
-<<<<<<< HEAD
-knowledge-selector {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  -webkit-align-items: flex-end;
-  -moz-align-items: flex-end;
-  align-items: flex-end;
-  margin-bottom: 24px; }
-  knowledge-selector > input.md-input {
-    cursor: pointer;
-    width: 100%; }
-  knowledge-selector > md-icon {
-    right: 6px;
-    position: absolute; }
-    knowledge-selector > md-icon.noValue {
-      color: gray !important; }
-  knowledge-selector[disabled] > input.md-input {
-    cursor: default; }
-
-md-dialog.knowledge-selector-dialog md-dialog-content {
-  min-width: 450px;
-  max-width: 450px;
-  min-height: 420px; }
-  md-dialog.knowledge-selector-dialog md-dialog-content > md-content {
-    padding: 16px; }
-  md-dialog.knowledge-selector-dialog md-dialog-content .md-errors-spacer {
-    display: none; }
-  md-dialog.knowledge-selector-dialog md-dialog-content h2 {
-    margin: 8px 0px;
-    font-size: 0.9em;
-    font-weight: normal; }
-  md-dialog.knowledge-selector-dialog md-dialog-content .nv-groups .nv-group {
-    /*
-    &:nth-child(odd) {
-        fill: $primary_color !important;
-        stroke: $primary_color !important;
-    }
-    &:nth-child(even) {
-        fill: $accent_color !important;
-        stroke: $accent_color !important;
-    }*/ }
-    md-dialog.knowledge-selector-dialog md-dialog-content .nv-groups .nv-group text {
-      fill: #3F51B5 !important; }
-md-dialog.knowledge-selector-dialog md-dialog-actions {
-  padding: 8px 16px; }
-  md-dialog.knowledge-selector-dialog md-dialog-actions button {
-    padding: 0px 16px; }
-
-/*# sourceMappingURL=knowledge-selector.css.map */
-
-/* 
-    SASS Mixins
-*/
-=======
->>>>>>> release/v1.0.0-rc.2
 md-dialog.loading-dialog {
   height: 150px;
   width: 450px; }
@@ -128,96 +68,6 @@ md-dialog.loading-dialog {
 /*# sourceMappingURL=loading-dialog.css.map */
 
 /* 
-<<<<<<< HEAD
-    SASS Mixins
-*/
-place-locator {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  -webkit-align-items: flex-end;
-  -moz-align-items: flex-end;
-  align-items: flex-end;
-  margin-bottom: 24px; }
-  place-locator > input.md-input {
-    cursor: pointer;
-    width: 100%; }
-  place-locator > md-icon {
-    right: 6px;
-    position: absolute; }
-    place-locator > md-icon.noValue {
-      color: gray !important; }
-  place-locator[disabled] > input.md-input {
-    cursor: default; }
-
-md-dialog.place-locator-dialog {
-  max-height: 85%; }
-  md-dialog.place-locator-dialog md-dialog-content {
-    min-width: 650px;
-    min-height: 450px; }
-    md-dialog.place-locator-dialog md-dialog-content > md-content {
-      padding: 16px; }
-    md-dialog.place-locator-dialog md-dialog-content .md-errors-spacer {
-      display: none; }
-    md-dialog.place-locator-dialog md-dialog-content md-autocomplete {
-      height: 70px; }
-    md-dialog.place-locator-dialog md-dialog-content md-input-container textarea.md-input {
-      min-height: 55px; }
-  md-dialog.place-locator-dialog md-dialog-actions {
-    padding: 8px 16px; }
-    md-dialog.place-locator-dialog md-dialog-actions button {
-      padding: 0px 16px; }
-
-google-map {
-  height: 180px;
-  width: 100%;
-  background-color: #F3F3F3;
-  display: block;
-  overflow: hidden;
-  margin-bottom: 8px;
-  position: relative; }
-  google-map > map-loading {
-    display: block;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    justify-content: center; }
-    google-map > map-loading > md-icon {
-      height: 5em;
-      width: 5em;
-      opacity: 0.3; }
-  google-map > map {
-    display: block; }
-  google-map > map-blocking {
-    display: block;
-    background-color: #fff;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    opacity: 0; }
-
-/*# sourceMappingURL=place-locator.css.map */
-
-/* 
-=======
->>>>>>> release/v1.0.0-rc.2
     SASS Theme Variables 
 */
 /* 
@@ -432,9 +282,6 @@ restricted-access-dialog {
     SASS Mixins
 */
 
-<<<<<<< HEAD
-/*# sourceMappingURL=_variables.css.map */
-=======
 /*# sourceMappingURL=_variables.css.map */
 
 /* 
@@ -905,46 +752,10 @@ google-map {
     opacity: 0; }
 
 /*# sourceMappingURL=place-locator.css.map */
->>>>>>> release/v1.0.0-rc.2
 
 /* 
     SASS Mixins
 */
-<<<<<<< HEAD
-html,
-body {
-  background-color: #FFF; }
-
-/*
-	ANIMATES
-*/
-@keyframes fadeOut {
-  0% {
-    opacity: 0; }
-  25% {
-    opacity: 0.25; }
-  50% {
-    opacity: 0.50; }
-  75% {
-    opacity: 0.75; }
-  100% {
-    opacity: 1; } }
-@keyframes fadeIn {
-  0% {
-    opacity: 1; }
-  25% {
-    opacity: 0.75; }
-  50% {
-    opacity: 0.5; }
-  75% {
-    opacity: 0.25; }
-  100% {
-    opacity: 0; } }
-
-/*# sourceMappingURL=default.css.map */
-
-.aden{-webkit-filter:hue-rotate(-20deg) contrast(.9) saturate(.85) brightness(1.2);filter:hue-rotate(-20deg) contrast(.9) saturate(.85) brightness(1.2)}.aden::after{background:-webkit-linear-gradient(left,rgba(66,10,14,.2),transparent);background:linear-gradient(to right,rgba(66,10,14,.2),transparent);mix-blend-mode:darken}.inkwell{-webkit-filter:sepia(.3) contrast(1.1) brightness(1.1) grayscale(1);filter:sepia(.3) contrast(1.1) brightness(1.1) grayscale(1)}.perpetua::after{background:-webkit-linear-gradient(top,#005b9a,#e6c13d);background:linear-gradient(to bottom,#005b9a,#e6c13d);mix-blend-mode:soft-light;opacity:.5}.reyes{-webkit-filter:sepia(.22) brightness(1.1) contrast(.85) saturate(.75);filter:sepia(.22) brightness(1.1) contrast(.85) saturate(.75)}.reyes::after{background:#efcdad;mix-blend-mode:soft-light;opacity:.5}.gingham{-webkit-filter:brightness(1.05) hue-rotate(-10deg);filter:brightness(1.05) hue-rotate(-10deg)}.gingham::after{background:-webkit-linear-gradient(left,rgba(66,10,14,.2),transparent);background:linear-gradient(to right,rgba(66,10,14,.2),transparent);mix-blend-mode:darken}.toaster{-webkit-filter:contrast(1.5) brightness(.9);filter:contrast(1.5) brightness(.9)}.toaster::after{background:-webkit-radial-gradient(circle,#804e0f,#3b003b);background:radial-gradient(circle,#804e0f,#3b003b);mix-blend-mode:screen}.walden{-webkit-filter:brightness(1.1) hue-rotate(-10deg) sepia(.3) saturate(1.6);filter:brightness(1.1) hue-rotate(-10deg) sepia(.3) saturate(1.6)}.walden::after{background:#04c;mix-blend-mode:screen;opacity:.3}.hudson{-webkit-filter:brightness(1.2) contrast(.9) saturate(1.1);filter:brightness(1.2) contrast(.9) saturate(1.1)}.hudson::after{background:-webkit-radial-gradient(circle,#a6b1ff 50%,#342134);background:radial-gradient(circle,#a6b1ff 50%,#342134);mix-blend-mode:multiply;opacity:.5}.earlybird{-webkit-filter:contrast(.9) sepia(.2);filter:contrast(.9) sepia(.2)}.earlybird::after{background:-webkit-radial-gradient(circle,#d0ba8e 20%,#360309 85%,#1d0210 100%);background:radial-gradient(circle,#d0ba8e 20%,#360309 85%,#1d0210 100%);mix-blend-mode:overlay}.mayfair{-webkit-filter:contrast(1.1) saturate(1.1);filter:contrast(1.1) saturate(1.1)}.mayfair::after{background:-webkit-radial-gradient(40% 40%,circle,rgba(255,255,255,.8),rgba(255,200,200,.6),#111 60%);background:radial-gradient(circle at 40% 40%,rgba(255,255,255,.8),rgba(255,200,200,.6),#111 60%);mix-blend-mode:overlay;opacity:.4}.lofi{-webkit-filter:saturate(1.1) contrast(1.5);filter:saturate(1.1) contrast(1.5)}.lofi::after{background:-webkit-radial-gradient(circle,transparent 70%,#222 150%);background:radial-gradient(circle,transparent 70%,#222 150%);mix-blend-mode:multiply}._1977{-webkit-filter:contrast(1.1) brightness(1.1) saturate(1.3);filter:contrast(1.1) brightness(1.1) saturate(1.3)}._1977:after{background:rgba(243,106,188,.3);mix-blend-mode:screen}.brooklyn{-webkit-filter:contrast(.9) brightness(1.1);filter:contrast(.9) brightness(1.1)}.brooklyn::after{background:-webkit-radial-gradient(circle,rgba(168,223,193,.4) 70%,#c4b7c8);background:radial-gradient(circle,rgba(168,223,193,.4) 70%,#c4b7c8);mix-blend-mode:overlay}.xpro2{-webkit-filter:sepia(.3);filter:sepia(.3)}.xpro2::after{background:-webkit-radial-gradient(circle,#e6e7e0 40%,rgba(43,42,161,.6) 110%);background:radial-gradient(circle,#e6e7e0 40%,rgba(43,42,161,.6) 110%);mix-blend-mode:color-burn}.nashville{-webkit-filter:sepia(.2) contrast(1.2) brightness(1.05) saturate(1.2);filter:sepia(.2) contrast(1.2) brightness(1.05) saturate(1.2)}.nashville::after{background:rgba(0,70,150,.4);mix-blend-mode:lighten}.nashville::before{background:rgba(247,176,153,.56);mix-blend-mode:darken}.lark{-webkit-filter:contrast(.9);filter:contrast(.9)}.lark::after{background:rgba(242,242,242,.8);mix-blend-mode:darken}.lark::before{background:#22253f;mix-blend-mode:color-dodge}.moon{-webkit-filter:grayscale(1) contrast(1.1) brightness(1.1);filter:grayscale(1) contrast(1.1) brightness(1.1)}.moon::before{background:#a0a0a0;mix-blend-mode:soft-light}.moon::after{background:#383838;mix-blend-mode:lighten}._1977:after,._1977:before,.aden:after,.aden:before,.brooklyn:after,.brooklyn:before,.clarendon:after,.clarendon:before,.earlybird:after,.earlybird:before,.gingham:after,.gingham:before,.hudson:after,.hudson:before,.inkwell:after,.inkwell:before,.lark:after,.lark:before,.lofi:after,.lofi:before,.mayfair:after,.mayfair:before,.moon:after,.moon:before,.nashville:after,.nashville:before,.perpetua:after,.perpetua:before,.reyes:after,.reyes:before,.toaster:after,.toaster:before,.walden:after,.walden:before,.xpro2:after,.xpro2:before{content:'';display:block;height:100%;width:100%;top:0;left:0;position:absolute;pointer-events:none}._1977,.aden,.brooklyn,.clarendon,.earlybird,.gingham,.hudson,.inkwell,.lark,.lofi,.mayfair,.moon,.nashville,.perpetua,.reyes,.toaster,.walden,.xpro2{position:relative}._1977 img,.aden img,.brooklyn img,.clarendon img,.earlybird img,.gingham img,.hudson img,.inkwell img,.lark img,.lofi img,.mayfair img,.moon img,.nashville img,.perpetua img,.reyes img,.toaster img,.walden img,.xpro2 img{width:100%;z-index:1}._1977:before,.aden:before,.brooklyn:before,.clarendon:before,.earlybird:before,.gingham:before,.hudson:before,.inkwell:before,.lark:before,.lofi:before,.mayfair:before,.moon:before,.nashville:before,.perpetua:before,.reyes:before,.toaster:before,.walden:before,.xpro2:before{z-index:2}._1977:after,.aden:after,.brooklyn:after,.clarendon:after,.earlybird:after,.gingham:after,.hudson:after,.inkwell:after,.lark:after,.lofi:after,.mayfair:after,.moon:after,.nashville:after,.perpetua:after,.reyes:after,.toaster:after,.walden:after,.xpro2:after{z-index:3}.clarendon{-webkit-filter:contrast(1.2) saturate(1.35);filter:contrast(1.2) saturate(1.35)}.clarendon:before{background:rgba(127,187,227,.2);mix-blend-mode:overlay}
-=======
 place-viewer {
   display: block; }
   place-viewer > div > google-map {
@@ -959,7 +770,6 @@ place-viewer {
 
 /*# sourceMappingURL=place-viewer.css.map */
 
->>>>>>> release/v1.0.0-rc.2
 /* 
     SASS Mixins
 */
@@ -974,17 +784,12 @@ ROUTE:  /app/events/*
   -------------------------*/ }
   .events.view {
     /*------------------------- 
-<<<<<<< HEAD
-    VIEW:   Index Page
-    ROUTE:  /app/events/view/index
-=======
     VIEW:   Via Dialog
     ROUTE:  $mdDialog Controller (EventDetailsController)
     -------------------------*/
     /*------------------------- 
     VIEW:   Event Resume Page
     ROUTE:  /app/events/view/resume
->>>>>>> release/v1.0.0-rc.2
     -------------------------*/ }
     .events.view.details {
       height: 100%;
@@ -1007,18 +812,6 @@ ROUTE:  /app/events/*
         .events.view.details > md-sidenav.md-sidenav-left {
           max-width: 50%;
           width: 50%; }
-<<<<<<< HEAD
-          .events.view.details > md-sidenav.md-sidenav-left > md-content > google-map {
-            height: 300px; }
-          .events.view.details > md-sidenav.md-sidenav-left > md-content md-input-container .md-errors-spacer {
-            display: none; }
-          .events.view.details > md-sidenav.md-sidenav-left > md-content a.directions {
-            text-decoration: none;
-            font-size: 0.9em;
-            float: right;
-            margin-right: 16px; }
-=======
->>>>>>> release/v1.0.0-rc.2
         .events.view.details > md-sidenav.md-sidenav-right {
           max-width: 50%;
           width: 50%; }
@@ -1331,8 +1124,6 @@ ROUTE:  /app/events/*
                 font-size: 1.3em; }
               .events.view.details dialog-avatar div.date > div > div.day {
                 font-size: 5em; }
-<<<<<<< HEAD
-=======
     .events.view.resume {
       height: 100%;
       width: 100%;
@@ -1708,18 +1499,10 @@ ROUTE:  /app/events/*
                 font-size: 1.3em; }
               .events.view.resume event-avatar div.date > div > div.day {
                 font-size: 5em; }
->>>>>>> release/v1.0.0-rc.2
   .events.create {
     /*------------------------- 
     VIEW:   Create Event Page
     ROUTE:  /app/events/create/step-1
-<<<<<<< HEAD
-    -------------------------*/
-    /*------------------------- 
-    VIEW:   Resume Event Page
-    ROUTE:  /app/events/create/step-2
-=======
->>>>>>> release/v1.0.0-rc.2
     -------------------------*/ }
     .events.create.step-1 {
       height: 100%;
@@ -1944,71 +1727,6 @@ ROUTE:  /app/events/*
 /* 
     SASS Mixins
 */
-<<<<<<< HEAD
-comments-viewer {
-  display: block; }
-  comments-viewer > md-content gale-infinite-scroll {
-    height: 100%; }
-    comments-viewer > md-content gale-infinite-scroll > list-content > comment {
-      position: relative;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      -moz-align-items: center;
-      align-items: center;
-      border-top: 1px solid #EAEAEA;
-      height: 95px;
-      width: 100%; }
-      comments-viewer > md-content gale-infinite-scroll > list-content > comment:last-child {
-        padding-bottom: 5px; }
-      comments-viewer > md-content gale-infinite-scroll > list-content > comment > div > avatar {
-        display: block;
-        width: 50px;
-        height: 50px;
-        margin: 0px 16px; }
-        comments-viewer > md-content gale-infinite-scroll > list-content > comment > div > avatar > div.halo {
-          background-color: #FFF;
-          border-radius: 50%;
-          border: 1px solid #FFF;
-          width: 100%;
-          height: 100%;
-          padding: 3%; }
-          comments-viewer > md-content gale-infinite-scroll > list-content > comment > div > avatar > div.halo > div {
-            border-radius: 50%;
-            overflow: hidden;
-            height: 100%;
-            width: 100%;
-            background: #3F51B5; }
-            comments-viewer > md-content gale-infinite-scroll > list-content > comment > div > avatar > div.halo > div > img {
-              width: 100%; }
-      comments-viewer > md-content gale-infinite-scroll > list-content > comment > description {
-        margin-left: 20px;
-        flex-basis: 100%;
-        display: block;
-        margin-left: 0px;
-        text-align: justify;
-        margin-right: 16px;
-        font-size: 0.85em; }
-      comments-viewer > md-content gale-infinite-scroll > list-content > comment > created-at {
-        display: block;
-        position: absolute;
-        right: 16px;
-        margin-top: 75px;
-        opacity: 0.5;
-        font-size: 0.8em; }
-
-/*# sourceMappingURL=comments-viewer.css.map */
-
-/* 
-    SASS Mixins
-*/
-=======
->>>>>>> release/v1.0.0-rc.2
 gale-page.home md-toolbar > .md-toolbar-tools button.give {
   border-radius: 50px;
   padding: 0px 16px; }
