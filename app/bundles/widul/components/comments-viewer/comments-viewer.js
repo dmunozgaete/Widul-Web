@@ -17,18 +17,16 @@ angular.module('widul.components')
         restrict: 'E',
         scope:
         {
-            event: '='
+            event: '=',
+            onAddComment: '&'
         },
         templateUrl: 'bundles/widul/components/comments-viewer/comments-viewer.tpl.html',
-        controller: function($scope, $element, $q, $Api, $log, $timeout)
+        controller: function($scope, $element, $q, $Api, $log, $timeout, $restrictedAccess)
         {
-            $scope.model = {
-                items: []
-            };
+            $scope.model = {};
 
             fetch = function()
             {
-
                 var offset = 0;
                 var limit = 5;
                 var totalRows = 0;
@@ -85,6 +83,45 @@ angular.module('widul.components')
 
             //------------------------------------------------
             // Action's
+            $scope.comment = function(event, newlyComment)
+            {
+                $restrictedAccess.validate().then(function()
+                {
+                    var delay = $timeout(function()
+                    {
+                        //--------------------------------------------
+                        // Create New Comment
+                        $Api.create("Events/{{event}}/Comments",
+                            {
+                                event: $scope.event,
+                                comment: newlyComment
+                            })
+                            .success(function(comment)
+                            {
+                                //Add the new Comment
+                                $scope.model.items.splice(0, 0, comment);
+
+                                if($scope.onAddComment()){
+                                    $scope.onAddComment()(comment);
+                                };
+                            })
+                            .finally(function()
+                            {
+                                newlyComment.comment = "";
+                                newlyComment.isCreating = false;
+                            });
+                        //--------------------------------------------
+
+                        $timeout.cancel(delay);
+                    }, 250);
+
+                    //Set "meanwhile" value
+                    newlyComment.isCreating = true;
+
+                });
+            };
+
+
             $scope.nextPage = function()
             {
                 return $scope.pagination.nextPage().success(function(data)
@@ -98,14 +135,7 @@ angular.module('widul.components')
                 return $scope.pagination.hasNext();
             };
         },
-        link: function(scope, element, attrs, ctrl)
-        {
-
-            //Calculate the height max setting for the Comment (need to be dinamycally)
-            //var header = document.getElementsByClassName('main-container')[0];
-            var headerHeight = 68;
-            element.find("md-content").css("height", ($window.innerHeight - headerHeight) + "px")
-
+        link: function(scope, element, attrs, ctrl) {
 
         }
     };

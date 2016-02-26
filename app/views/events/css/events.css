@@ -366,7 +366,14 @@ ROUTE:  /app/events/*
         /*--------------------------
         MAPS SIDENAV && COMMENTS SIDENAV
         --------------------------*/ }
-        .events.view.resume > md-sidenav.md-sidenav-right, .events.view.resume > md-sidenav.md-sidenav-left {
+        .events.view.resume > md-sidenav.md-sidenav-right {
+          max-width: 50%;
+          width: 50%; }
+          .events.view.resume > md-sidenav.md-sidenav-right comments-viewer {
+            position: fixed;
+            top: 64px;
+            bottom: 113px; }
+        .events.view.resume > md-sidenav.md-sidenav-left {
           max-width: 50%;
           width: 50%; }
       .events.view.resume div.column {
@@ -392,6 +399,14 @@ ROUTE:  /app/events/*
               .events.view.resume div.column > event-content > event-location > google-map > map {
                 border-top-left-radius: 4px;
                 border-top-right-radius: 4px; }
+          .events.view.resume div.column > event-content > event-organizer {
+            display: block;
+            margin-top: -22px;
+            position: absolute;
+            color: #fff;
+            font-size: 0.9em; }
+            .events.view.resume div.column > event-content > event-organizer > span:first-child {
+              font-size: 0.8em; }
           .events.view.resume div.column > event-content > event-header {
             display: block; }
             .events.view.resume div.column > event-content > event-header > div {
@@ -438,12 +453,16 @@ ROUTE:  /app/events/*
                     font-size: 0.8em;
                     font-weight: 300; }
                 .events.view.resume div.column > event-content > event-header > div:nth-child(2) button, .events.view.resume div.column > event-content > event-header > div:nth-child(3) button {
-                  padding: 0px 8px; }
+                  padding: 0px 16px; }
                   .events.view.resume div.column > event-content > event-header > div:nth-child(2) button > span, .events.view.resume div.column > event-content > event-header > div:nth-child(3) button > span {
                     font-size: 0.9em; }
                   .events.view.resume div.column > event-content > event-header > div:nth-child(2) button > md-icon, .events.view.resume div.column > event-content > event-header > div:nth-child(3) button > md-icon {
                     height: 20px;
                     width: 20px; }
+            .events.view.resume div.column > event-content > event-header button.join {
+              border-radius: 50px;
+              padding: 0px 12px;
+              min-width: 85%; }
           .events.view.resume div.column > event-content > event-body {
             display: -webkit-box;
             display: -webkit-flex;
@@ -451,6 +470,8 @@ ROUTE:  /app/events/*
             display: -ms-flexbox;
             display: flex;
             padding: 8px 16px; }
+            .events.view.resume div.column > event-content > event-body button.comments {
+              margin-top: 20px; }
             .events.view.resume div.column > event-content > event-body > div {
               /* TAGS && DESCRIPTION */
               /* PARTICPANTS */ }
@@ -550,11 +571,11 @@ ROUTE:  /app/events/*
                   -webkit-align-items: center;
                   -moz-align-items: center;
                   align-items: center;
-                  -webkit-box-pack: center;
-                  -ms-flex-pack: center;
-                  -webkit-justify-content: center;
-                  -moz-justify-content: center;
-                  justify-content: center; }
+                  -webkit-box-pack: start;
+                  -ms-flex-pack: start;
+                  -webkit-justify-content: flex-start;
+                  -moz-justify-content: flex-start;
+                  justify-content: flex-start; }
                   .events.view.resume div.column > event-content > event-body > div:last-child > .friends > div.marker {
                     width: 2.2em;
                     height: 2.2em;
@@ -624,9 +645,26 @@ ROUTE:  /app/events/*
               background: #3F51B5; }
               .events.view.resume event-avatar div.marker > div.halo > div > img {
                 width: 100%; }
+        .events.view.resume event-avatar center.spacer {
+          margin-top: 23px; }
+          .events.view.resume event-avatar center.spacer.authenticated {
+            margin-top: 0px; }
+          .events.view.resume event-avatar center.spacer button.follow {
+            margin-top: 35px;
+            padding: 0px 25px;
+            border-radius: 50px;
+            border: 2px solid #fff;
+            color: #FFF;
+            min-width: 5em;
+            height: 3em;
+            box-shadow: none; }
+            .events.view.resume event-avatar center.spacer button.follow md-icon {
+              color: #fff; }
+            .events.view.resume event-avatar center.spacer button.follow:not([disabled]):hover {
+              background-color: #3F51B5; }
         .events.view.resume event-avatar div.date {
           width: 85%;
-          margin-top: 40px;
+          margin-top: 16px;
           -webkit-touch-callout: none;
           -webkit-user-select: none;
           -khtml-user-select: none;

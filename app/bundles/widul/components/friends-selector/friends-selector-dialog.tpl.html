@@ -16,7 +16,7 @@
                 <div layout="row" ng-if="model.friends">
                     <div flex="60">
                         <!-- FORM DATA -->
-                        <md-autocomplete id="buggyAutocomplete" md-selected-item-change="friends.onSelect(friendsSelected)" md-search-text-change="friends.onClear(searchText)" md-input-minlength="2" md-input-maxlength="50" md-selected-item="friendsSelected" md-search-text="searchText" md-items="item in friends.find(searchText)" md-item-text="item.fullname" md-floating-label="Buscar Personas">
+                        <md-autocomplete id="buggyAutocomplete" md-delay="700" md-selected-item-change="friends.onSelect(friendsSelected)" md-search-text-change="friends.onClear(searchText)" md-input-minlength="2" md-input-maxlength="50" md-selected-item="friendsSelected" md-search-text="searchText" md-items="item in friends.find(searchText)" md-item-text="item.fullname" md-floating-label="Buscar Personas">
                             <md-item-template>
                                 <friend class="autocomplete">
                                     <div>
@@ -36,7 +36,7 @@
                         </md-autocomplete>
                         <!-- FRIENDS -->
                         <span class="md-primary text title">
-                            Listado de Amigos ({{pagination.total()}}):
+                            Sugeridos ({{pagination.total()}}):
                         </span>
                         <friends>
                             <gale-infinite-scroll can-load-more="hasNext()" on-infinite="nextPage()" distance="3%">

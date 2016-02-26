@@ -148,7 +148,8 @@ angular.route('private.events/create/step-1', function(
                     })
                     .success(function(data)
                     {
-                        $state.go("private.events/view/resume/index/",
+
+                        $state.go("public.events/view/resume/index",
                         {
                             token: data.token
                         });
@@ -159,8 +160,6 @@ angular.route('private.events/create/step-1', function(
                     });
 
             });
-
-
 
         //Check Place
         if (newEvent.place.token)

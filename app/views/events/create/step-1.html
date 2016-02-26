@@ -111,7 +111,7 @@
 
             <event-tags>
                 <md-chips flex md-separator-keys="model.tags.electricChars" ng-model="model.event.tags" md-on-remove="find(model.tags.items);" md-on-add="find(model.tags.items);" md-separator-keys="" md-autocomplete-snap md-transform-chip="setOrRegister($chip)" md-require-match="false">
-                    <md-autocomplete md-delay="0" placeholder="Etiquetas de interes" md-min-length="2" md-selected-item="model.selectedItem" md-search-text="model.searchText" md-items="item in queryTags(model.searchText)" md-item-text="item.name">
+                    <md-autocomplete md-delay="400" placeholder="Etiquetas de interes" md-min-length="2" md-selected-item="model.selectedItem" md-search-text="model.searchText" md-items="item in queryTags(model.searchText)" md-item-text="item.name">
                         <span md-highlight-text="model.searchText">{{item.name}}</span>
                     </md-autocomplete>
                     <md-chip-template>

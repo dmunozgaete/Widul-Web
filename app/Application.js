@@ -25,7 +25,14 @@ angular.module('App', [
     ])
     .run(function($location)
     {
-        $location.path('/public/boot');
+        //REDIRECT TO MAIN HOME (ONLY WHEN NO HAVE PATH)
+        var currentPath = $location.path();
+        var boot = $location.path("public/boot").search(
+        {
+            path: currentPath
+        });
+
+        $location.url(boot.url());
     })
     .config(function($ApiProvider, $uploadFileProvider, CONFIGURATION)
     {
@@ -49,7 +56,8 @@ angular.module('App', [
             {
 
                 //Only Enable Access to Exception && Public State's
-                if (toState.name.startsWith("exception.") ||
+                if (toState.name.startsWith("boot") ||
+                    toState.name.startsWith("exception.") ||
                     toState.name.startsWith("public."))
                 {
                     return true;
@@ -145,6 +153,9 @@ angular.module('App', [
             if ($location.path() !== "/")
             {
                 var $state = $injector.get("$state");
+                var $log = $injector.get("$log");
+
+                $log.error("404", $location);
                 $state.go("exception.error/404");
             }
         });
