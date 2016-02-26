@@ -16,6 +16,7 @@ module.exports = function(grunt, options) {
             },
             files: {
                 'app/dist/js/bundles.js': [
+                    'app/bundles/widul/widul.js',
                     'app/bundles/**/*.js',
                 ],
                 

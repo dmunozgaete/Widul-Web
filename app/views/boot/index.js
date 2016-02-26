@@ -23,7 +23,7 @@ angular.route('public.boot/index', function(
             var path = $location.search().path;
             //Reset when path are in "boot" or "exception"
             if (path.length <= 2 ||
-                path.indexOf("boot") == 0 ||
+                path.indexOf("boot") === 0 ||
                 path.indexOf("exception") > 0)
             {
                 var url = $Configuration.get("application");
