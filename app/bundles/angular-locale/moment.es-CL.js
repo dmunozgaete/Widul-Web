@@ -69,7 +69,11 @@
             {
                 return '[el] dddd [pasado a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            sameElse: 'L'
+            sameElse: function()
+            {
+                return 'L [a las] HH:mm';
+                //return 'dddd [a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
+            }
         },
         relativeTime:
         {

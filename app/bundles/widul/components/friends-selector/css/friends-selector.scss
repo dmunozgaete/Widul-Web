@@ -32,6 +32,13 @@ friend.autocomplete {
                         outline: none;
                         width: 100%;
                     }
+                    > md-icon {
+                        padding: 0px 8px;
+                        margin-top: -14px;
+                        color: #FFF;
+                        height: 20px;
+                        width: 20px;
+                    }
                 }
             }
         }

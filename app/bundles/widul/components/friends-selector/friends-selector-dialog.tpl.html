@@ -16,14 +16,15 @@
                 <div layout="row" ng-if="model.friends">
                     <div flex="60">
                         <!-- FORM DATA -->
-                        <md-autocomplete id="buggyAutocomplete" md-delay="700" md-selected-item-change="friends.onSelect(friendsSelected)" md-search-text-change="friends.onClear(searchText)" md-input-minlength="2" md-input-maxlength="50" md-selected-item="friendsSelected" md-search-text="searchText" md-items="item in friends.find(searchText)" md-item-text="item.fullname" md-floating-label="Buscar Personas">
+                        <md-autocomplete id="buggyAutocomplete" md-delay="500" md-selected-item-change="friends.onSelect(friendsSelected)" md-search-text-change="friends.onClear(searchText)" md-input-minlength="3" md-input-maxlength="50" md-selected-item="friendsSelected" md-search-text="searchText" md-items="item in friends.find(searchText)" md-item-text="item.fullname" md-floating-label="Ingresa el Nombre o E-mail del invitado">
                             <md-item-template>
                                 <friend class="autocomplete">
                                     <div>
                                         <avatar>
                                             <div class="halo">
                                                 <div>
-                                                    <img ng-src="{{item.photo | file}}" />
+                                                    <img ng-if="item.photo !== null" ng-src="{{item.photo | file}}" />
+                                                    <md-icon ng-if="item.photo === null" md-svg-icon="communication:email" aria-label="email"></md-icon>
                                                 </div>
                                             </div>
                                         </avatar>
@@ -45,7 +46,7 @@
                                         <avatar>
                                             <div class="halo">
                                                 <div>
-                                                    <img ng-src="{{friend.photo | file}}" />
+                                                    <img ng-if="friend.photo" ng-src="{{friend.photo | file}}" />
                                                 </div>
                                             </div>
                                         </avatar>

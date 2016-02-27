@@ -40,6 +40,12 @@ friend.autocomplete {
           friend.autocomplete > div > avatar > div.halo > div > img {
             outline: none;
             width: 100%; }
+          friend.autocomplete > div > avatar > div.halo > div > md-icon {
+            padding: 0px 8px;
+            margin-top: -14px;
+            color: #FFF;
+            height: 20px;
+            width: 20px; }
   friend.autocomplete > description {
     cursor: pointer;
     outline: none;

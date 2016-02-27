@@ -208,7 +208,11 @@ angular.manifiest('widul', [
             {
                 return '[el] dddd [pasado a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
             },
-            sameElse: 'L'
+            sameElse: function()
+            {
+                return 'L [a las] HH:mm';
+                //return 'dddd [a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
+            }
         },
         relativeTime:
         {
@@ -5641,20 +5645,34 @@ angular.module('widul.components')
             {
                 if (friend)
                 {
-                    $scope.toggleFriend(friend);
+                    //Try to find in the friends list :P
+                    var exists = _.find($scope.model.friends,
+                    {
+                        token: friend.token
+                    });
+                    if (exists)
+                    {
+                        friend = exists;
+                    }
+
+                    //If the friend is not selected yet, toggle
+                    if (!friend.selected)
+                    {
+                        $scope.toggleFriend(friend);
+                    }
 
                     $scope.searchText = '';
                     $scope.friendsSelected = undefined;
+
+                    //CAN FIX OTHER WAY :S!! 
+                    //https://github.com/angular/material/issues/3287
+                    $timeout(function()
+                    {
+                        var elm = angular.element(document.getElementById("buggyAutocomplete"));
+                        elm.find("input").val("");
+                    }, 0);
+
                 }
-
-                //CAN FIX OTHER WAY :S!! 
-                //https://github.com/angular/material/issues/3287
-                $timeout(function()
-                {
-                    var elm = angular.element(document.getElementById("buggyAutocomplete"));
-                    elm.find("input").val("");
-                }, 0);
-
             },
             onClear: function(name) {
 
@@ -5663,22 +5681,36 @@ angular.module('widul.components')
             {
                 var deferred = $q.defer();
 
-                $Api.kql("Accounts",
+                $Api.read("Accounts/Find",
                 {
-                    filters: [
-                    {
-                        property: "fullname",
-                        operator: "contains",
-                        value: query
-                    }],
-                    orderBy:
-                    {
-                        property: "fullname",
-                        order: "asc"
-                    }
+                    q: query,
+                    limit: 10,
+                    offset: 0
+
                 }).success(function(data)
                 {
-                    deferred.resolve(data.items);
+                    var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+
+                    //If no accounts finded, but is an Email
+                    if (data.items.length == 0 && EMAIL_REGEXP.test(query))
+                    {
+
+                        //Organic Growth
+                        //Add the posibility to send 
+                        //invitation to the Non Widul User
+                        deferred.resolve([
+                        {
+                            type: "mail",
+                            token: query,
+                            photo: null,
+                            fullname: query
+                        }]);
+
+                    }
+                    else
+                    {
+                        deferred.resolve(data.items);
+                    }
                 });
 
                 return deferred.promise;
@@ -8012,12 +8044,10 @@ angular.module('App', [
     //Application data
     application:
     {
-        version: "1.0.0-rc.1",
+        version: "1.0.0-rc.4",
         environment: "qas",
         language: "es",
         name: "Widul",
-        //home: "security/identity/social",
-        //home: "public/events/view/resume/index/d69417c1-886d-4ec1-92d6-7ffa627774ab"
         home: "public/home"
         
     },
@@ -8031,7 +8061,6 @@ angular.module('App', [
 
     localstorageStamps:
     {
-        personal_data: "$_personal_data",
         new_version: "$_new_version"
     }
 
