@@ -3,12 +3,10 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
     //Application data
     application:
     {
-        version: "1.0.0-rc.1",
-        environment: "dev",
+        version: "1.0.0-rc.4",
+        environment: "qas",
         language: "es",
         name: "Widul",
-        //home: "security/identity/social",
-        //home: "public/events/view/resume/index/d69417c1-886d-4ec1-92d6-7ffa627774ab"
         home: "public/home"
         
     },
