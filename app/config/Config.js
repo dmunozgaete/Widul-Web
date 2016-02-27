@@ -4,7 +4,7 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
     application:
     {
         version: "1.0.0-rc.1",
-        environment: "qas",
+        environment: "dev",
         language: "es",
         name: "Widul",
         //home: "security/identity/social",
@@ -22,7 +22,6 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
 
     localstorageStamps:
     {
-        personal_data: "$_personal_data",
         new_version: "$_new_version"
     }
 

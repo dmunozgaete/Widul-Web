@@ -36,8 +36,9 @@
     </flex-loading>
     <div ng-if="model.event">
         <!-- AVATAR -->
-        <event-avatar>
-            <div class="marker">
+        <event-left-column>
+            <!-- AVATAR -->
+            <event-avatar>
                 <div class="halo">
                     <div>
                         <md-tooltip>
@@ -46,9 +47,9 @@
                         <img ng-src="{{model.event.creator.photo | file}}" />
                     </div>
                 </div>
-            </div>
+            </event-avatar>
             <!-- FOLLOW BUTTON -->
-            <center class="spacer" ng-class="{'authenticated': model.user}">
+            <event-follow class="spacer" ng-class="{'authenticated': model.user, 'addspace': !(model.user && model.event.creator.token !== model.user.primarysid)}">
                 <md-button ng-show="(model.user && model.event.creator.token !== model.user.primarysid)" ng-disabled="model.personal.creator.following === null" class="md-primary md-raised follow" ng-click="follow(model.event)">
                     <span ng-show="model.personal.creator.following === false">
                     <md-icon md-svg-icon="social:person_add"></md-icon>
@@ -62,9 +63,9 @@
                         <md-progress-circular class="md-accent" md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
                     </center>
                 </md-button>
-            </center>
+            </event-follow>
             <!-- DATE PICKER -->
-            <div class="md-primary background date" layout="column">
+            <event-date class="md-primary background date">
                 <div class="day" flex="initial">
                     {{model.event.date | amDateFormat: 'YYYY'}}
                 </div>
@@ -79,73 +80,72 @@
                         {{model.event.date | amDateFormat: 'MMMM'}}
                     </div>
                 </div>
-            </div>
-        </event-avatar>
+            </event-date>
+        </event-left-column>
         <!-- WHITE BOX -->
-        <div class="column">
-            <event-content class="md-whiteframe-z2" ng-class="{'show-settings': showAdvancedSettings}">
-                <event-organizer>
-                    <span>
-                        Organizado por:
-                    </span>
-                    <span>
-                        {{model.event.creator.name}}
-                    </span>
-                </event-organizer>
-                <event-location>
-                    <google-map readonly="true" ng-click="showMap(model.event.place)" coordinates="model.event.place">
-                    </google-map>
-                </event-location>
-                <event-header>
-                    <!-- TITLE -->
-                    <div layout="row">
-                        <h1 class="md-primary text" flex="75">
+        <event-right-column class="md-whiteframe-z2" ng-class="{'show-settings': showAdvancedSettings}">
+            <event-organizer>
+                <span>
+                    Organizado por:
+                </span>
+                <span>
+                    {{model.event.creator.name}}
+                </span>
+            </event-organizer>
+            <event-location>
+                <google-map readonly="true" ng-click="showMap(model.event.place)" coordinates="model.event.place">
+                </google-map>
+            </event-location>
+            <event-header>
+                <!-- TITLE -->
+                <div layout="row">
+                    <h1 class="md-primary text" flex="75">
                         <span><strong>{{model.event.name}}</strong></span>
                     </h1>
-                        <!-- JOIN EVENT -->
-                        <div flex="25" layout="row" layout-align="center center">
-                            <md-button ng-show="(model.event.creator.token !== model.user.primarysid)" class="md-accent md-raised join" ng-disabled="model.personal.participation.state === null" ng-click="join(model.event)">
-                                <span ng-show="!model.personal">
+                    <!-- JOIN EVENT -->
+                    <div flex="25" layout="row" layout-align="center center">
+                        <md-button ng-show="(model.event.creator.token !== model.user.primarysid)" class="md-accent md-raised join" ng-disabled="model.personal.participation.state === null" ng-click="join(model.event)">
+                            <span ng-show="!model.personal">
                                 <md-icon md-svg-icon="social:group_add"></md-icon>
                                 Participar
                             </span>
-                                <span ng-show="model.personal.participation.state === 'NONE' || model.personal.participation.state === 'INVITED'">
+                            <span ng-show="model.personal.participation.state === 'NONE' || model.personal.participation.state === 'INVITED'">
                                 <md-icon md-svg-icon="social:group_add"></md-icon>
                                 Participar
                             </span>
-                                <span ng-show="model.personal.participation.state === 'JOINED'">
+                            <span ng-show="model.personal.participation.state === 'JOINED'">
                                 <md-icon md-svg-icon="content:block"></md-icon>
                                 No Podré Ir
                             </span>
-                                <center ng-show="model.personal.participation.state === null">
-                                    <md-progress-circular class="md-accent " md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
-                                </center>
-                            </md-button>
-                        </div>
+                            <center ng-show="model.personal.participation.state === null">
+                                <md-progress-circular class="md-accent " md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
+                            </center>
+                        </md-button>
                     </div>
-                    <!-- DATE -->
+                </div>
+                <!-- DATE -->
+                <div>
                     <div>
-                        <div>
-                            <md-icon class="md-primary text" md-svg-icon="action:schedule"></md-icon>
-                        </div>
-                        <span>
+                        <md-icon class="md-primary text" md-svg-icon="action:schedule"></md-icon>
+                    </div>
+                    <span>
                         <span>{{model.event.date | amCalendar}}</span>
-                        <br/>
-                        <span am-time-ago="model.event.date"></span>
-                        </span>
-                        <div>
-                            <md-button ng-click="invite($event)">
-                                <md-icon class="md-accent text" md-svg-icon="communication:email"></md-icon>
-                                Invitar
-                            </md-button>
-                        </div>
-                        <div>
-                            <md-button ng-click="share($event, model.event)">
-                                <md-icon class="md-accent text" md-svg-icon="social:share"></md-icon>
-                                Compartir
-                            </md-button>
-                        </div>
-                        <!--
+                    <br/>
+                    <span am-time-ago="model.event.date"></span>
+                    </span>
+                    <div>
+                        <md-button ng-click="invite($event)">
+                            <md-icon class="md-accent text" md-svg-icon="communication:email"></md-icon>
+                            Invitar
+                        </md-button>
+                    </div>
+                    <div>
+                        <md-button ng-click="share($event, model.event)">
+                            <md-icon class="md-accent text" md-svg-icon="social:share"></md-icon>
+                            Compartir
+                        </md-button>
+                    </div>
+                    <!--
                     <div>
                         <md-button>
                             <md-icon class="md-accent text" md-svg-icon="content:create"></md-icon>
@@ -153,100 +153,91 @@
                         </md-button>
                     </div>
                     -->
-                    </div>
-                    <!-- LOCATION -->
+                </div>
+                <!-- LOCATION -->
+                <div>
                     <div>
-                        <div>
-                            <md-icon class="md-primary text" md-svg-icon="maps:place"></md-icon>
-                        </div>
-                        <span>
+                        <md-icon class="md-primary text" md-svg-icon="maps:place"></md-icon>
+                    </div>
+                    <span>
                         <span>{{model.event.place.name}}</span>
-                        <br />
-                        <span>{{model.event.place.address}}</span>
-                        </span>
-                        <div>
-                            <md-button ng-click="showMap(model.event.place)">
-                                Ver Lugar
-                            </md-button>
-                        </div>
-                    </div>
-                </event-header>
-                <event-body>
+                    <br />
+                    <span>{{model.event.place.address}}</span>
+                    </span>
                     <div>
-                        <event-description>
-                            <p>
-                                {{model.event.description}}
-                            </p>
-                        </event-description>
-                        <!-- TAGS -->
-                        <event-tags>
-                            <md-chips readonly="true" flex ng-model="model.event.tags">
-                                <md-chip-template>
-                                    <span>
+                        <md-button ng-click="showMap(model.event.place)">
+                            Ver Lugar
+                        </md-button>
+                    </div>
+                </div>
+            </event-header>
+            <event-body>
+                <div>
+                    <event-description>
+                        <p>
+                            {{model.event.description}}
+                        </p>
+                    </event-description>
+                    <!-- TAGS -->
+                    <event-tags>
+                        <md-chips readonly="true" flex ng-model="model.event.tags">
+                            <md-chip-template>
+                                <span>
                                 <strong>#{{$chip.name}}</strong>
                             </span>
-                                </md-chip-template>
-                            </md-chips>
-                        </event-tags>
-                    </div>
-                    <div>
-                        <div class="kpis">
-                            <div>
-                                <p>
-                                    {{model.event.participants.confirmed}}
-                                </p>
-                                <span>
+                            </md-chip-template>
+                        </md-chips>
+                    </event-tags>
+                </div>
+                <event-statistics>
+                    <div class="kpis">
+                        <div>
+                            <p>
+                                {{model.event.participants.confirmed}}
+                            </p>
+                            <span>
                                 Participantes 
                             </span>
-                            </div>
-                            <div>
-                                <p>
-                                    {{model.event.participants.guests}}
-                                </p>
-                                <span>
+                        </div>
+                        <div>
+                            <p>
+                                {{model.event.participants.guests}}
+                            </p>
+                            <span>
                                 Invitados
                             </span>
-                            </div>
                         </div>
-                        <div class="friends">
-                            <!-- CREATOR IF TOPS ARE NOT TOO MUCH-->
-                            <div class="marker" ng-if="model.event.participants.tops.length < 5">
-                                <md-tooltip>
-                                    {{model.event.creator.name}}
-                                </md-tooltip>
-                                <div class="halo">
-                                    <div>
-                                        <img ng-src="{{model.event.creator.photo | file}}" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- PARTICIPANTS -->
-                            <div class="marker" ng-repeat="item in model.event.participants.tops">
-                                <md-tooltip>
-                                    {{item.fullname}}
-                                </md-tooltip>
-                                <div class="halo">
-                                    <div>
-                                        <img ng-src="{{item.photo | file}}" />
-                                    </div>
+                    </div>
+                    <div class="friends">
+                        <!-- PARTICIPANTS -->
+                        <div class="marker" ng-repeat="item in model.event.participants.tops">
+                            <md-tooltip>
+                                {{item.fullname}}
+                            </md-tooltip>
+                            <div class="halo">
+                                <div>
+                                    <img ng-src="{{item.photo | file}}" />
                                 </div>
                             </div>
                         </div>
-                        <center ng-if="model.event.comments.total > 0">
-                            <md-button class="md-primary text comments" ng-disabled="model.event.joined === null" ng-click="showComments(model.event)">
+                    </div>
+                    <!-- COMMENTS -->
+                    <center>
+                        <md-button class="md-primary text comments" aria-label="ar" ng-disabled="model.event.joined === null" ng-click="showComments(model.event)">
+                            <!-- AT LEAST 1 COMMENT-->
+                            <span ng-if="model.event.comments.total > 0">
                                 <md-icon class="md-primary text" md-svg-icon="communication:chat"></md-icon>
-                                {{model.event.comments.total}} Comentarios
-                            </md-button>
-                        </center>
-                        <center ng-if="model.event.comments.total == 0">
-                            <md-button class="md-primary text comments" ng-disabled="model.event.joined === null" ng-click="addComment(model.event)">
+                                {{model.event.comments.total}}&nbsp;{{model.event.comments.total > 1 ? 'Comentarios': 'Comentario'}}
+                            </span>
+                            <!-- NO COMMENTS? -->
+                            <span ng-if="model.event.comments.total == 0">
                                 <md-icon class="md-primary text" md-svg-icon="editor:insert_comment"></md-icon>
                                 Enviar Comentario
-                            </md-button>
-                        </center>
-                    </div>
-                </event-body>
-            </event-content>
-        </div>
+                            </span>
+                        </md-button>
+                    </center>
+                </event-statistics>
+            </event-body>
+        </event-right-column>
     </div>
 </gale-page>
