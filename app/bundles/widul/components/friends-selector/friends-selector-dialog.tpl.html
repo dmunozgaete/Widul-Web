@@ -72,7 +72,8 @@
                                     <avatar>
                                         <div class="halo">
                                             <div>
-                                                <img ng-src="{{friend.photo | file}}" />
+                                                <img ng-if="friend.photo !== null" ng-src="{{friend.photo | file}}" />
+                                                <md-icon ng-if="friend.photo === null" md-svg-icon="communication:email" aria-label="email"></md-icon>
                                             </div>
                                         </div>
                                     </avatar>
