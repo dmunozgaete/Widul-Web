@@ -109,7 +109,14 @@ md-dialog.friends-selector-dialog md-dialog-content {
             cursor: default;
             width: 35px;
             height: 35px;
-            margin: 0px 8px 0px 0px; }
+            margin: 0px 8px 0px 0px;
+            /* EMAIL ICON */ }
+            md-dialog.friends-selector-dialog md-dialog-content > md-content friends.selected > friend > div > avatar md-icon {
+              padding: 0px 8px;
+              margin-top: 8px;
+              color: #FFF;
+              height: 19px;
+              width: 19px; }
           md-dialog.friends-selector-dialog md-dialog-content > md-content friends.selected > friend > div md-icon {
             height: 16px;
             width: 16px;

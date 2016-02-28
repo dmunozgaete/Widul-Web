@@ -1,7 +1,7 @@
 <gale-page class="events view resume" layout-fill>
     <!-- MAIN TOOLBAR -->
     <md-toolbar class="md-whiteframe-z1 md-tall">
-        <div class="md-toolbar-tools">
+        <div class="md-toolbar-tools hide-on-responsive">
             <h2>
                 <span>{{config.application.name}}</span>
             </h2>
@@ -18,6 +18,7 @@
         <md-content>
             <place-viewer ng-if="panel == 'PLAC'" place="model.event.place.token">
             </place-viewer>
+            
         </md-content>
     </md-sidenav>
     <!-- RIGHT SIDENAV (MAP)-->
@@ -36,7 +37,7 @@
     </flex-loading>
     <div ng-if="model.event">
         <!-- AVATAR -->
-        <event-left-column>
+        <event-left-column class="hide-on-responsive">
             <!-- AVATAR -->
             <event-avatar>
                 <div class="halo">
@@ -84,6 +85,16 @@
         </event-left-column>
         <!-- WHITE BOX -->
         <event-right-column class="md-whiteframe-z2" ng-class="{'show-settings': showAdvancedSettings}">
+            <responsive-event-avatar class="show-on-responsive">
+                <div class="halo">
+                    <div>
+                        <md-tooltip>
+                            {{model.event.creator.name}}
+                        </md-tooltip>
+                        <img ng-src="{{model.event.creator.photo | file}}" />
+                    </div>
+                </div>
+            </responsive-event-avatar>
             <event-organizer>
                 <span>
                     Organizado por:
@@ -92,7 +103,7 @@
                     {{model.event.creator.name}}
                 </span>
             </event-organizer>
-            <event-location>
+            <event-location class="hide-on-responsive">
                 <google-map readonly="true" ng-click="showMap(model.event.place)" coordinates="model.event.place">
                 </google-map>
             </event-location>
@@ -103,7 +114,7 @@
                         <span><strong>{{model.event.name}}</strong></span>
                     </h1>
                     <!-- JOIN EVENT -->
-                    <div flex="25" layout="row" layout-align="center center">
+                    <div flex="25" layout="row" layout-align="center center" class="hide-on-responsive">
                         <md-button ng-show="(model.event.creator.token !== model.user.primarysid)" class="md-accent md-raised join" ng-disabled="model.personal.participation.state === null" ng-click="join(model.event)">
                             <span ng-show="!model.personal">
                                 <md-icon md-svg-icon="social:group_add"></md-icon>
@@ -133,13 +144,13 @@
                     <br/>
                     <span am-time-ago="model.event.date"></span>
                     </span>
-                    <div>
+                    <div class="hide-on-responsive">
                         <md-button ng-click="invite($event)">
                             <md-icon class="md-accent text" md-svg-icon="communication:email"></md-icon>
                             Invitar
                         </md-button>
                     </div>
-                    <div>
+                    <div class="hide-on-responsive">
                         <md-button ng-click="share($event, model.event)">
                             <md-icon class="md-accent text" md-svg-icon="social:share"></md-icon>
                             Compartir
@@ -164,12 +175,31 @@
                     <br />
                     <span>{{model.event.place.address}}</span>
                     </span>
-                    <div>
+                    <div class="hide-on-responsive">
                         <md-button ng-click="showMap(model.event.place)">
                             Ver Lugar
                         </md-button>
                     </div>
                 </div>
+                <responsive-participation class="show-on-responsive">
+                    <md-button ng-show="(model.event.creator.token !== model.user.primarysid)" class="md-accent md-raised join" ng-disabled="model.personal.participation.state === null" ng-click="join(model.event)">
+                        <span ng-show="!model.personal">
+                                <md-icon md-svg-icon="social:group_add"></md-icon>
+                                Participar
+                            </span>
+                        <span ng-show="model.personal.participation.state === 'NONE' || model.personal.participation.state === 'INVITED'">
+                                <md-icon md-svg-icon="social:group_add"></md-icon>
+                                Participar
+                            </span>
+                        <span ng-show="model.personal.participation.state === 'JOINED'">
+                                <md-icon md-svg-icon="content:block"></md-icon>
+                                No Podré Ir
+                            </span>
+                        <center ng-show="model.personal.participation.state === null">
+                            <md-progress-circular class="md-accent " md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
+                        </center>
+                    </md-button>
+                </responsive-participation>
             </event-header>
             <event-body>
                 <div>
@@ -222,7 +252,7 @@
                         </div>
                     </div>
                     <!-- COMMENTS -->
-                    <center>
+                    <center class="hide-on-responsive">
                         <md-button class="md-primary text comments" aria-label="ar" ng-disabled="model.event.joined === null" ng-click="showComments(model.event)">
                             <!-- AT LEAST 1 COMMENT-->
                             <span ng-if="model.event.comments.total > 0">
@@ -238,6 +268,22 @@
                     </center>
                 </event-statistics>
             </event-body>
+            <responsive-event-actions class="show-on-responsive">
+                <div layout="row">
+                    <div flex layout="column" layout-align="center center" ng-click="share($event, model.event)">
+                        <md-icon class="md-primary text" md-svg-icon="social:share"></md-icon>
+                        <span>Compartir</span>
+                    </div>
+                    <div flex layout="column" layout-align="center center" ng-click="showComments(model.event)">
+                        <md-icon class="md-primary text" md-svg-icon="communication:message"></md-icon>
+                        <span>{{model.event.comments.total}}&nbsp;{{model.event.comments.total > 1 ? 'Comentarios': 'Comentario'}}</span>
+                    </div>
+                    <div flex layout="column" layout-align="center center" ng-click="showMap(model.event.place)">
+                        <md-icon class="md-primary text" md-svg-icon="maps:map"></md-icon>
+                        <span>Ver Lugar</span>
+                    </div>
+                </div>
+            </responsive-event-actions>
         </event-right-column>
     </div>
 </gale-page>
