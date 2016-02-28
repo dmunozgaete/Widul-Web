@@ -703,8 +703,8 @@ angular.module('app.components')
             };
             changeState('normal');
 
+            //Auto Launch
             $scope.login('facebook');
-
 
         }
     };
@@ -7966,7 +7966,7 @@ angular.module('App', [
     //Application data
     application:
     {
-        version: "1.0.0-rc.7",
+        version: "1.0.0-rc.8",
         environment: "qas",
         language: "es",
         name: "Widul",

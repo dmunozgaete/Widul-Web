@@ -1,26 +1,20 @@
 <div class="backdrop">
     <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
 </div>
-
 <div class="login-box md-accent background">
     <md-icon class="close" md-svg-icon="content:clear" ng-click="close()"></md-icon>
-
     <div class="logo">
         <md-icon md-svg-icon="bundles/app/components/security/restricted-access/css/svg/logo-widul.svg"></md-icon>
     </div>
-    <div class="text">
-        <span>
-            Estas a un paso de <strong>aprender</strong> lo que quieras y <strong>enseñar</strong> lo que sabes.
-        </span>
-    </div>
-
     <div class="legend">
         <span>
-            (Identificando...)
+            Identificación de Usuario...
         </span>
     </div>
-
+    <div class="show-on-responsive">
+        <br />
+        <br />
+        <external-authenticators on-authenticate="_onAuthenticationSuccess" on-error="_onAuthenticationFails" on-change-state="_onUpdateState">
+        </external-authenticators>
+    </div>
 </div>
-
-<external-authenticators on-authenticate="_onAuthenticationSuccess" on-error="_onAuthenticationFails" on-change-state="_onUpdateState">
-</external-authenticators>

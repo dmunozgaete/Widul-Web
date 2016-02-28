@@ -56,8 +56,19 @@ restricted-access-dialog {
     &.ng-show-add {
         animation: 0.4s fadeOut linear;
     }
-
     &.ng-hide {
         animation: 0.45s fadeIn linear;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    restricted-access-dialog {
+        > div.login-box {
+            position: fixed;
+            top: 20%;
+            bottom: 20%;
+            right: 10%;
+            left: 10%;
+        }
     }
 }
