@@ -909,7 +909,7 @@ angular.module('app.components')
 
                     }
 
-                }, 0);
+                }, 150);
 
                 return deferred.promise;
             };
@@ -6894,96 +6894,6 @@ angular.module('widul.components')
     };
 
 });
-;angular.route('public.events/mail/approve/:event/:accessToken', function(
-    $scope,
-    $state,
-    $log,
-    $Api,
-    $stateParams,
-    $restrictedAccess
-)
-{
-
-    var goToEvent = function()
-    {
-        $state.go("public.events/view/resume/index",
-        {
-            token: $stateParams.event
-        });
-    };
-
-
-    if ($stateParams.accessToken)
-    {
-        var customHeader = {
-            "Authorization": "Bearer " + $stateParams.accessToken
-        };
-
-        //Join Event Simulating the User Invitation
-        $Api.create("Events/{event}/Join",
-        {
-            event: $stateParams.event
-        }, customHeader).success(function(data)
-        {
-            $restrictedAccess.validate().then(function()
-            {
-                goToEvent();
-            });
-        });
-    }
-    else
-    {
-        goToEvent();
-    }
-
-});
-;angular.route('public.events/mail/reject/:event/:accessToken', function(
-    $scope,
-    $state,
-    $log,
-    $Api,
-    $stateParams,
-    $restrictedAccess
-)
-{
-
-    var goToEvent = function()
-    {
-
-        $state.go("public.events/view/resume/index",
-        {
-            token: $stateParams.event
-        });
-    };
-
-
-    if ($stateParams.accessToken)
-    {
-        var customHeader = {
-            "Authorization": "Bearer " + $stateParams.accessToken
-        };
-
-        //Remove Participation
-        $Api.delete("Events/{event}/Join",
-        {
-            event: $stateParams.event
-        }, customHeader).success(function(data)
-        {
-            $restrictedAccess.validate().then(function()
-            {
-                goToEvent();
-            });
-        });
-    }
-    else
-    {
-        goToEvent();
-    }
-
-
-
-
-});
 ;angular.module('app.controllers')
     .controller('EventDetailsDialogController', function(
         $scope,
@@ -7180,7 +7090,7 @@ angular.module('widul.components')
         };
 
     });
-;angular.route('public.events/view/resume/index/:token', function(
+;angular.route('public.events/view/resume/index/:token/:forceAuthentication', function(
     $scope,
     $state,
     $log,
@@ -7507,6 +7417,16 @@ angular.module('widul.components')
     {
         $window.history.back();
     };
+
+
+    //Force Authentication ???
+    if ($stateParams.forceAuthentication == "1")
+    {
+        $restrictedAccess.validate().then(function() {
+            //Do nothing :P
+        });
+    }
+
 
 });
 ;angular.route('public.home/index', function(
@@ -8044,7 +7964,7 @@ angular.module('App', [
     //Application data
     application:
     {
-        version: "1.0.0-rc.5",
+        version: "1.0.0-rc.6",
         environment: "qas",
         language: "es",
         name: "Widul",

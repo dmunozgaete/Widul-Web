@@ -1,4 +1,4 @@
-angular.route('public.events/view/resume/index/:token', function(
+angular.route('public.events/view/resume/index/:token/:forceAuthentication', function(
     $scope,
     $state,
     $log,
@@ -325,5 +325,15 @@ angular.route('public.events/view/resume/index/:token', function(
     {
         $window.history.back();
     };
+
+
+    //Force Authentication ???
+    if ($stateParams.forceAuthentication == "1")
+    {
+        $restrictedAccess.validate().then(function() {
+            //Do nothing :P
+        });
+    }
+
 
 });
