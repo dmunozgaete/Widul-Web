@@ -48,7 +48,8 @@ ROUTE:  /app/events/*
         display: block;
         background-color: #FFF;
         border-radius: 4px;
-        display: block; }
+        display: block;
+        margin-bottom: 24px; }
         .events.view.resume event-right-column > flex-loading {
           min-height: 300px; }
         .events.view.resume event-right-column > event-location {

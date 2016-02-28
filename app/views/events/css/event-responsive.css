@@ -10,29 +10,84 @@ ROUTE:  /app/events/*
   VIEW:   View Section
   ROUTE:  /app/events/view/*
   -------------------------*/ }
-  .events .md-toolbar-tools {
-    display: none !important; }
   .events.view {
     /*------------------------- 
     VIEW:   Event Resume Page
     ROUTE:  /app/events/view/resume
     -------------------------*/ }
     @media only screen and (max-width: 800px) {
-      .events.view.resume event-left-column {
-        display: none !important; }
+      .events.view.resume > md-sidenav {
+        /*--------------------------
+        MAPS SIDENAV && COMMENTS SIDENAV
+        --------------------------*/ }
+        .events.view.resume > md-sidenav.md-sidenav-right {
+          max-width: 90%;
+          width: 90%; }
+          .events.view.resume > md-sidenav.md-sidenav-right comments-viewer {
+            position: fixed;
+            top: 64px;
+            bottom: 113px; }
+        .events.view.resume > md-sidenav.md-sidenav-left {
+          max-width: 90%;
+          width: 90%; }
+          .events.view.resume > md-sidenav.md-sidenav-left place-viewer > div > google-map {
+            height: 250px; }
       .events.view.resume event-right-column {
-        left: 3% !important;
-        margin-bottom: 24px; }
-        .events.view.resume event-right-column event-location {
-          display: none !important; }
+        left: 3% !important; }
+        .events.view.resume event-right-column > event-body {
+          display: block !important;
+          padding: 8px 8px !important; }
+          .events.view.resume event-right-column > event-body event-description p {
+            overflow: hidden; }
+          .events.view.resume event-right-column > event-body event-tags md-chip {
+            height: 27px;
+            line-height: 26px;
+            font-size: 0.85em; }
+          .events.view.resume event-right-column > event-body event-statistics {
+            border-top: 1px solid #F5F5F5;
+            margin-top: 16px; }
+        .events.view.resume event-right-column event-organizer {
+          margin-top: -41px !important;
+          margin-left: 58px; }
+          .events.view.resume event-right-column event-organizer > span:first-child {
+            display: block; }
+        .events.view.resume event-right-column event-header {
+          /*
+              LOCATION & TIME
+          */ }
+          .events.view.resume event-right-column event-header div:first-child h1 {
+            overflow: hidden !important;
+            white-space: normal !important;
+            flex: auto;
+            max-width: 100%; }
+          .events.view.resume event-right-column event-header > div {
+            height: auto !important; }
+          .events.view.resume event-right-column event-header > div:nth-child(1) > h1 {
+            padding: 13px 12px 15px 12px !important; }
+          .events.view.resume event-right-column event-header > div:nth-child(2),
+          .events.view.resume event-right-column event-header div:nth-child(3) {
+            padding: 10px 8px !important; }
+          .events.view.resume event-right-column event-header responsive-participation button {
+            height: 48px;
+            width: 100%;
+            border-radius: 0px !important;
+            margin: 0px; }
+        .events.view.resume event-right-column responsive-event-actions {
+          margin-top: 8px;
+          min-height: 48px;
+          background-color: #F5F5F5;
+          padding: 10px 0; }
+          .events.view.resume event-right-column responsive-event-actions span {
+            opacity: 0.7;
+            font-size: 0.8em;
+            font-weight: 300;
+            padding-top: 5px; }
         .events.view.resume event-right-column responsive-event-avatar {
-          display: block;
-          width: 3.5em;
-          height: 3.5em;
-          position: fixed;
-          right: 36px;
-          left: auto;
-          margin-top: 22px; }
+          width: 2.5em;
+          height: 2.5em;
+          margin-top: -54px;
+          margin-left: 4px;
+          padding-bottom: 8px; }
           .events.view.resume event-right-column responsive-event-avatar > div.halo {
             box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.14), 0 2px 2px -2px rgba(0, 0, 0, 0.12);
             background-color: #FFF;
@@ -48,42 +103,6 @@ ROUTE:  /app/events/*
               width: 100%;
               background: #3F51B5; }
               .events.view.resume event-right-column responsive-event-avatar > div.halo > div > img {
-                width: 100%; }
-        .events.view.resume event-right-column event-statistics button {
-          display: none; }
-        .events.view.resume event-right-column h1 {
-          overflow: hidden !important;
-          white-space: normal !important; }
-        .events.view.resume event-right-column event-header button {
-          display: none !important; }
-        .events.view.resume event-right-column event-header > .layout-row div {
-          display: none !important; }
-        .events.view.resume event-right-column event-header > div {
-          height: auto !important; }
-        .events.view.resume event-right-column event-header > div:nth-child(1) > h1 {
-          padding: 13px 16px 15px 16px !important; }
-        .events.view.resume event-right-column event-header > div:nth-child(2),
-        .events.view.resume event-right-column event-header div:nth-child(3) {
-          padding: 10px 16px !important; }
-        .events.view.resume event-right-column event-header responsive-participation {
-          display: block; }
-          .events.view.resume event-right-column event-header responsive-participation button {
-            display: block !important;
-            height: 48px;
-            width: 100%;
-            border-radius: 0px !important;
-            margin: 0px !important; }
-        .events.view.resume event-right-column > event-body {
-          display: block !important; }
-        .events.view.resume event-right-column responsive-event-actions {
-          margin-top: 8px;
-          min-height: 48px;
-          background-color: #F5F5F5;
-          padding: 10px 0; }
-          .events.view.resume event-right-column responsive-event-actions span {
-            opacity: 0.7;
-            font-size: 0.8em;
-            font-weight: 300;
-            padding-top: 5px; } }
+                width: 100%; } }
 
 /*# sourceMappingURL=event-responsive.css.map */
