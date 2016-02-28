@@ -45,7 +45,7 @@ angular.module('app.components')
 
                     }
 
-                }, 0);
+                }, 150);
 
                 return deferred.promise;
             };
