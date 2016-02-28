@@ -14,7 +14,20 @@ external-authenticators {
             margin-right: 16px;
         }
         &.google {
-            background-color: #DC4E41 !important; 
+            background-color: #DC4E41 !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    external-authenticators {
+        button.md-button {
+            > md-icon {
+                margin-right: 8px;
+            }
+            > span {
+                font-size: 0.85em;
+            }
         }
     }
 }

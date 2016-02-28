@@ -7966,7 +7966,7 @@ angular.module('App', [
     //Application data
     application:
     {
-        version: "1.0.0-rc.8",
+        version: "1.0.0-rc.9",
         environment: "qas",
         language: "es",
         name: "Widul",
