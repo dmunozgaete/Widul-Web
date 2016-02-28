@@ -1,4 +1,4 @@
-angular.route('public.events/view/resume/index/:token/:forceAuthentication', function(
+angular.route('public.events/view/resume/index/:token?forceAuthentication', function(
     $scope,
     $state,
     $log,
