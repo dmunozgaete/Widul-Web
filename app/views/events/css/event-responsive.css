@@ -1,0 +1,89 @@
+/* 
+    SASS Mixins
+*/
+/*------------------------- 
+VIEW:   Events Module
+ROUTE:  /app/events/*
+-------------------------*/
+.events {
+  /*------------------------- 
+  VIEW:   View Section
+  ROUTE:  /app/events/view/*
+  -------------------------*/ }
+  .events .md-toolbar-tools {
+    display: none !important; }
+  .events.view {
+    /*------------------------- 
+    VIEW:   Event Resume Page
+    ROUTE:  /app/events/view/resume
+    -------------------------*/ }
+    @media only screen and (max-width: 800px) {
+      .events.view.resume event-left-column {
+        display: none !important; }
+      .events.view.resume event-right-column {
+        left: 3% !important;
+        margin-bottom: 24px; }
+        .events.view.resume event-right-column event-location {
+          display: none !important; }
+        .events.view.resume event-right-column responsive-event-avatar {
+          display: block;
+          width: 3.5em;
+          height: 3.5em;
+          position: fixed;
+          right: 36px;
+          left: auto;
+          margin-top: 22px; }
+          .events.view.resume event-right-column responsive-event-avatar > div.halo {
+            box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.14), 0 2px 2px -2px rgba(0, 0, 0, 0.12);
+            background-color: #FFF;
+            border-radius: 50%;
+            border: 1px solid #FFF;
+            width: 100%;
+            height: 100%;
+            padding: 3%; }
+            .events.view.resume event-right-column responsive-event-avatar > div.halo > div {
+              border-radius: 50%;
+              overflow: hidden;
+              height: 100%;
+              width: 100%;
+              background: #3F51B5; }
+              .events.view.resume event-right-column responsive-event-avatar > div.halo > div > img {
+                width: 100%; }
+        .events.view.resume event-right-column event-statistics button {
+          display: none; }
+        .events.view.resume event-right-column h1 {
+          overflow: hidden !important;
+          white-space: normal !important; }
+        .events.view.resume event-right-column event-header button {
+          display: none !important; }
+        .events.view.resume event-right-column event-header > .layout-row div {
+          display: none !important; }
+        .events.view.resume event-right-column event-header > div {
+          height: auto !important; }
+        .events.view.resume event-right-column event-header > div:nth-child(1) > h1 {
+          padding: 13px 16px 15px 16px !important; }
+        .events.view.resume event-right-column event-header > div:nth-child(2),
+        .events.view.resume event-right-column event-header div:nth-child(3) {
+          padding: 10px 16px !important; }
+        .events.view.resume event-right-column event-header responsive-participation {
+          display: block; }
+          .events.view.resume event-right-column event-header responsive-participation button {
+            display: block !important;
+            height: 48px;
+            width: 100%;
+            border-radius: 0px !important;
+            margin: 0px !important; }
+        .events.view.resume event-right-column > event-body {
+          display: block !important; }
+        .events.view.resume event-right-column responsive-event-actions {
+          margin-top: 8px;
+          min-height: 48px;
+          background-color: #F5F5F5;
+          padding: 10px 0; }
+          .events.view.resume event-right-column responsive-event-actions span {
+            opacity: 0.7;
+            font-size: 0.8em;
+            font-weight: 300;
+            padding-top: 5px; } }
+
+/*# sourceMappingURL=event-responsive.css.map */

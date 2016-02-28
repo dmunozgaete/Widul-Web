@@ -91,6 +91,16 @@
                 <span>
                     {{model.event.creator.name}}
                 </span>
+                <responsive-event-avatar>
+                    <div class="halo">
+                        <div>
+                            <md-tooltip>
+                                {{model.event.creator.name}}
+                            </md-tooltip>
+                            <img ng-src="{{model.event.creator.photo | file}}" />
+                        </div>
+                    </div>
+                </responsive-event-avatar>
             </event-organizer>
             <event-location>
                 <google-map readonly="true" ng-click="showMap(model.event.place)" coordinates="model.event.place">
@@ -170,6 +180,25 @@
                         </md-button>
                     </div>
                 </div>
+                <responsive-participation>
+                    <md-button ng-show="(model.event.creator.token !== model.user.primarysid)" class="md-accent md-raised join" ng-disabled="model.personal.participation.state === null" ng-click="join(model.event)">
+                        <span ng-show="!model.personal">
+                                <md-icon md-svg-icon="social:group_add"></md-icon>
+                                Participar
+                            </span>
+                        <span ng-show="model.personal.participation.state === 'NONE' || model.personal.participation.state === 'INVITED'">
+                                <md-icon md-svg-icon="social:group_add"></md-icon>
+                                Participar
+                            </span>
+                        <span ng-show="model.personal.participation.state === 'JOINED'">
+                                <md-icon md-svg-icon="content:block"></md-icon>
+                                No Podré Ir
+                            </span>
+                        <center ng-show="model.personal.participation.state === null">
+                            <md-progress-circular class="md-accent " md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
+                        </center>
+                    </md-button>
+                </responsive-participation>
             </event-header>
             <event-body>
                 <div>
@@ -238,6 +267,20 @@
                     </center>
                 </event-statistics>
             </event-body>
-        </event-right-column>
+            <responsive-event-actions layout="row">
+                <div flex layout="column" layout-align="center center">
+                    <md-icon class="md-primary text" md-svg-icon="social:share"></md-icon>
+                    <span>Compartir</span>
+                </div>
+                <div flex layout="column" layout-align="center center" v>
+                    <md-icon class="md-primary text" md-svg-icon="communication:message"></md-icon>
+                    <span>{{model.event.comments.total}}&nbsp;{{model.event.comments.total > 1 ? 'Comentarios': 'Comentario'}}</span>
+                </div>
+                <div flex layout="column" layout-align="center center">
+                    <md-icon class="md-primary text" md-svg-icon="maps:map"></md-icon>
+                    <span>Ver Lugar</span>
+                </div>
+                </event-actions>
+                </responsive-event-right-column>
     </div>
 </gale-page>

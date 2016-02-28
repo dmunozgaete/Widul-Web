@@ -1,0 +1,119 @@
+@import "../../../bundles/app/css/_variables";
+@import "../../../bundles/app/css/_flexbox";
+
+/*------------------------- 
+VIEW:   Events Module
+ROUTE:  /app/events/*
+-------------------------*/
+
+.events {
+    .md-toolbar-tools {
+        display: none!important;
+    }
+    /*------------------------- 
+    VIEW:   View Section
+    ROUTE:  /app/events/view/*
+    -------------------------*/
+    &.view {
+        /*------------------------- 
+        VIEW:   Event Resume Page
+        ROUTE:  /app/events/view/resume
+        -------------------------*/
+        @media only screen and (max-width: 800px) {
+            &.resume {
+                event-left-column {
+                    display: none !important;
+                }
+                event-right-column {
+                    left: 3% !important;
+                    margin-bottom: 24px;
+                    event-location {
+                        display: none !important;
+                    }
+                    responsive-event-avatar {
+                        display: block;
+                        width: 3.5em;
+                        height: 3.5em;
+                        position: fixed;
+                        right: 36px;
+                        left: auto;
+                        margin-top: 22px;
+                        > div.halo {
+                            @include box-shadow(2px);
+                            background-color: #FFF;
+                            border-radius: 50%;
+                            border: 1px solid #FFF;
+                            width: 100%;
+                            height: 100%;
+                            padding: 3%;
+                            > div {
+                                border-radius: 50%;
+                                overflow: hidden;
+                                height: 100%;
+                                width: 100%;
+                                background: $primary_color;
+                                > img {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                    event-statistics {
+                        button {
+                            display: none;
+                        }
+                    }
+                    h1 {
+                        overflow: hidden!important;
+                        white-space: normal!important;
+                    }
+                    event-header {
+                        button {
+                            display: none !important;
+                        }
+                        > .layout-row {
+                            div {
+                                display: none !important;
+                            }
+                        }
+                        > div {
+                            height: auto!important;
+                        }
+                        > div:nth-child(1) > h1 {
+                            padding: 13px 16px 15px 16px !important;
+                        }
+                        > div:nth-child(2),
+                        div:nth-child(3) {
+                            padding: 10px 16px !important;
+                        }
+                        responsive-participation {
+                            display: block;
+                            button {
+                                display: block !important;
+                                height: 48px;
+                                width: 100%;
+                                border-radius: 0px !important;
+                                margin: 0px !important;
+                            }
+                        }
+                    }
+                    > event-body {
+                        display: block!important;
+                    }
+                    responsive-event-actions {
+                        margin-top: 8px;
+                        min-height: 48px;
+                        background-color: #F5F5F5;
+                        padding: 10px 0;
+                        span {
+                            opacity: 0.7;
+                            font-size: 0.8em;
+                            font-weight: 300;
+                            padding-top: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
