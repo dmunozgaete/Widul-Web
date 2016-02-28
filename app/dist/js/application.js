@@ -6605,6 +6605,7 @@ angular.module('widul.components')
 
             // --------------------------------
             var path = $location.search().path;
+            console.log(path);
             //Reset when path are in "boot" or "exception"
             if (path.length <= 2 ||
                 path.indexOf("boot") === 0 ||
@@ -7821,7 +7822,8 @@ angular.module('App', [
     .run(function($location)
     {
         //REDIRECT TO MAIN HOME (ONLY WHEN NO HAVE PATH)
-        var currentPath = $location.path();
+        
+        var currentPath = $location.url();
         var boot = $location.path("public/boot").search(
         {
             path: currentPath

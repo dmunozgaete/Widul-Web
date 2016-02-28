@@ -26,7 +26,8 @@ angular.module('App', [
     .run(function($location)
     {
         //REDIRECT TO MAIN HOME (ONLY WHEN NO HAVE PATH)
-        var currentPath = $location.path();
+        
+        var currentPath = $location.url();
         var boot = $location.path("public/boot").search(
         {
             path: currentPath
