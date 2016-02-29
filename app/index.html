@@ -9,8 +9,30 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
         <!-- injector:css -->
-        <link rel="stylesheet" href="dist/css/bower.css?v=rc.9">
-        <link rel="stylesheet" href="dist/css/application.css?v=rc.9">
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" href="bower_components/angular-gale-material/dist/angular-gale-material.css">
+        <link rel="stylesheet" href="bower_components/nvd3/src/nv.d3.css">
+        <link rel="stylesheet" href="views/events/css/event-responsive.css">
+        <link rel="stylesheet" href="views/events/css/events.css">
+        <link rel="stylesheet" href="views/home/css/home.css">
+        <link rel="stylesheet" href="views/layouts/css/layouts.css">
+        <link rel="stylesheet" href="views/security/css/security.css">
+        <link rel="stylesheet" href="bundles/app/components/flex-loading/css/flex-loading.css">
+        <link rel="stylesheet" href="bundles/app/components/gale-infinite-scroll/css/gale-infinite-scroll.css">
+        <link rel="stylesheet" href="bundles/app/components/loading-dialog/css/loading-dialog.css">
+        <link rel="stylesheet" href="bundles/app/components/preload-image/css/preload-image.css">
+        <link rel="stylesheet" href="bundles/app/components/security/external-authenticators/css/external-authenticators.css">
+        <link rel="stylesheet" href="bundles/app/components/security/identity-box/css/identity-box.css">
+        <link rel="stylesheet" href="bundles/app/components/security/restricted-access/css/restricted-access.css">
+        <link rel="stylesheet" href="bundles/app/css/_flexbox.css">
+        <link rel="stylesheet" href="bundles/app/css/_variables.css">
+        <link rel="stylesheet" href="bundles/app/css/default.css">
+        <link rel="stylesheet" href="bundles/cssgram/cssgram.min.css">
+        <link rel="stylesheet" href="bundles/widul/components/comments-viewer/css/comments-viewer.css">
+        <link rel="stylesheet" href="bundles/widul/components/friends-selector/css/friends-selector.css">
+        <link rel="stylesheet" href="bundles/widul/components/knowledge-selector/css/knowledge-selector.css">
+        <link rel="stylesheet" href="bundles/widul/components/place-locator/css/place-locator.css">
+        <link rel="stylesheet" href="bundles/widul/components/place-viewer/css/place-viewer.css">
         <!-- endinjector -->
     </head>
 
@@ -19,8 +41,75 @@
     </body>
 
     <!-- injector:js -->
-    <script src="dist/js/bower.min.js?v=rc.9"></script>
-    <script src="dist/js/application.min.js?v=rc.9"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-gale/dist/angular-gale.js"></script>
+    <script src="bower_components/angular-gale-material/dist/angular-gale-material.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/nv.d3.js"></script>
+    <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+    <script src="bower_components/angular-facebook/lib/angular-facebook.js"></script>
+    <script src="bundles/widul/widul.js"></script>
+    <script src="bundles/angular-locale/angular-locale_es-cl.js"></script>
+    <script src="bundles/angular-locale/moment.es-CL.js"></script>
+    <script src="bundles/app/app.js"></script>
+    <script src="bundles/app/components/flex-loading/directives/flex-loading.js"></script>
+    <script src="bundles/app/components/gale-infinite-scroll/directives/gale-infinite-scroll.js"></script>
+    <script src="bundles/app/components/loading-dialog/services/$loadingDialog.js"></script>
+    <script src="bundles/app/components/loading-dialog/services/LoadingDialogController.js"></script>
+    <script src="bundles/app/components/preload-image/directives/preload-image.js"></script>
+    <script src="bundles/app/components/security/external-authenticators/external-authenticators.js"></script>
+    <script src="bundles/app/components/security/identity-box/identity-box.js"></script>
+    <script src="bundles/app/components/security/restricted-access/directives/restrictedAccessDialog.js"></script>
+    <script src="bundles/app/components/security/restricted-access/services/$restrictedAccess.js"></script>
+    <script src="bundles/app/components/upload/upload-file-service.js"></script>
+    <script src="bundles/app/components/upload/upload-file.js"></script>
+    <script src="bundles/app/js/filters/file.js"></script>
+    <script src="bundles/app/js/services/ApplicationCleanse.js"></script>
+    <script src="bundles/app/js/services/Synchronizer.js"></script>
+    <script src="bundles/app/js/services/Wizard.js"></script>
+    <script src="bundles/material-icons/material-icons.js"></script>
+    <script src="bundles/mocks/gale-mocks.js"></script>
+    <script src="bundles/mocks/js/angular-mocks.js"></script>
+    <script src="bundles/mocks/js/mocks/events.js"></script>
+    <script src="bundles/mocks/js/mocks/knowledges.js"></script>
+    <script src="bundles/mocks/js/mocks/notifications.js"></script>
+    <script src="bundles/mocks/js/mocks/places.js"></script>
+    <script src="bundles/mocks/js/mocks/security.js"></script>
+    <script src="bundles/widul/components/comments-viewer/comments-viewer.js"></script>
+    <script src="bundles/widul/components/friends-selector/services/$friends-selector-dialog.js"></script>
+    <script src="bundles/widul/components/friends-selector/services/friendsSelectorDialogController.js"></script>
+    <script src="bundles/widul/components/knowledge-selector/directives/knowledge-selector.js"></script>
+    <script src="bundles/widul/components/knowledge-selector/services/$knowledge-selector-dialog.js"></script>
+    <script src="bundles/widul/components/knowledge-selector/services/knowledgeSelectorDialogController.js"></script>
+    <script src="bundles/widul/components/place-locator/directives/google-map.js"></script>
+    <script src="bundles/widul/components/place-locator/directives/place-locator.js"></script>
+    <script src="bundles/widul/components/place-locator/services/$place-locator-dialog.js"></script>
+    <script src="bundles/widul/components/place-locator/services/PlaceLocatorDialogController.js"></script>
+    <script src="bundles/widul/components/place-locator/services/googleMapService.js"></script>
+    <script src="bundles/widul/components/place-viewer/place-viewer.js"></script>
+    <script src="views/boot/index.js"></script>
+    <script src="views/error/404.js"></script>
+    <script src="views/events/create/step-1.js"></script>
+    <script src="views/events/view/dialogs/eventDetails.js"></script>
+    <script src="views/events/view/resume/index.js"></script>
+    <script src="views/home/index.js"></script>
+    <script src="views/layouts/exception.js"></script>
+    <script src="views/layouts/private.js"></script>
+    <script src="views/layouts/public.js"></script>
+    <script src="views/security/identity/login.js"></script>
+    <script src="views/security/identity/logout.js"></script>
+    <script src="views/security/identity/social.js"></script>
+    <script src="application.js"></script>
+    <script src="config/config.js"></script>
     <!-- endinjector -->
 
 </html>
