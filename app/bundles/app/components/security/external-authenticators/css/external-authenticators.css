@@ -1,6 +1,9 @@
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 external-authenticators {
   display: block; }
   external-authenticators button.md-button {
@@ -16,7 +19,7 @@ external-authenticators {
     external-authenticators button.md-button.google {
       background-color: #DC4E41 !important; }
 
-@media only screen and (max-width: 800px) {
+@media (max-width: 800px) {
   external-authenticators button.md-button > md-icon {
     margin-right: 8px; }
   external-authenticators button.md-button > span {

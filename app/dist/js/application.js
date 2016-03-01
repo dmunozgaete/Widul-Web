@@ -5692,7 +5692,7 @@ angular.module('widul.components')
                     var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
 
                     //If no accounts finded, but is an Email
-                    if (data.items.length == 0 && EMAIL_REGEXP.test(query))
+                    if (data.items.length == 0 && EMAIL_REGEXP.test(query.toLowerCase()))
                     {
 
                         //Organic Growth
@@ -7214,6 +7214,7 @@ angular.module('widul.components')
                 .then(function(guests)
                 {
                     $loadingDialog.show(ev);
+
                     var invitations = _.pluck(guests, 'token');
 
                     $Api.create("Events/{event}/Invitations",
@@ -7966,7 +7967,7 @@ angular.module('App', [
     //Application data
     application:
     {
-        version: "1.0.0-rc.9",
+        version: "1.0.1-rc.1",
         environment: "qas",
         language: "es",
         name: "Widul",

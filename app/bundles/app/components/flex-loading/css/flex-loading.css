@@ -1,6 +1,9 @@
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 flex-loading {
   display: -webkit-box;
   display: -webkit-flex;
@@ -40,5 +43,48 @@ flex-loading {
     font-size: 0.9em;
     line-height: 1em;
     text-align: left; }
+
+/* 
+    RESPONSIVE 
+*/
+@media (max-width: 800px) {
+  flex-loading {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    -moz-justify-content: flex-start;
+    justify-content: flex-start;
+    margin-top: 1em; }
+    flex-loading > div {
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -webkit-flex-direction: column !important;
+      -moz-flex-direction: column !important;
+      -ms-flex-direction: column !important;
+      flex-direction: column !important;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      align-items: center; }
+      flex-loading > div > div:first-child img {
+        height: 5em;
+        width: 5em;
+        margin-right: 0;
+        margin-bottom: 1em; }
+      flex-loading > div > div:last-child {
+        font-size: 0.9em;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center; }
+        flex-loading > div > div:last-child > div.legend {
+          text-align: center; } }
 
 /*# sourceMappingURL=flex-loading.css.map */

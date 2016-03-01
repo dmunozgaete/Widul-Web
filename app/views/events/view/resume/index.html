@@ -18,7 +18,6 @@
         <md-content>
             <place-viewer ng-if="panel == 'PLAC'" place="model.event.place.token">
             </place-viewer>
-            
         </md-content>
     </md-sidenav>
     <!-- RIGHT SIDENAV (MAP)-->
@@ -274,10 +273,16 @@
                         <md-icon class="md-primary text" md-svg-icon="social:share"></md-icon>
                         <span>Compartir</span>
                     </div>
+                    <div flex layout="column" layout-align="center center" ng-click="invite($event)">
+                        <md-icon class="md-primary text" md-svg-icon="communication:email"></md-icon>
+                        <span>Invitar</span>
+                    </div>
+                    <!--
                     <div flex layout="column" layout-align="center center" ng-click="showComments(model.event)">
                         <md-icon class="md-primary text" md-svg-icon="communication:message"></md-icon>
                         <span>{{model.event.comments.total}}&nbsp;{{model.event.comments.total > 1 ? 'Comentarios': 'Comentario'}}</span>
                     </div>
+                    -->
                     <div flex layout="column" layout-align="center center" ng-click="showMap(model.event.place)">
                         <md-icon class="md-primary text" md-svg-icon="maps:map"></md-icon>
                         <span>Ver Lugar</span>

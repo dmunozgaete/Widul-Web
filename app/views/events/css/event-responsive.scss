@@ -16,7 +16,7 @@ ROUTE:  /app/events/*
         VIEW:   Event Resume Page
         ROUTE:  /app/events/view/resume
         -------------------------*/
-        @media only screen and (max-width: 800px) {
+        @include breakpoint(mobile) {
             &.resume {
                 > md-sidenav {
                     /*--------------------------

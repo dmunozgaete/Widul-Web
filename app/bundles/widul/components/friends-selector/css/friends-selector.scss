@@ -203,3 +203,43 @@ md-dialog.friends-selector-dialog {
         }
     }
 }
+
+
+/*------------------------- 
+RESPONSIVE 
+-------------------------*/
+
+@include breakpoint(mobile) {
+    md-dialog.friends-selector-dialog {
+        position: absolute;
+        top: 4%;
+        left: 3%;
+        right: 3%;
+        height: 95%;
+        min-width: 240px;
+        max-width: 93%;
+        max-height: 90%;
+        md-dialog-content {
+            min-width: 100%;
+            max-width: 700px;
+            height: 430px;
+            > md-content {
+                > div {
+                    display: block;
+                    > div {
+                        &:first-child {
+                            max-width: 100%;
+                            md-autocomplete {
+                                font-size: 0.8em;
+                                md-input-container {
+                                    padding-bottom: 10px;
+                                    margin-top: 17px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

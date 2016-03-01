@@ -36,10 +36,10 @@
                             </md-item-template>
                         </md-autocomplete>
                         <!-- FRIENDS -->
-                        <span class="md-primary text title">
+                        <span class="md-primary text title hide-on-responsive">
                             Sugeridos ({{pagination.total()}}):
                         </span>
-                        <friends>
+                        <friends class="hide-on-responsive">
                             <gale-infinite-scroll can-load-more="hasNext()" on-infinite="nextPage()" distance="3%">
                                 <friend ng-repeat="friend in model.friends">
                                     <div ng-click="toggleFriend(friend)">

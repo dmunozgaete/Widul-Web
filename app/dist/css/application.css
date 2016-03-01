@@ -1,6 +1,9 @@
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 flex-loading {
   display: -webkit-box;
   display: -webkit-flex;
@@ -41,6 +44,49 @@ flex-loading {
     line-height: 1em;
     text-align: left; }
 
+/* 
+    RESPONSIVE 
+*/
+@media (max-width: 800px) {
+  flex-loading {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    -moz-justify-content: flex-start;
+    justify-content: flex-start;
+    margin-top: 1em; }
+    flex-loading > div {
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -webkit-flex-direction: column !important;
+      -moz-flex-direction: column !important;
+      -ms-flex-direction: column !important;
+      flex-direction: column !important;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      align-items: center; }
+      flex-loading > div > div:first-child img {
+        height: 5em;
+        width: 5em;
+        margin-right: 0;
+        margin-bottom: 1em; }
+      flex-loading > div > div:last-child {
+        font-size: 0.9em;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center; }
+        flex-loading > div > div:last-child > div.legend {
+          text-align: center; } }
+
 /*# sourceMappingURL=flex-loading.css.map */
 
 /* 
@@ -59,11 +105,57 @@ gale-infinite-scroll {
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 md-dialog.loading-dialog {
   height: 150px;
   width: 450px; }
   md-dialog.loading-dialog > div {
     height: 100%; }
+
+/* 
+    RESPONSIVE 
+*/
+@media (max-width: 800px) {
+  md-dialog.loading-dialog {
+    height: 200px;
+    width: 450px; }
+    md-dialog.loading-dialog flex-loading {
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      -webkit-justify-content: flex-start;
+      -moz-justify-content: flex-start;
+      justify-content: flex-start;
+      margin-top: 1em; }
+      md-dialog.loading-dialog flex-loading > div {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center; }
+        md-dialog.loading-dialog flex-loading > div > div:first-child img {
+          height: 5em;
+          width: 5em;
+          margin-right: 0; }
+        md-dialog.loading-dialog flex-loading > div > div:last-child {
+          font-size: 0.9em;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          -moz-align-items: center;
+          align-items: center; } }
 
 /*# sourceMappingURL=loading-dialog.css.map */
 
@@ -127,6 +219,9 @@ preload-image {
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 external-authenticators {
   display: block; }
   external-authenticators button.md-button {
@@ -142,7 +237,7 @@ external-authenticators {
     external-authenticators button.md-button.google {
       background-color: #DC4E41 !important; }
 
-@media only screen and (max-width: 800px) {
+@media (max-width: 800px) {
   external-authenticators button.md-button > md-icon {
     margin-right: 8px; }
   external-authenticators button.md-button > span {
@@ -214,6 +309,9 @@ identity-box {
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 restricted-access-dialog {
   position: fixed;
   top: 0px;
@@ -278,7 +376,7 @@ restricted-access-dialog {
   restricted-access-dialog.ng-hide {
     animation: 0.45s fadeIn linear; }
 
-@media only screen and (max-width: 800px) {
+@media (max-width: 800px) {
   restricted-access-dialog > div.login-box {
     position: fixed;
     top: 20%;
@@ -295,6 +393,9 @@ restricted-access-dialog {
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 
 /*# sourceMappingURL=_variables.css.map */
 
@@ -447,6 +548,9 @@ comments-viewer {
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 friend.autocomplete {
   position: relative;
   display: -webkit-box;
@@ -643,6 +747,33 @@ md-dialog.friends-selector-dialog md-dialog-actions {
   md-dialog.friends-selector-dialog md-dialog-actions button {
     padding: 0px 16px; }
 
+/*------------------------- 
+RESPONSIVE 
+-------------------------*/
+@media (max-width: 800px) {
+  md-dialog.friends-selector-dialog {
+    position: absolute;
+    top: 4%;
+    left: 3%;
+    right: 3%;
+    height: 95%;
+    min-width: 240px;
+    max-width: 93%;
+    max-height: 90%; }
+    md-dialog.friends-selector-dialog md-dialog-content {
+      min-width: 100%;
+      max-width: 700px;
+      height: 430px; }
+      md-dialog.friends-selector-dialog md-dialog-content > md-content > div {
+        display: block; }
+        md-dialog.friends-selector-dialog md-dialog-content > md-content > div > div:first-child {
+          max-width: 100%; }
+          md-dialog.friends-selector-dialog md-dialog-content > md-content > div > div:first-child md-autocomplete {
+            font-size: 0.8em; }
+            md-dialog.friends-selector-dialog md-dialog-content > md-content > div > div:first-child md-autocomplete md-input-container {
+              padding-bottom: 10px;
+              margin-top: 17px; } }
+
 /*# sourceMappingURL=friends-selector.css.map */
 
 /* 
@@ -809,6 +940,9 @@ place-viewer {
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 /*------------------------- 
 VIEW:   Events Module
 ROUTE:  /app/events/*
@@ -823,7 +957,7 @@ ROUTE:  /app/events/*
     VIEW:   Event Resume Page
     ROUTE:  /app/events/view/resume
     -------------------------*/ }
-    @media only screen and (max-width: 800px) {
+    @media (max-width: 800px) {
       .events.view.resume > md-sidenav {
         /*--------------------------
         MAPS SIDENAV && COMMENTS SIDENAV
