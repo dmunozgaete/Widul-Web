@@ -7,3 +7,34 @@ md-dialog.loading-dialog {
         height: 100%;
     }
 }
+/* 
+    RESPONSIVE 
+*/
+@include breakpoint(mobile) {
+    md-dialog.loading-dialog {
+        height: 200px;
+        width: 450px;
+        flex-loading {
+            @include justify-content(flex-start);
+            margin-top: 1em;
+            > div {
+                @include flex-direction(column);
+                @include justify-content(center);
+                @include align-items(center);
+                > div {
+                    &:first-child {
+                        img {
+                            height: 5em;
+                            width: 5em;
+                            margin-right: 0;
+                        }
+                    }
+                    &:last-child {
+                        font-size: 0.9em;
+                        @include align-items(center);
+                    }
+                }
+            }
+        }
+    }
+}

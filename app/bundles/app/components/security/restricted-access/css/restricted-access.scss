@@ -61,7 +61,7 @@ restricted-access-dialog {
     }
 }
 
-@media only screen and (max-width: 800px) {
+@include breakpoint(mobile) {
     restricted-access-dialog {
         > div.login-box {
             position: fixed;

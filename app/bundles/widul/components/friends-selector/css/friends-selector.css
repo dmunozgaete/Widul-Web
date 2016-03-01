@@ -1,6 +1,9 @@
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
 friend.autocomplete {
   position: relative;
   display: -webkit-box;
@@ -196,5 +199,32 @@ md-dialog.friends-selector-dialog md-dialog-actions {
   padding: 8px 16px; }
   md-dialog.friends-selector-dialog md-dialog-actions button {
     padding: 0px 16px; }
+
+/*------------------------- 
+RESPONSIVE 
+-------------------------*/
+@media (max-width: 800px) {
+  md-dialog.friends-selector-dialog {
+    position: absolute;
+    top: 4%;
+    left: 3%;
+    right: 3%;
+    height: 95%;
+    min-width: 240px;
+    max-width: 93%;
+    max-height: 90%; }
+    md-dialog.friends-selector-dialog md-dialog-content {
+      min-width: 100%;
+      max-width: 700px;
+      height: 430px; }
+      md-dialog.friends-selector-dialog md-dialog-content > md-content > div {
+        display: block; }
+        md-dialog.friends-selector-dialog md-dialog-content > md-content > div > div:first-child {
+          max-width: 100%; }
+          md-dialog.friends-selector-dialog md-dialog-content > md-content > div > div:first-child md-autocomplete {
+            font-size: 0.8em; }
+            md-dialog.friends-selector-dialog md-dialog-content > md-content > div > div:first-child md-autocomplete md-input-container {
+              padding-bottom: 10px;
+              margin-top: 17px; } }
 
 /*# sourceMappingURL=friends-selector.css.map */

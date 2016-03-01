@@ -28,3 +28,37 @@ flex-loading {
         text-align: left;
     }
 }
+
+
+/* 
+    RESPONSIVE 
+*/
+
+@include breakpoint(mobile) {
+    flex-loading {
+        @include justify-content(flex-start);
+        margin-top: 1em;
+        > div {
+            @include flex-direction(column !important);
+            @include justify-content(center);
+            @include align-items(center);
+            > div {
+                &:first-child {
+                    img {
+                        height: 5em;
+                        width: 5em;
+                        margin-right: 0;
+                        margin-bottom: 1em;
+                    }
+                }
+                &:last-child {
+                    font-size: 0.9em;
+                    @include align-items(center);
+                    > div.legend {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

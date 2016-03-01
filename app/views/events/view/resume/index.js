@@ -121,6 +121,7 @@ angular.route('public.events/view/resume/index/:token?forceAuthentication', func
                 .then(function(guests)
                 {
                     $loadingDialog.show(ev);
+
                     var invitations = _.pluck(guests, 'token');
 
                     $Api.create("Events/{event}/Invitations",
