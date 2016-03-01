@@ -87,7 +87,7 @@ angular.module('app.components')
                                     {
                                         //TODO: Enable Setting Up the Email, but how =/ (a dialog??)
                                         //Meanwhile , Send a email to hola@widul.com
-                                        data.email = "hola@widul.com":
+                                        data.email = "hola@widul.com";
                                     }
 
                                     $Api.create("/Security/Oauth/Facebook", data)
