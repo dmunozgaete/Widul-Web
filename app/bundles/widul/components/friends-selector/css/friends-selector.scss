@@ -211,17 +211,13 @@ RESPONSIVE
 
 @include breakpoint(mobile) {
     md-dialog.friends-selector-dialog {
-        position: absolute;
-        top: 4%;
-        left: 3%;
-        right: 3%;
         height: 95%;
         min-width: 240px;
         max-width: 93%;
         max-height: 90%;
+        width: 96%;
         md-dialog-content {
             min-width: 100%;
-            max-width: 700px;
             height: 430px;
             > md-content {
                 > div {
