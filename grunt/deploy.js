@@ -4,10 +4,11 @@
 // 
 // Description: Optimize Files for Production
 //------------------------------------------------------
-module.exports = function(grunt, options) {
+module.exports = function(grunt, options)
+{
     var util = require('util');
     var tasks = [];
-    
+
     tasks.push('sync');
     tasks.push('clean:dist');
     tasks.push('bower_concat');
@@ -15,11 +16,12 @@ module.exports = function(grunt, options) {
     tasks.push('clean:post');
     tasks.push('uglify');
     tasks.push('injector:production');
-         
+    tasks.push('cachebreaker:production');
     //RUN CONNECT
     tasks.push('connect:production');
 
-    var verbose = function() {
+    var verbose = function()
+    {
         //Clear Console
         util.print("\u001b[2J\u001b[0;0H");
         util.print("\u001b[2J\u001b[0;0H");
@@ -42,7 +44,8 @@ module.exports = function(grunt, options) {
         grunt.log.ok("Deploying...settings thing's up");
         grunt.log.ok("-------------------------------------------------------------------------");
         //Other TASKS
-        for (var task in tasks) {
+        for (var task in tasks)
+        {
             grunt.task.run(tasks[task]);
         }
     };
