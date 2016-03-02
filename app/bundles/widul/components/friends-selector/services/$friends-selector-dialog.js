@@ -2,8 +2,6 @@
 angular.module('widul.components')
     .provider('$friendsSelectorDialog', function()
     {
-        var $ref = this;
-
         this.$get = function($log, $q, $mdDialog)
         {
             var self = {};
