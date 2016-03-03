@@ -22,7 +22,7 @@ angular.module('app.components')
             onChangeState: '=' //Callback to send feedback 
         },
         templateUrl: 'bundles/app/components/security/external-authenticators/external-authenticators.tpl.html',
-        controller: function($scope, $element, $q, $Configuration, $Identity, Facebook, $Api)
+        controller: function($scope, $element, $q, $Configuration, $Identity, Facebook, $Api, $window, $location)
         {
 
             $scope.signature = $Configuration.get("application");
@@ -66,52 +66,92 @@ angular.module('app.components')
                 switch (type)
                 {
                     case "facebook":
-                        Facebook.login(function(response)
+                        //Check if need a Mobile Autentication
+                        if ($window.innerWidth <= 800)
                         {
-                            //All right??
-                            if (response.status === "connected")
-                            {
-                                var accessToken = response.authResponse.accessToken;
 
-                                Facebook.api("me/?fields=id,email,name,picture.type(large),location", function(data)
+                            var facebook_id = "1559148417736822";
+
+                            var returning_url = $location.url();
+                            var redirect_uri = "{0}://{1}{2}/?oauth-flow=facebook".format([
+                                $location.protocol(),
+                                $location.host(),
+                                ($location.port() ? ":" + $location.port() : "")
+                            ]);
+
+                            //Mobile Authentication Flow
+                            //Redirect URL
+                            $window.document.location.href = [
+                                "https://www.facebook.com/dialog/oauth",
+                                "?response_type=token",
+                                "&scope=email,user_friends",
+                                "&client_id=",
+                                facebook_id,
+                                "&redirect_uri=",
+                                redirect_uri,
+                                "&state=",
+                                returning_url
+                            ].join("");
+
+                        }
+                        else
+                        {
+                            //Web Authentication Flow
+                            //Web Popup
+                            Facebook.login(function(response)
+                            {
+                                //All right??
+                                if (response.status === "connected")
                                 {
+                                    var accessToken = response.authResponse.accessToken;
 
-                                    //GO TO API, CHECK THE TOKEN ,
-                                    // AND IF IS CORRECT , CREATE OR GET THE USER
-                                    data.accessToken = accessToken;
-                                    data.image = data.picture.data.url;
-
-                                    delete data.picture; //Remove this =)
-
-                                    if (!data.email)
+                                    Facebook.api("me/?fields=id,email,name,picture.type(large),location", function(data)
                                     {
-                                        //TODO: Enable Setting Up the Email, but how =/ (a dialog??)
-                                        //Meanwhile , Send a email to hola@widul.com
-                                        data.email = "hola@widul.com";
-                                    }
 
-                                    $Api.create("/Security/Oauth/Facebook", data)
-                                        .success(function(oauthToken)
+                                        //GO TO API, CHECK THE TOKEN ,
+                                        // AND IF IS CORRECT , CREATE OR GET THE USER
+                                        data.accessToken = accessToken;
+                                        data.image = data.picture.data.url;
+
+                                        delete data.picture; //Remove this =)
+
+                                        if (!data.email)
                                         {
-                                            //Authenticated
-                                            $Identity.logIn(oauthToken);
+                                            //TODO: Enable Setting Up the Email, but how =/ (a dialog??)
+                                            //Meanwhile , Send a email to hola@widul.com
+                                            data.email = "hola@widul.com";
+                                        }
 
-                                            //Resolve Callback
-                                            $scope.onAuthenticate(data);
+                                        $Api.create("/Security/Oauth/Facebook", data)
+                                            .success(function(oauthToken)
+                                            {
+                                                //Authenticated
+                                                $Identity.logIn(oauthToken);
 
-                                        }).error(throwError);
+                                                //Resolve Callback
+                                                $scope.onAuthenticate(data);
 
-                                });
+                                            }).error(throwError);
 
-                            }
-                            else
+
+
+                                    });
+
+                                }
+                                else
+                                {
+                                    throwError("FB Error: " + response.status);
+                                }
+
+                            },
                             {
-                                throwError("FB Error: " + response.status);
-                            }
-                        },
-                        {
-                            scope: 'email,user_friends'
-                        });
+                                scope: 'email,user_friends'
+                            });
+
+                        }
+
+
+
                         break;
                     case "google":
                         break;

@@ -612,7 +612,7 @@ angular.module('app.components')
             onChangeState: '=' //Callback to send feedback 
         },
         templateUrl: 'bundles/app/components/security/external-authenticators/external-authenticators.tpl.html',
-        controller: function($scope, $element, $q, $Configuration, $Identity, Facebook, $Api)
+        controller: function($scope, $element, $q, $Configuration, $Identity, Facebook, $Api, $window, $location)
         {
 
             $scope.signature = $Configuration.get("application");
@@ -656,52 +656,92 @@ angular.module('app.components')
                 switch (type)
                 {
                     case "facebook":
-                        Facebook.login(function(response)
+                        //Check if need a Mobile Autentication
+                        if ($window.innerWidth <= 800)
                         {
-                            //All right??
-                            if (response.status === "connected")
-                            {
-                                var accessToken = response.authResponse.accessToken;
 
-                                Facebook.api("me/?fields=id,email,name,picture.type(large),location", function(data)
+                            var facebook_id = "1559148417736822";
+
+                            var returning_url = $location.url();
+                            var redirect_uri = "{0}://{1}{2}/?oauth-flow=facebook".format([
+                                $location.protocol(),
+                                $location.host(),
+                                ($location.port() ? ":" + $location.port() : "")
+                            ]);
+
+                            //Mobile Authentication Flow
+                            //Redirect URL
+                            $window.document.location.href = [
+                                "https://www.facebook.com/dialog/oauth",
+                                "?response_type=token",
+                                "&scope=email,user_friends",
+                                "&client_id=",
+                                facebook_id,
+                                "&redirect_uri=",
+                                redirect_uri,
+                                "&state=",
+                                returning_url
+                            ].join("");
+
+                        }
+                        else
+                        {
+                            //Web Authentication Flow
+                            //Web Popup
+                            Facebook.login(function(response)
+                            {
+                                //All right??
+                                if (response.status === "connected")
                                 {
+                                    var accessToken = response.authResponse.accessToken;
 
-                                    //GO TO API, CHECK THE TOKEN ,
-                                    // AND IF IS CORRECT , CREATE OR GET THE USER
-                                    data.accessToken = accessToken;
-                                    data.image = data.picture.data.url;
-
-                                    delete data.picture; //Remove this =)
-
-                                    if (!data.email)
+                                    Facebook.api("me/?fields=id,email,name,picture.type(large),location", function(data)
                                     {
-                                        //TODO: Enable Setting Up the Email, but how =/ (a dialog??)
-                                        //Meanwhile , Send a email to hola@widul.com
-                                        data.email = "hola@widul.com";
-                                    }
 
-                                    $Api.create("/Security/Oauth/Facebook", data)
-                                        .success(function(oauthToken)
+                                        //GO TO API, CHECK THE TOKEN ,
+                                        // AND IF IS CORRECT , CREATE OR GET THE USER
+                                        data.accessToken = accessToken;
+                                        data.image = data.picture.data.url;
+
+                                        delete data.picture; //Remove this =)
+
+                                        if (!data.email)
                                         {
-                                            //Authenticated
-                                            $Identity.logIn(oauthToken);
+                                            //TODO: Enable Setting Up the Email, but how =/ (a dialog??)
+                                            //Meanwhile , Send a email to hola@widul.com
+                                            data.email = "hola@widul.com";
+                                        }
 
-                                            //Resolve Callback
-                                            $scope.onAuthenticate(data);
+                                        $Api.create("/Security/Oauth/Facebook", data)
+                                            .success(function(oauthToken)
+                                            {
+                                                //Authenticated
+                                                $Identity.logIn(oauthToken);
 
-                                        }).error(throwError);
+                                                //Resolve Callback
+                                                $scope.onAuthenticate(data);
 
-                                });
+                                            }).error(throwError);
 
-                            }
-                            else
+
+
+                                    });
+
+                                }
+                                else
+                                {
+                                    throwError("FB Error: " + response.status);
+                                }
+
+                            },
                             {
-                                throwError("FB Error: " + response.status);
-                            }
-                        },
-                        {
-                            scope: 'email,user_friends'
-                        });
+                                scope: 'email,user_friends'
+                            });
+
+                        }
+
+
+
                         break;
                     case "google":
                         break;
@@ -716,6 +756,104 @@ angular.module('app.components')
         }
     };
 });
+;/*------------------------------------------------------
+ Company:           Valentys Ltda.
+ Author:            David Gaete <dmunozgaete@gmail.com> (https://github.com/dmunozgaete)
+ 
+ Description:       Web Is Mobile, the authentication work better in manual
+                    flow authentication for Facebook
+ Github:            https://github.com/dmunozgaete/angular-gale
+
+ Versión:           1.0.0-rc.1
+ Build Date:        2016-01-22 3:20:29
+------------------------------------------------------*/
+
+angular.module('app.components')
+    .controller("FacebookRedirectController", function($scope, $Identity, $Api, Facebook, $window, $location)
+    {
+
+        var parameters = $location.search();
+
+        if (parameters.access_token)
+        {
+            var accessToken = parameters.access_token;
+
+            Facebook.api("me/?fields=id,email,name,picture.type(large),location",
+                {
+                    access_token: accessToken
+                },
+                function(data)
+                {
+                    //GO TO API, CHECK THE TOKEN ,
+                    // AND IF IS CORRECT , CREATE OR GET THE USER
+                    data.accessToken = accessToken;
+                    data.image = data.picture.data.url;
+                    delete data.picture; //Remove this =)
+
+                    if (!data.email)
+                    {
+                        //TODO: Enable Setting Up the Email, but how =/ (a dialog??)
+                        //Meanwhile , Send a email to hola@widul.com
+                        data.email = "hola@widul.com";
+                    }
+
+                    $Api.create("/Security/Oauth/Facebook", data)
+                        .success(function(oauthToken)
+                        {
+                            //Authenticated
+                            $Identity.logIn(oauthToken);
+
+                            var redirect_uri = "{0}://{1}{2}/#{3}".format([
+                                $location.protocol(),
+                                $location.host(),
+                                ($location.port() ? ":" + $location.port() : ""),
+                                parameters.url
+                            ]);
+
+                            $window.location.href = redirect_uri;
+
+
+                        });
+                });
+
+
+        }
+    })
+
+.run(function($location)
+{
+    //CHECK IF THE FACEBOOK FLOW , HAS RETURNING URL =)!
+    var path = $location.absUrl();
+    if (path.indexOf("oauth-flow=facebook") >= 0)
+    {
+        //Prepare the path for parse
+        var match_uri = "=facebook#/state=";
+        var returningUrl = path.substring(path.indexOf(match_uri) + match_uri.length);
+        $location.url("/public/fbauth?url=" + returningUrl);
+    }
+
+})
+
+.config(function($stateProvider, $locationProvider)
+{
+
+    $stateProvider
+        .state("public.fbauth",
+        {
+            url: '/fbauth',
+            views:
+            {
+                "content":
+                {
+                    templateUrl: 'bundles/app/components/security/external-authenticators/oauth-flows/facebook-redirect.html',
+                    controller: 'FacebookRedirectController'
+                }
+            }
+        });
+
+
+
+})
 ;/*------------------------------------------------------
  Company:           Valentys Ltda.
  Author:            David Gaete <dmunozgaete@gmail.com> (https://github.com/dmunozgaete)
@@ -6598,8 +6736,6 @@ angular.module('widul.components')
     $location
 )
 {
-
-
     var stamps = $Configuration.get("localstorageStamps");
     var new_version_defer = $q.defer();
 
@@ -6610,7 +6746,6 @@ angular.module('widul.components')
 
             // --------------------------------
             var path = $location.search().path;
-            console.log(path);
             //Reset when path are in "boot" or "exception"
             if (path.length <= 2 ||
                 path.indexOf("boot") === 0 ||
@@ -7828,7 +7963,6 @@ angular.module('App', [
     .run(function($location)
     {
         //REDIRECT TO MAIN HOME (ONLY WHEN NO HAVE PATH)
-        
         var currentPath = $location.url();
         var boot = $location.path("public/boot").search(
         {
@@ -7972,17 +8106,15 @@ angular.module('App', [
     //Application data
     application:
     {
-        version: "1.0.1-rc.2",
+        version: "1.0.1-rc.4",
         environment: "qas",
         language: "es",
         name: "Widul",
         home: "public/home"
-        
     },
 
     on_build_new_version: function(newVersion, oldVersion)
     {
-
         //When has new Version , set the mark in the localstoage 
         localStorage.setItem("$_new_version", 1);
     },
@@ -7991,5 +8123,4 @@ angular.module('App', [
     {
         new_version: "$_new_version"
     }
-
 });

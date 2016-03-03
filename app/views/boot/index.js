@@ -9,8 +9,6 @@ angular.route('public.boot/index', function(
     $location
 )
 {
-
-
     var stamps = $Configuration.get("localstorageStamps");
     var new_version_defer = $q.defer();
 
@@ -21,7 +19,6 @@ angular.route('public.boot/index', function(
 
             // --------------------------------
             var path = $location.search().path;
-            console.log(path);
             //Reset when path are in "boot" or "exception"
             if (path.length <= 2 ||
                 path.indexOf("boot") === 0 ||
