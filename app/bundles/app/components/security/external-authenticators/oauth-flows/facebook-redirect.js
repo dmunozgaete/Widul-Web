@@ -14,13 +14,13 @@ angular.module('app.components')
     .controller("FacebookRedirectController", function($scope, $Identity, $Api, Facebook, $window, $location)
     {
 
-        var redirect = function()
+        var redirect = function(local_url)
         {
             var redirect_uri = "{0}://{1}{2}/#{3}".format([
                 $location.protocol(),
                 $location.host(),
                 ($location.port() ? ":" + $location.port() : ""),
-                parameters.url
+                local_url
             ]);
 
             $window.location.href = redirect_uri;
@@ -58,16 +58,18 @@ angular.module('app.components')
                             //Authenticated
                             $Identity.logIn(oauthToken);
 
-                            redirect();
+                            redirect(parameters.url);
 
                         });
                 });
         }
         else
         {
+
+            //http://widulapp.azurewebsites.net/?oauth-flow=facebook&error=access_denied&error_code=200&error_description=Permissions+error&error_reason=user_denied&state=%2Fpublic%2Fevents%2Fview%2Fresume%2Findex%2F81645f35-8dbd-49fd-9383-6d7a5ab66a3b#_=_
             //TODO: DENIED ACCESS
             //SHOW ERROR
-            redirect();
+            redirect(parameters.state);
         }
     })
 
