@@ -14,6 +14,19 @@ angular.module('app.components')
     .controller("FacebookRedirectController", function($scope, $Identity, $Api, Facebook, $window, $location)
     {
 
+        var redirect = function()
+        {
+            var redirect_uri = "{0}://{1}{2}/#{3}".format([
+                $location.protocol(),
+                $location.host(),
+                ($location.port() ? ":" + $location.port() : ""),
+                parameters.url
+            ]);
+
+            $window.location.href = redirect_uri;
+
+        };
+
         var parameters = $location.search();
 
         if (parameters.access_token)
@@ -45,20 +58,16 @@ angular.module('app.components')
                             //Authenticated
                             $Identity.logIn(oauthToken);
 
-                            var redirect_uri = "{0}://{1}{2}/#{3}".format([
-                                $location.protocol(),
-                                $location.host(),
-                                ($location.port() ? ":" + $location.port() : ""),
-                                parameters.url
-                            ]);
-
-                            $window.location.href = redirect_uri;
-
+                            redirect();
 
                         });
                 });
-
-
+        }
+        else
+        {
+            //TODO: DENIED ACCESS
+            //SHOW ERROR
+            redirect();
         }
     })
 
