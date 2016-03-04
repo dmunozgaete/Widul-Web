@@ -76482,7 +76482,7 @@ provides: [facebook]
  Github:            https://github.com/dmunozgaete/angular-gale
 
  Versión:           1.0.0-rc.8
- Build Date:        2016-02-08 1:50:20
+ Build Date:        2016-03-01 13:32:29
 ------------------------------------------------------*/
 
 (function(angular)
@@ -76966,7 +76966,7 @@ angular.module('gale.directives')
     };
 }]);
 ;angular.module('gale.directives')
-    .directive('ngNumber', ['$filter', '$locale', '$mdConstant', function($filter, $locale, $mdConstant)
+    .directive('ngNumber', ['$filter', '$locale', '$mdConstant', '$log', function($filter, $locale, $mdConstant, $log)
     {
         return {
             require: 'ngModel',
@@ -77085,10 +77085,15 @@ angular.module('gale.directives')
 
                 //------------------------------------------------------------
 
+                var isUndefinedOrNull = function(val)
+                {
+                    return angular.isUndefined(val) || val === null;
+                };
+
                 //CONVERT TO LOCALE FORMAT NUMBER
                 var toHuman = function(value)
                 {
-                    if (value)
+                    if (!isUndefinedOrNull(value))
                     {
                         return $filter(filter)(ctrl.$modelValue, configuration.decimals);
                     }
@@ -77099,7 +77104,7 @@ angular.module('gale.directives')
                 {
                     if (value)
                     {
-                        var regExp = new RegExp("[" + $locale.NUMBER_FORMATS.GROUP_SEP + "]");
+                        var regExp = new RegExp("[" + $locale.NUMBER_FORMATS.GROUP_SEP + "]", "ig");
                         value = value.replace(regExp, "");
 
                         return value;
@@ -77109,6 +77114,7 @@ angular.module('gale.directives')
                 //CONVERT TO NUMBER (FOR MODEL VALUE)
                 var toNumber = function(value)
                 {
+                    $log.debug(value);
                     if (value)
                     {
                         var regExp = new RegExp("[" + $locale.NUMBER_FORMATS.DECIMAL_SEP + "]");
@@ -77117,7 +77123,6 @@ angular.module('gale.directives')
                         return value;
                     }
                 };
-
 
                 ctrl.$validators.validLength = function(modelValue, viewValue)
                 {
@@ -77897,6 +77902,8 @@ angular.module('gale.directives')
         var _issuerEndpoint = null;
         var _logInRoute = null;
         var _enable = false;
+        var _redirectToLoginOnLogout = true;
+
         var _whiteListResolver = function()
         {
             return false; //Block All by default
@@ -77912,6 +77919,14 @@ angular.module('gale.directives')
             _logInRoute = value;
             return $ref;
         };
+
+        this.redirectToLoginOnLogout = function(value)
+        {
+            _redirectToLoginOnLogout = value;
+            return $ref;
+        };
+
+
         this.enable = function()
         {
             _enable = true;
@@ -77950,7 +77965,7 @@ angular.module('gale.directives')
             return _authorizeResolver;
         }
 
-        this.$get = ['$rootScope', '$Api', '$state', '$LocalStorage', function($rootScope, $Api, $state, $LocalStorage)
+        this.$get = ['$rootScope', '$Api', '$state', '$LocalStorage', '$q', function($rootScope, $Api, $state, $LocalStorage, $q)
         {
             var _token_key = "$_identity";
             var _properties = {};
@@ -77969,7 +77984,8 @@ angular.module('gale.directives')
                 _authResponse = null;
                 $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
 
-                if (settings.redirectToLoginPage)
+                //Redirect to login Page when Logout??
+                if (_redirectToLoginOnLogout)
                 {
                     $state.go(getLogInRoute());
                 }
@@ -78033,18 +78049,14 @@ angular.module('gale.directives')
                     throw Error("OAUTHTOKEN_BADFORMAT: token_type (string)");
                 }
 
-                _login(oauthToken);
+                return _login(oauthToken);
             };
 
-            self.logOut = function(settings)
+            self.logOut = function()
             {
-                angular.extend(
-                {
-                    redirectToLoginPage: true
-                }, settings);
-
-                _logout(settings);
+                return _logout();
             };
+
             self.getCurrent = function()
             {
                 //Get Payload
@@ -78081,11 +78093,13 @@ angular.module('gale.directives')
                 $Api.$on("before-send", function(headers)
                 {
                     //SET AUTHORIZATION HEADER IF USER IS AUTHENTICATED
-                    if (self.isAuthenticated())
+                    // IF CUSTOM HEADER IS SENDED, CHECK IF AUTH WAS NOT OVERRIDE
+                    if (self.isAuthenticated() && !headers.Authorization)
                     {
                         var jwt = _authResponse;
                         headers.Authorization = jwt.token_type + " " + jwt.access_token;
                     }
+                    
                 });
                 $Api.$on("error", function(data, status)
                 {
