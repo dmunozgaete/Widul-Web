@@ -17,7 +17,6 @@ angular.module('App', [
         'app',
         'widul',
         'material-icons',
-        'nvd3ChartDirectives',
         'facebook',
         'angularMoment',
         'angularFileUpload',
@@ -52,6 +51,7 @@ angular.module('App', [
             // FACEBOOK AUTHENTICATION
             //.setIssuerEndpoint("Security/Authorize") 
             .setLogInRoute("security/identity/social")
+            .redirectToLoginOnLogout(false)
             .setWhiteListResolver(function(toState, current)
             {
 

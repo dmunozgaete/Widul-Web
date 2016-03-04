@@ -10,7 +10,6 @@
     "ng-file-upload": "~3.2.4",
     "angular-gale": "master",
     "angular-gale-material": "~1.0.0-rc.7",
-    "angularjs-nvd3-directives": "~0.0.7",
     "angular-facebook": "~0.2.3"
   },
   "resolutions": {

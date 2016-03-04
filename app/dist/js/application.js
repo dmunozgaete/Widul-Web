@@ -902,10 +902,7 @@ angular.module('app.components')
 
             $scope.logOut = function()
             {
-                $Identity.logOut(
-                {
-                    redirectToLoginPage: false
-                });
+                $Identity.logOut();
             };
 
             //--------------------------------------------
@@ -7965,7 +7962,6 @@ angular.module('App', [
         'app',
         'widul',
         'material-icons',
-        'nvd3ChartDirectives',
         'facebook',
         'angularMoment',
         'angularFileUpload',
@@ -8000,6 +7996,7 @@ angular.module('App', [
             // FACEBOOK AUTHENTICATION
             //.setIssuerEndpoint("Security/Authorize") 
             .setLogInRoute("security/identity/social")
+            .redirectToLoginOnLogout(false)
             .setWhiteListResolver(function(toState, current)
             {
 

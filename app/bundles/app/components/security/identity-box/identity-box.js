@@ -35,10 +35,7 @@ angular.module('app.components')
 
             $scope.logOut = function()
             {
-                $Identity.logOut(
-                {
-                    redirectToLoginPage: false
-                });
+                $Identity.logOut();
             };
 
             //--------------------------------------------
