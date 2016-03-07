@@ -9,10 +9,11 @@ angular.route('public.events/view/resume/index/:token?forceAuthentication', func
     $Identity,
     $timeout,
     $mdSidenav,
-    $friendsSelectorDialog,
     $loadingDialog,
     Facebook,
     $Configuration,
+    $friendsSelectorDialog,
+    $participantsViewerDialog,
     $restrictedAccess,
     $rootScope
 )
@@ -295,6 +296,16 @@ angular.route('public.events/view/resume/index/:token?forceAuthentication', func
 
     };
 
+    $scope.showParticipants = function(ev, model)
+    {
+        $participantsViewerDialog.show(
+            ev,
+            {
+                event: model.token
+            }
+        );
+    };
+
     $scope.showMap = function(place)
     {
         smooth(function()
@@ -331,7 +342,8 @@ angular.route('public.events/view/resume/index/:token?forceAuthentication', func
     //Force Authentication ???
     if ($stateParams.forceAuthentication == "1")
     {
-        $restrictedAccess.validate().then(function() {
+        $restrictedAccess.validate().then(function()
+        {
             //Do nothing :P
         });
     }

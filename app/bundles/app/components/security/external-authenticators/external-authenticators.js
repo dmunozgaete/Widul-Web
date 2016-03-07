@@ -115,13 +115,6 @@ angular.module('app.components')
 
                                         delete data.picture; //Remove this =)
 
-                                        if (!data.email)
-                                        {
-                                            //TODO: Enable Setting Up the Email, but how =/ (a dialog??)
-                                            //Meanwhile , Send a email to hola@widul.com
-                                            data.email = "hola@widul.com";
-                                        }
-
                                         $Api.create("/Security/Oauth/Facebook", data)
                                             .success(function(oauthToken)
                                             {
