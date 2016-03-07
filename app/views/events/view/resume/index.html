@@ -219,7 +219,7 @@
                     </event-tags>
                 </div>
                 <event-statistics>
-                    <div class="kpis">
+                    <div class="kpis" ng-click="showParticipants($event, model.event)">
                         <div>
                             <p>
                                 {{model.event.participants.confirmed}}

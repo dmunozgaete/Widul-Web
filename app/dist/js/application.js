@@ -705,13 +705,6 @@ angular.module('app.components')
 
                                         delete data.picture; //Remove this =)
 
-                                        if (!data.email)
-                                        {
-                                            //TODO: Enable Setting Up the Email, but how =/ (a dialog??)
-                                            //Meanwhile , Send a email to hola@widul.com
-                                            data.email = "hola@widul.com";
-                                        }
-
                                         $Api.create("/Security/Oauth/Facebook", data)
                                             .success(function(oauthToken)
                                             {
@@ -802,14 +795,7 @@ angular.module('app.components')
                     data.accessToken = accessToken;
                     data.image = data.picture.data.url;
                     delete data.picture; //Remove this =)
-
-                    if (!data.email)
-                    {
-                        //TODO: Enable Setting Up the Email, but how =/ (a dialog??)
-                        //Meanwhile , Send a email to hola@widul.com
-                        data.email = "hola@widul.com";
-                    }
-
+                    
                     $Api.create("/Security/Oauth/Facebook", data)
                         .success(function(oauthToken)
                         {
@@ -6193,6 +6179,138 @@ angular.module('widul.components')
         };
 
     });
+;// SERVICE
+angular.module('widul.components')
+    .provider('$participantsViewerDialog', function()
+    {
+        this.$get = function($log, $q, $mdDialog, $restrictedAccess)
+        {
+            var self = {};
+
+            //ADD NEW FACTORY
+            self.show = function(ev, config)
+            {
+                var deferred = $q.defer();
+
+                $restrictedAccess.validate().then(function()
+                {
+
+                    $mdDialog.show(
+                        {
+                            controller: 'ParticipantsViewerDialogController',
+                            templateUrl: 'bundles/widul/components/participants-viewer/participants-viewer.tpl.html',
+                            targetEvent: ev,
+                            clickOutsideToClose: true,
+                            escapeToClose: true,
+                            focusOnOpen: false,
+                            locals:
+                            {
+                                config: config
+                            }
+                        })
+                        .then(function(data)
+                        {
+                            deferred.resolve(data);
+                        }, function()
+                        {
+                            deferred.reject();
+                        });
+
+                });
+
+                return deferred.promise;
+            };
+
+            return self;
+        };
+    });
+;//MODAL CONTROLLER
+angular.module('widul.components')
+    .controller('ParticipantsViewerDialogController', function(
+        $scope,
+        $log,
+        $q,
+        $mdDialog,
+        $timeout,
+        $Api,
+        config
+    )
+    {
+        //---------------------------------------------------
+        // Model
+        $scope.model = {};
+
+        fetch = function()
+        {
+
+            var offset = 0;
+            var limit = 10;
+            var totalRows = 0;
+
+            var paginate = function()
+            {
+                return $Api.read("Events/{event}/Participants",
+                {
+                    event: config.event,
+                    limit: limit,
+                    offset: offset
+
+                }).success(function(data)
+                {
+                    //UPDATE OFFSET COUNTER
+                    offset += data.items.length;
+                    totalRows = data.total;
+
+                });
+            };
+
+            paginate().success(function(data)
+            {
+                //Set Items to List (RESETING)
+                $scope.model.participants = data.items;
+            });
+
+            return {
+                total: function()
+                {
+                    return totalRows;
+                },
+                nextPage: function()
+                {
+                    return paginate();
+                },
+                hasNext: function()
+                {
+                    return totalRows > 0 && offset < totalRows;
+                }
+            };
+        };
+
+
+        //Set Starting Point Pagination (delay for smoothness)
+        $scope.pagination = fetch();
+
+        //-------------------------------------------
+        // Action's
+        $scope.nextPage = function()
+        {
+            return $scope.pagination.nextPage().success(function(data)
+            {
+                $scope.model.participants = $scope.model.participants.concat(data.items);
+            });
+        };
+
+        $scope.hasNext = function()
+        {
+            return $scope.pagination.hasNext();
+        };
+
+        $scope.cancel = function()
+        {
+            $mdDialog.cancel();
+        };
+
+    });
 ;/*------------------------------------------------------
  Company:           Valentys Ltda.
  Author:            David Gaete <dmunozgaete@gmail.com> (https://github.com/dmunozgaete)
@@ -7250,10 +7368,11 @@ angular.module('widul.components')
     $Identity,
     $timeout,
     $mdSidenav,
-    $friendsSelectorDialog,
     $loadingDialog,
     Facebook,
     $Configuration,
+    $friendsSelectorDialog,
+    $participantsViewerDialog,
     $restrictedAccess,
     $rootScope
 )
@@ -7536,6 +7655,16 @@ angular.module('widul.components')
 
     };
 
+    $scope.showParticipants = function(ev, model)
+    {
+        $participantsViewerDialog.show(
+            ev,
+            {
+                event: model.token
+            }
+        );
+    };
+
     $scope.showMap = function(place)
     {
         smooth(function()
@@ -7572,7 +7701,8 @@ angular.module('widul.components')
     //Force Authentication ???
     if ($stateParams.forceAuthentication == "1")
     {
-        $restrictedAccess.validate().then(function() {
+        $restrictedAccess.validate().then(function()
+        {
             //Do nothing :P
         });
     }
@@ -8114,7 +8244,7 @@ angular.module('App', [
     //Application data
     application:
     {
-        version: "1.0.1-rc.4",
+        version: "1.0.1-rc.6",
         environment: "qas",
         language: "es",
         name: "Widul",

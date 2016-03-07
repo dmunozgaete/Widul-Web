@@ -3,7 +3,7 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
     //Application data
     application:
     {
-        version: "1.0.1-rc.4",
+        version: "1.0.1-rc.6",
         environment: "qas",
         language: "es",
         name: "Widul",

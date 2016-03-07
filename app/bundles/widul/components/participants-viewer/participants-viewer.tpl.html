@@ -1,0 +1,51 @@
+<md-dialog aria-label="dd" class="participants-viewer-dialog">
+    <form name="form">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Participantes ({{pagination.total()}})</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-icon="content:clear" aria-label="Cancelar"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-content>
+                <flex-loading ng-if="!model.participants">
+                </flex-loading>
+                <div layout="row" ng-if="model.participants">
+                    <persons>
+                        <gale-infinite-scroll can-load-more="hasNext()" on-infinite="nextPage()" distance="3%">
+                            <person ng-repeat="person in model.participants">
+                                <div>
+                                    <avatar>
+                                        <div class="halo">
+                                            <div>
+                                                <img ng-if="person.photo" ng-src="{{person.photo | file}}" />
+                                            </div>
+                                        </div>
+                                    </avatar>
+                                </div>
+                                <description>
+                                    {{person.fullname}}
+                                    <span class="md-primary text show-on-responsive" ng-if="person.isInvitation">(No confirmado)</span>
+                                </description>
+                                <state ng-if="person.isInvitation" class="hide-on-responsive ">
+                                    <md-tooltip>
+                                        Invitación Enviada
+                                    </md-tooltip>
+                                    <md-icon class="md-primary text" md-svg-icon="communication:email"></md-icon>
+                                </state>
+                            </person>
+                        </gale-infinite-scroll>
+                    </persons>
+                </div>
+            </md-content>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="cancel()">
+                Cerrar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

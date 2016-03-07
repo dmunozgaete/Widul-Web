@@ -832,6 +832,159 @@ md-dialog.knowledge-selector-dialog md-dialog-actions {
 /* 
     SASS Mixins
 */
+/*********************
+ RESPONSIVE BREAKPOINTS
+*********************/
+md-dialog.participants-viewer-dialog md-dialog-content {
+  min-width: 500px;
+  max-width: 500px;
+  height: 430px; }
+  md-dialog.participants-viewer-dialog md-dialog-content > md-content {
+    padding: 0px;
+    height: 100%; }
+    md-dialog.participants-viewer-dialog md-dialog-content > md-content > div {
+      padding: 0px;
+      height: 100%; }
+      md-dialog.participants-viewer-dialog md-dialog-content > md-content > div > div:first-child {
+        padding: 0px 16px;
+        border-bottom: 1px solid #DEDEDE; }
+      md-dialog.participants-viewer-dialog md-dialog-content > md-content > div > div:last-child {
+        border-left: 1px solid #DEDEDE;
+        border-bottom: 1px solid #DEDEDE;
+        background-color: #F1F1F1;
+        padding: 16px;
+        overflow: scroll; }
+        md-dialog.participants-viewer-dialog md-dialog-content > md-content > div > div:last-child > span {
+          font-size: 0.8em; }
+    md-dialog.participants-viewer-dialog md-dialog-content > md-content span.title {
+      font-size: 0.8em;
+      position: absolute;
+      margin-top: -23px;
+      padding-left: 5px; }
+    md-dialog.participants-viewer-dialog md-dialog-content > md-content persons {
+      display: block;
+      outline: none;
+      border-radius: 5px;
+      height: 425px;
+      width: 100%;
+      overflow: scroll;
+      margin-top: 3px; }
+      md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person {
+        margin: 4px 16px;
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center;
+        height: 55px;
+        width: 100%; }
+        md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person:hover {
+          background-color: #F3F3F3;
+          outline: none; }
+        md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person > div {
+          outline: none; }
+          md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person > div > avatar {
+            cursor: pointer;
+            outline: none;
+            display: block;
+            width: 45px;
+            height: 45px;
+            margin: 0px 16px 0px 0px; }
+            md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person > div > avatar > div.halo {
+              outline: none;
+              background-color: transparent;
+              border-radius: 50%;
+              width: 100%;
+              height: 100%;
+              padding: 3%; }
+              md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person > div > avatar > div.halo > div {
+                outline: none;
+                border-radius: 50%;
+                overflow: hidden;
+                height: 100%;
+                width: 100%;
+                background: #3F51B5; }
+                md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person > div > avatar > div.halo > div > img {
+                  outline: none;
+                  width: 100%; }
+        md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person > description {
+          cursor: pointer;
+          outline: none;
+          margin-left: 20px;
+          flex-basis: 85%;
+          display: block;
+          margin-left: 0px;
+          height: 100%;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-direction: normal;
+          -webkit-box-orient: vertical;
+          -webkit-flex-direction: column;
+          -moz-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-align: start;
+          -ms-flex-align: start;
+          -webkit-align-items: flex-start;
+          -moz-align-items: flex-start;
+          align-items: flex-start;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          -moz-justify-content: center;
+          justify-content: center;
+          font-size: 0.85em; }
+          md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person > description > span {
+            font-size: 0.85em;
+            opacity: 0.8; }
+        md-dialog.participants-viewer-dialog md-dialog-content > md-content persons person > state {
+          flex-basis: 15%;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          -moz-align-items: center;
+          align-items: center; }
+  md-dialog.participants-viewer-dialog md-dialog-content .md-errors-spacer {
+    display: none; }
+  md-dialog.participants-viewer-dialog md-dialog-content h2 {
+    margin: 8px 0px;
+    font-size: 0.9em;
+    font-weight: normal; }
+md-dialog.participants-viewer-dialog md-dialog-actions {
+  padding: 8px 16px; }
+  md-dialog.participants-viewer-dialog md-dialog-actions button {
+    padding: 0px 16px; }
+
+/*------------------------- 
+RESPONSIVE 
+-------------------------*/
+@media (max-width: 800px) {
+  md-dialog.participants-viewer-dialog {
+    height: 95%;
+    min-width: 240px;
+    max-width: 93%;
+    max-height: 90%;
+    width: 96%; }
+    md-dialog.participants-viewer-dialog md-dialog-content {
+      min-width: 100%;
+      height: 430px; }
+      md-dialog.participants-viewer-dialog md-dialog-content > md-content persons {
+        height: 90%; } }
+
+/*# sourceMappingURL=participants-viewer.css.map */
+
+/* 
+    SASS Mixins
+*/
 place-locator {
   display: -webkit-box;
   display: -webkit-flex;
