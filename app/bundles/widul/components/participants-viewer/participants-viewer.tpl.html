@@ -11,6 +11,8 @@
         </md-toolbar>
         <md-dialog-content>
             <md-content>
+                <md-progress-linear md-mode="indeterminate" class="md-accent" ng-if="!model.participants">
+                </md-progress-linear>
                 <flex-loading ng-if="!model.participants">
                 </flex-loading>
                 <div layout="row" ng-if="model.participants">
