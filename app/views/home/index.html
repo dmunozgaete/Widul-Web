@@ -8,7 +8,7 @@
 
             <span flex></span>
 
-            <md-button ng-if="model.image.loaded" class="md-accent text md-raised give" aria-label="More" ng-click="createEvent()">
+            <md-button ng-if="model.image.loaded" class="hide-on-responsive md-accent text md-raised give" aria-label="More" ng-click="createEvent()">
                 <md-icon md-svg-icon="action:favorite"></md-icon>
                 Entregar mi conocmiento
             </md-button>
@@ -19,7 +19,7 @@
     </md-toolbar>
 
     <!-- LANDSCAPE -->
-    <div class="landscape">
+    <div class="landscape hide-on-responsive" >
         <md-progress-linear ng-if="!model.image.loaded" md-mode="indeterminate" class="md-primary">
         </md-progress-linear>
 
@@ -47,7 +47,7 @@
         </preload-image>
     </div>
     <!-- LOADING EVENTS BOX-->
-    <div ng-if="model.results.loading" class="loading">
+    <div ng-if="model.results.loading" class="loading hide-on-responsive">
         <md-progress-linear md-mode="indeterminate" class="md-primary">
         </md-progress-linear>
 
@@ -55,12 +55,15 @@
             Buscando Coincidencias...
         </div>
     </div>
+
+    <flex-loading ng-if="model.results.loading" class="show-on-responsive">
+    </flex-loading>
     <!-- RESULTS -->
     <div ng-if="model.results.items.length > 0" class="results">
 
         <!-- SEPARATOR -->
         <event-divider>
-            Conocimientos que puedes adquirir hoy
+            Conocimientos que puedes adquirir esta semana:
         </event-divider>
 
         <!-- EVENT ITEM -->
@@ -69,10 +72,10 @@
                 <!-- SOCIAL ICON -->
                 <div class="marker">
                     <md-tooltip md-direction="top">
-                        Reputación del Conocimiento
+                        &nbsp;
                     </md-tooltip>
                     <md-icon md-svg-icon="action:thumb_up"></md-icon>
-                    <div>35</div>
+                    <div>&nbsp;</div>
                 </div>
                 <!-- CREATOR -->
                 <center class="creator">
@@ -87,10 +90,10 @@
                 <!-- SOCIAL ICON -->
                 <div class="marker left">
                     <md-tooltip md-direction="top">
-                        Participantes
+                        &nsbp;
                     </md-tooltip>
                     <md-icon md-svg-icon="social:person_add"></md-icon>
-                    <div>20</div>
+                    <div>&nbsp;</div>
                 </div>
             </div>
 
