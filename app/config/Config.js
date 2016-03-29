@@ -4,7 +4,7 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
     application:
     {
         version: "1.0.1-rc.6",
-        environment: "dev",
+        environment: "qas",
         language: "es",
         name: "Widul",
         home: "public/home"

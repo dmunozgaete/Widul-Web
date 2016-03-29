@@ -119,6 +119,7 @@ gale-page.home {
                         color: #fff;
                         width: 16px;
                         height: 16px;
+                        display: none;
                     }
                     &:first-child {}
                     &:last-child {}
@@ -194,6 +195,33 @@ gale-page.home {
                         padding-right: 4px;
                         cursor: pointer;
                         display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include breakpoint(mobile) {
+    gale-page.home {
+        > div.results {
+            @include flexbox();
+            @include flex-direction(column);
+            @include align-items(center);
+            @include justify-content(center);
+            margin-top: 1em;
+            > event-divider {
+                text-align: center;
+            }
+            > event {
+                width: 80%;
+                > div.box {
+                    width: 95%;
+                    font-size: 17px;
+                    > div.description {
+                        height: 120px;
+                        -webkit-line-clamp: 6;
+                        overflow: hidden;
                     }
                 }
             }
