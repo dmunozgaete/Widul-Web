@@ -5,27 +5,21 @@
             <h2>
                 <span>{{config.application.name}}</span>
             </h2>
-
             <span flex></span>
-
             <md-button ng-if="model.image.loaded" class="hide-on-responsive md-accent text md-raised give" aria-label="More" ng-click="createEvent()">
                 <md-icon md-svg-icon="action:favorite"></md-icon>
                 Entregar mi conocmiento
             </md-button>
-
             <identity-box>
             </identity-box>
         </div>
     </md-toolbar>
-
     <!-- LANDSCAPE -->
-    <div class="landscape hide-on-responsive" >
+    <div class="landscape hide-on-responsive">
         <md-progress-linear ng-if="!model.image.loaded" md-mode="indeterminate" class="md-primary">
         </md-progress-linear>
-
         <!-- SEARCH BOX -->
         <div class="search-container">
-
             <md-whiteframe class="md-whiteframe-1dp" layout="row" ng-class="{'active': model.image.loaded}">
                 <md-chips flex md-separator-keys="model.tags.electricChars" ng-model="model.tags.items" md-on-remove="find(model.tags.items);" md-on-add="find(model.tags.items);" md-separator-keys="" md-autocomplete-snap md-transform-chip="setOrRegister($chip)" md-require-match="false">
                     <md-autocomplete placeholder="¿Que quieres aprender?" md-min-length="2" md-selected-item="model.selectedItem" md-search-text="model.searchText" md-items="item in queryTags(model.searchText)" md-item-text="item.name">
@@ -50,75 +44,89 @@
     <div ng-if="model.results.loading" class="loading hide-on-responsive">
         <md-progress-linear md-mode="indeterminate" class="md-primary">
         </md-progress-linear>
-
         <div>
             Buscando Coincidencias...
         </div>
     </div>
-
     <flex-loading ng-if="model.results.loading" class="show-on-responsive">
     </flex-loading>
     <!-- RESULTS -->
     <div ng-if="model.results.items.length > 0" class="results">
-
         <!-- SEPARATOR -->
         <event-divider>
             Conocimientos que puedes adquirir esta semana:
         </event-divider>
-
         <!-- EVENT ITEM -->
-        <event ng-repeat="item in model.results.items" ng-click="showDetails($event, item)">
-            <div class="header">
-                <!-- SOCIAL ICON -->
-                <div class="marker">
-                    <md-tooltip md-direction="top">
-                        &nbsp;
-                    </md-tooltip>
-                    <md-icon md-svg-icon="action:thumb_up"></md-icon>
-                    <div>&nbsp;</div>
-                </div>
-                <!-- CREATOR -->
-                <center class="creator">
-                    <div class="marker">
-                        <div class="halo">
-                            <div>
-                                <img ng-src="{{item.creator.photo | file}}" />
+        <colum-event>
+            <event ng-repeat="item in model.results.items" ng-click="showDetails($event, item)">
+                <div class="header">
+                    <!-- CREATOR -->
+                    <center class="creator">
+                        <div class="marker">
+                            <div class="halo">
+                                <div>
+                                    <img ng-src="{{item.creator.photo | file}}" />
+                                </div>
                             </div>
                         </div>
+                    </center>
+                    <!-- SOCIAL ICON -->
+                    <div class="marker">
+                        <md-tooltip md-direction="top">
+                            &nbsp;
+                        </md-tooltip>
+                        <md-icon md-svg-icon="action:thumb_up"></md-icon>
+                        <div>&nbsp;</div>
                     </div>
-                </center>
-                <!-- SOCIAL ICON -->
-                <div class="marker left">
-                    <md-tooltip md-direction="top">
-                        &nsbp;
-                    </md-tooltip>
-                    <md-icon md-svg-icon="social:person_add"></md-icon>
-                    <div>&nbsp;</div>
+                    <!-- SOCIAL ICON -->
+                    <div class="marker left">
+                        <md-tooltip md-direction="top">
+                            &nsbp;
+                        </md-tooltip>
+                        <md-icon md-svg-icon="social:person_add"></md-icon>
+                        <div>&nbsp;</div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- EVENT NAME -->
-            <div class="name">
-                {{item.name}}
-            </div>
-            <!-- KNOWLEDGE NAME -->
-            <div class="knowledge">
-                #{{item.knowledge.name}}
-            </div>
-            <!-- BOX -->
-            <div class="box">
-                <!-- DESCRIPTION -->
-                <div class="description">
-                    {{item.description}}
+                <!-- EVENT NAME -->
+                <div class="name">
+                    {{item.name}}
                 </div>
-                <!-- TAGS -->
-                <div class="tags">
-                    <span ng-repeat="tag in item.tags">#{{tag}}</span>
+                <!-- KNOWLEDGE NAME -->
+                <div class="knowledge">
+                    #{{item.knowledge.name}}
                 </div>
-            </div>
-
-        </event>
+                <!-- BOX -->
+                <div class="box">
+                    <!-- DESCRIPTION -->
+                    <div class="description">
+                        {{item.description}}
+                    </div>
+                    <!-- TAGS -->
+                    <div class="tags">
+                        <span ng-repeat="tag in item.tags">#{{tag}}</span>
+                    </div>
+                </div>
+            </event>
+        <colum-event>
 
     </div>
+    <footer>
+        <content-footer>
+            
+                <a href="http://widul.azurewebsites.net/espiritu.html" target="_blank">Espiritu Widul</a>
+            
+                <a href="http://widul.azurewebsites.net/recomendaciones.html" target="_blank">Sugerencias</a>
+            
+                <a href="">El Equipo</a>
+            
+        </content-footer>
+        <content-redes>
+            <redes>
+                <h3>Siguenos en</h3>
+                <a href="https://www.facebook.com/Widul-848730418558025/?ref=br_rs" target="_blank"><img src="bundles/footer-icons/icon-facebook.svg"></a>
+                <a href="https://www.youtube.com/channel/UCwCDNr6c2R2RGIgg9qaMPwg" target="_blank"><img src="bundles/footer-icons/icon-youtube.svg"></a>
+            </redes>
+        </content-redes>
 
-</gale-page>
+    </footer>
+    </gale-pag

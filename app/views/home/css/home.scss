@@ -9,6 +9,56 @@ gale-page.home {
             }
         }
     }
+
+    footer {
+        background-color: #333333;
+        overflow: hidden;
+        padding-top:20px;
+            
+            content-footer {
+                display: block;
+                width: 90%;
+                max-width: 950px;
+                margin: auto;
+                overflow: hidden;
+                text-align: center;
+                            a{
+                                color: #a8a8a8;
+                                font-weight: 400;
+                                text-decoration: none;
+                                font-size: 1.3em;
+                                margin: 10px;
+                                display: inline-block;
+                            }
+                    
+            }
+            content-redes{
+                display: block;
+                background-color:#1a1a1a;
+                width: 100%;
+                overflow: hidden;
+                margin-top:20px;
+                padding-bottom:20px;
+                redes{
+                        display: block;
+                        width: 98%;
+                        float: left;
+                        padding:1%;
+                        text-align: center;
+                            h3{
+                                color: #a8a8a8;
+                                font-weight: 400;
+                                text-decoration: none;
+                                font-size: 1.3em;
+                            }
+                            img{
+                                width: 40px;
+                                margin-right: 10px;
+                            }
+                    }
+            }
+        }
+
     div.landscape {
         height: 35%;
         background-color: #F3F3F3;
@@ -46,6 +96,7 @@ gale-page.home {
                 overflow: hidden;
                 background: #fff;
                 width: 75%;
+                max-width: 980px;
                 > button {
                     border-radius: 0px;
                     border-top-left-radius: 25px;
@@ -85,116 +136,142 @@ gale-page.home {
             line-height: 1.7em;
             color: #FF4081;
             margin: 0px 16px;
+            text-align: center;
         }
-        > event {
-            outline: none;
-            cursor: pointer;
-            color: $text_color;
-            @include flexbox();
-            @include flex-direction(column);
-            @include align-items(center);
-            @include justify-content(center);
-            @include box-shadow(2px);
-            display: inline-flex;
-            border-radius: 4px;
-            margin: 12px;
-            width: 230px;
-            margin-top: 3em;
-            background-color: $primary_color;
-            > div.header {
+        colum-event{
+        display: block;
+        max-width: 1000px;
+        min-width: 1000px;
+        width: 90%;
+        margin: auto;
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+        -webkit-column-gap: 8px;
+        -moz-column-gap: 8px;
+        column-gap: 8px;
+    
+            > event {
+                overflow: hidden;
+                outline: none;
+                cursor: pointer;
+                color: $text_color;
                 @include flexbox();
+                @include flex-direction(column);
+                @include align-items(center);
                 @include justify-content(center);
-                width: 100%;
-                > div.marker {
+                @include box-shadow(2px);
+                display: inline-flex;
+                border-radius: 4px;
+                margin: 12px;
+                width: 230px;
+                background-color: $primary_color;
+                -webkit-column-break-inside: avoid;
+                -moz-column-break-inside: avoid;
+                column-break-inside: avoid;
+                > div.header {
                     @include flexbox();
-                    @include flex-direction(row);
-                    @include align-items(center);
                     @include justify-content(center);
-                    @include flex-basis(30%);
-                    text-align: center;
-                    font-size: 0.9em;
-                    padding-top: 8px;
-                    > md-icon {
-                        margin: 4px;
-                        color: #fff;
-                        width: 16px;
-                        height: 16px;
-                        display: none;
+                    width: 100%;
+                    background: white;
+                    padding: 10px 0;
+                    > div.marker {
+                        @include flexbox();
+                        @include flex-direction(row);
+                        @include align-items(center);
+                        @include justify-content(center);
+                        @include flex-basis(30%);
+                        text-align: center;
+                        font-size: 0.9em;
+                        padding-top: 8px;
+                        > md-icon {
+                            margin: 4px;
+                            color: #fff;
+                            width: 16px;
+                            height: 16px;
+                            display: none;
+                        }
+                        &:first-child {}
+                        &:last-child {}
                     }
-                    &:first-child {}
-                    &:last-child {}
-                }
-                > center.creator {
-                    margin-top: -2.3em;
-                    @include flex-basis(40%);
-                    div.marker {
-                        width: 5em;
-                        height: 5em;
-                        > div.halo {
-                            @include box-shadow(2px);
-                            background-color: #FFF;
-                            border-radius: 50%;
-                            border: 1px solid #FFF;
-                            width: 100%;
-                            height: 100%;
-                            padding: 3%;
-                            > div {
+                    > center.creator {
+                        @include flex-basis(40%);
+                        div.marker {
+                            width: 3em;
+                            height: 3em;
+                            > div.halo {
+                                background-color: #FFF;
                                 border-radius: 50%;
-                                overflow: hidden;
-                                height: 100%;
                                 width: 100%;
-                                background: $primary_color;
-                                > img {
+                                height: 100%;
+                                padding: 3%;
+                                > div {
+                                    border-radius: 50%;
+                                    overflow: hidden;
+                                    height: 100%;
                                     width: 100%;
+                                    background: $primary_color;
+                                    > img {
+                                        width: 100%;
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
-            > div.name {
-                padding: 1em 8px 0em 8px;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                text-align: center;
-                white-space: nowrap;
-                width: 95%;
-            }
-            > div.knowledge {
-                text-align: center;
-                padding: 6px 8px;
-                font-weight: bold;
-                cursor: pointer;
-                text-transform: capitalize;
-            }
-            > div.box {
-                font-size: 13px;
-                color: $primary_color;
-                background-color: $background-color;
-                padding: 8px;
-                overflow: hidden;
-                border-radius: 4px;
-                width: 214px;
-                border-top-left-radius: 0px;
-                border-top-right-radius: 0px;
-                > div.description {
-                    height: 60px;
-                    color: #000;
-                    text-align: justify;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 4;
-                    -webkit-box-orient: vertical;
+                > div.name {
+                    padding: 1em 8px 0em 8px;
+                    color: #b5badf;
+                    text-overflow: ellipsis;
                     overflow: hidden;
+                    text-align: left;
+                    white-space: nowrap;
+                    width: 95%;
                 }
-                > div.tags {
-                    padding-top: 0.5em;
-                    line-height: 1.5em;
-                    > span {
-                        text-decoration: underline;
-                        padding-left: 4px;
-                        padding-right: 4px;
-                        cursor: pointer;
-                        display: inline-block;
+                > div.knowledge {
+                    text-align: left;
+                    padding: 6px 8px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    text-transform: capitalize;
+                    width: 95%;
+                    margin: auto;
+                    font-size: 1.8em;
+                }
+                > div.box {
+                    font-size: 13px;
+                    color: $primary_color;
+                    background-color: $background-color;
+                    padding: 8px;
+                    overflow: hidden;
+                    border-radius: 4px;
+                    width: 214px;
+                    border-top-left-radius: 0px;
+                    border-top-right-radius: 0px;
+                    > div.description {
+                        height: 60px;
+                        color: #363636;
+                        text-align: justify;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+                    > div.tags {
+                        padding-top: 0.5em;
+                        line-height: 1.5em;
+                        > span {
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            cursor: pointer;
+                            display: inline-block;
+                            background: #4652b0;
+                            color: white;
+                            border-radius: 15px;
+                            text-decoration: none;
+                            margin-right: 5px;
+                            margin-top: 5px;
+                        }
                     }
                 }
             }
@@ -209,21 +286,44 @@ gale-page.home {
             @include flex-direction(column);
             @include align-items(center);
             @include justify-content(center);
-            margin-top: 1em;
+            margin-top: 0em;
+            background:#f2f2f2;
             > event-divider {
-                text-align: center;
+                text-align: left;
+                width: 90%;
             }
-            > event {
-                width: 80%;
-                > div.box {
+            colum-event{
+                min-width: auto;
+                -webkit-column-count: 1;
+                -webkit-column-gap: 1;
+                > event {
                     width: 95%;
-                    font-size: 17px;
-                    > div.description {
-                        height: 120px;
-                        -webkit-line-clamp: 6;
-                        overflow: hidden;
+                    > div.box {
+                        width: 95%;
+                        font-size: 17px;
+                        padding:2.5%;
+                        > div.description {
+                            height: 120px;
+                            -webkit-line-clamp: 6;
+                            overflow: hidden;
+                        }
                     }
                 }
+            }
+        }
+        footer {
+            content-footer {
+                    div{
+                        width: 46%;
+                        float: left;
+                        padding: 1%;
+                            a{
+                                color: white;
+                                font-weight: 400;
+                                text-decoration: none;
+                                font-size: 1.3em;
+                            }
+                    }
             }
         }
     }
