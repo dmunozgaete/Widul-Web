@@ -7381,6 +7381,14 @@ angular.module('widul.components')
     // Model
     $scope.model = {};
 
+    $scope.newdate = function() {
+
+        var rawDate = $scope.model.event.date;
+
+        return rawDate.replace("T", " a las ").replace("-03:00", "");
+
+    };
+
     //---------------------------------------------------
     // Custom Function's
     $rootScope.$on("auth-login-success", function(token)
