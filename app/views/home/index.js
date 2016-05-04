@@ -33,6 +33,15 @@ angular.route('public.home/index', function(
         }
     };
 
+    $scope.shortName = function(rawName) {
+
+        var splitName = rawName.split(" ");
+        var newName = splitName[0] + " " + splitName[1];
+
+        return newName;
+
+    };
+
     //-----------------------------------------------
     // Function's
     $scope.queryTags = function(query)

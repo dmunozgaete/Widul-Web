@@ -139,7 +139,8 @@
                         <md-icon class="md-primary text" md-svg-icon="action:schedule"></md-icon>
                     </div>
                     <span>
-                        <span>{{model.event.date | amCalendar}}</span>
+                        <!--<span>{{model.event.date | amCalendar}}</span>-->
+                        <span>{{ newdate() }}</span>
                     <br/>
                     <span am-time-ago="model.event.date"></span>
                     </span>

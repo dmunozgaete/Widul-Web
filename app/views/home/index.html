@@ -14,11 +14,16 @@
             </identity-box>
         </div>
     </md-toolbar>
+
     <!-- LANDSCAPE -->
+    
     <div class="landscape hide-on-responsive">
+
         <md-progress-linear ng-if="!model.image.loaded" md-mode="indeterminate" class="md-primary">
         </md-progress-linear>
+        
         <!-- SEARCH BOX -->
+        <!--
         <div class="search-container">
             <md-whiteframe class="md-whiteframe-1dp" layout="row" ng-class="{'active': model.image.loaded}">
                 <md-chips flex md-separator-keys="model.tags.electricChars" ng-model="model.tags.items" md-on-remove="find(model.tags.items);" md-on-add="find(model.tags.items);" md-separator-keys="" md-autocomplete-snap md-transform-chip="setOrRegister($chip)" md-require-match="false">
@@ -36,10 +41,15 @@
                 </md-button>
             </md-whiteframe>
         </div>
+        -->
         <!-- MAIN PICTURE (ROTATE ALGORIHTM) -->
+        
         <preload-image ng-class="{'ng-animate-start': model.image.loaded}" hide-loader="true" on-complete="onImageLoaded" loading-legend="{{model.image.loadingLegend}}" cssgram-filter="Earlybird" ng-src="'views/home/css/images/' + model.image.url">
         </preload-image>
+
     </div>
+    
+    
     <!-- LOADING EVENTS BOX-->
     <div ng-if="model.results.loading" class="loading hide-on-responsive">
         <md-progress-linear md-mode="indeterminate" class="md-primary">
@@ -65,12 +75,18 @@
                         <div class="marker">
                             <div class="halo">
                                 <div>
-                                    <img ng-src="{{item.creator.photo | file}}" />
+                                    <img ng-src="{{item.creator.photo | file}}" />  
                                 </div>
                             </div>
+                            
                         </div>
+                        
                     </center>
+                    <div style="color:#FF4081;">{{ shortName(item.creator.name) }}</div>
+
+
                     <!-- SOCIAL ICON -->
+                    <!--
                     <div class="marker">
                         <md-tooltip md-direction="top">
                             &nbsp;
@@ -78,7 +94,9 @@
                         <md-icon md-svg-icon="action:thumb_up"></md-icon>
                         <div>&nbsp;</div>
                     </div>
+                    -->
                     <!-- SOCIAL ICON -->
+                    <!--
                     <div class="marker left">
                         <md-tooltip md-direction="top">
                             &nsbp;
@@ -86,14 +104,16 @@
                         <md-icon md-svg-icon="social:person_add"></md-icon>
                         <div>&nbsp;</div>
                     </div>
+                    -->
+
                 </div>
                 <!-- EVENT NAME -->
                 <div class="name">
-                    {{item.name}}
+                    {{item.knowledge.name}}
                 </div>
                 <!-- KNOWLEDGE NAME -->
                 <div class="knowledge">
-                    #{{item.knowledge.name}}
+                    #{{item.name}}
                 </div>
                 <!-- BOX -->
                 <div class="box">
